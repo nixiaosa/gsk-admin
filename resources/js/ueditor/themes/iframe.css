@@ -1,0 +1,4 @@
+/*可以在这里添加你自己的css*/
+blockquote{border-left: 3px solid #D0E5F2;padding: 0 0 0 10px;}
+img{max-width:100%; float:none!important; display:block; margin:0 auto;}
+img.prism-player{background:url(./default/images/videologo.gif) no-repeat center center; border:1px solid gray;height: 280px;width: 100%}

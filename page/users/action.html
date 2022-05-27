@@ -1,0 +1,64 @@
+<div class="container" id="master_user_action_div">
+    <div class="weui_cells_title">基本信息</div>
+    <div class="weui_cells">
+        <div class="weui_cell">
+            <div class="weui_cells_title">昵称</div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input class="weui_input" maxlength="100" v-model:value="pro_info.nickname" readonly  type="text" style="font-size: 16px;color: #888">
+            </div>
+            <div class="weui_cells_title">性别</div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input class="weui_input" maxlength="100" v-model:value="pro_info.sexName" readonly type="text" style="font-size: 16px;color: #888">
+            </div>
+        </div>
+        <div class="weui_cell">
+            <div class="weui_cells_title">医院</div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input class="weui_input" maxlength="100" v-model:value="pro_info.outpatient" readonly type="text" style="font-size: 16px;color: #888">
+            </div>
+            <div class="weui_cells_title">科室</div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input class="weui_input" maxlength="100" v-model:value="pro_info.department" readonly type="text" style="font-size: 16px;color: #888">
+            </div>
+        </div>
+        <div class="weui_cell">
+            <div class="weui_cells_title">省份</div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input class="weui_input" maxlength="100" v-model:value="pro_info.province"  readonly type="text" style="font-size: 16px;color: #888">
+            </div>
+            <div class="weui_cells_title">城市</div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input class="weui_input" maxlength="100" v-model:value="pro_info.cityName" readonly type="text" style="font-size: 16px;color: #888">
+            </div>
+        </div>
+        <div class="weui_cell">
+            <div class="weui_cells_title">国家</div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input class="weui_input" maxlength="100" v-model:value="pro_info.country" readonly type="text" style="font-size: 16px;color: #888">
+            </div>
+            
+        </div>
+
+    </div>
+    <div class="weui_cells_title">用户时长</div>
+    <div class="weui_cells">
+        <div class="weui_cell">
+            <div class="weui_cells_title">阅读时长</div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input class="weui_input" maxlength="100" v-model:value="watch_info.readValue"  readonly type="text" style="font-size: 16px;color: #888">
+            </div>
+            <div class="weui_cells_title">观看时长</div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input class="weui_input" maxlength="100" v-model:value="watch_info.liveValue" readonly type="text" style="font-size: 16px;color: #888">
+            </div>
+        </div>
+    </div>
+    <div class="weui_cells_title">用户行为分析</div>
+    <div class="weui_cells">
+        <div id="main" style="width: 600px;height:400px;">
+
+        </div>
+    </div>
+    
+</div>
+<script type="text/javascript" src="users/action.js"></script>

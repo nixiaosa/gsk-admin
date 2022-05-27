@@ -1,0 +1,42 @@
+<div class="container" id="master_activity_video_info_div">
+    <div class="weui_cells_title">基本信息</div>
+    <div class="weui_cells">
+        <div class="weui_cell">
+            <div class="weui_cells_title">名称</div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input class="weui_input" readonly onfocus="this.removeAttribute('readonly');"id="tilte" maxlength="20" v-bind:value="pro_info.title" placeholder="名称" type="text" style="font-size: 16px;color: #888">
+            </div>
+        </div>
+        <div class="weui_cell">
+            <div class="weui_cells_title">腾讯视频Url</div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input class="weui_input" readonly onfocus="this.removeAttribute('readonly');"id="videoUrl" v-bind:value="pro_info.videoUrl" placeholder="视频url" type="text" style="font-size: 16px;color: #888">
+            </div>
+        </div>
+        <div class="weui_cell">
+            <div class="weui_cells_title">视频观看时长（单位：秒）</div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input class="weui_input"readonly onfocus="this.removeAttribute('readonly');" id="watchTime" v-bind:value="pro_info.watchTime" placeholder="视频观看时长（单位：分钟）" type="text" style="font-size: 16px;color: #888">
+            </div>
+        </div>
+        <div class="weui_cell">
+            <div class="weui_cells_title">第三方H5链接(选填)</div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input class="weui_input" readonly onfocus="this.removeAttribute('readonly');"id="webPageUrl" v-bind:value="pro_info.webPageUrl" placeholder="第三方H5链接" type="text" style="font-size: 16px;color: #888">
+            </div>
+        </div>
+        <div class="weui_cell">
+            <div class="weui_cells_title">试题</div>
+            <input class="weui_input" id="fileShow" v-bind:value="pro_info.testFileName" placeholder="点击上传文件，文件格式：xlsx" type="text" readonly style="font-size: 16px;color: #888">
+            <input class="weui_uploader_input"  name="file"  type="file"  id="file"  v-bind:data-file-name="pro_info.testContent" > 
+        </div>
+
+    </div>
+   
+    
+    <div class="weui_btn_area weui_btn_area_inline">
+        <a href="javascript:;" class="weui_btn weui_btn_primary" v-on:click="save_pro_info(0)">保存</a>
+        <a href="javascript:;" class="weui_btn weui_btn_primary" v-on:click="save_pro_info(1)">保存并发布</a>
+    </div>
+</div>
+<script type="text/javascript" src="activity_video/info.js"></script>

@@ -1,0 +1,78 @@
+<div class="container" id="master_admin_edit_div">
+    <div class="weui_cells_title">管理员信息</div>
+    <div class="weui_cells">
+        <div class="weui_cell">
+            <div class="weui_cells_title">手机号：</div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input class="weui_input" readonly onfocus="this.removeAttribute('readonly');" id="mobile" type="text" maxlength="50" placeholder="邮箱" style="font-size:15px;color:#888;margin-top:5px;">
+            </div>
+        </div>
+        <div class="weui_cell">
+            <div class="weui_cells_title">角色：</div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <div class="weui-form">
+                    <div class="weui-form-li iblock">
+                        <input class="weui-form-checkbox" name="f2" id="g1" value="1001" type="radio">
+                        <label for="g1">
+                            <i class="weui-icon-radio"></i>
+                            <div class="weui-form-text">
+                                <p>超级管理员</p>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="weui-form-li iblock">
+                        <input class="weui-form-checkbox" name="f2" id="g2" value="1002" type="radio" checked>
+                        <label for="g2">
+                            <i class="weui-icon-radio"></i>
+                            <div class="weui-form-text">
+                                <p>普通员工</p>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="weui-form-li iblock">
+                        <input class="weui-form-checkbox" name="f2" id="g5" value="1005" type="radio">
+                        <label for="g5">
+                            <i class="weui-icon-radio"></i>
+                            <div class="weui-form-text">
+                                <p>管理员</p>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="weui_cell" id="password_div" style="display: none">
+            <div class="weui_cells_title">密码：</div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input class="weui_input" readonly onfocus="this.removeAttribute('readonly');" type="password" maxlength="20" placeholder="密码为8-20位，字母大小写，数字，特殊字符，至少包含三种" style="font-size:15px;color:#888;margin-top:5px;">
+            </div>
+        </div>
+        <div class="weui_cell" id="confim_password_div" style="display: none">
+            <div class="weui_cells_title">确认密码：</div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input class="weui_input" readonly onfocus="this.removeAttribute('readonly');" type="password" maxlength="20" placeholder="密码为8-20位，字母大小写，数字，特殊字符，至少包含三种" style="font-size:15px;color:#888;margin-top:5px;">
+            </div>
+        </div>
+    </div>
+    
+    <div class="weui_cells">
+        
+        <div class="weui_cell">
+            <div class="weui_btn_area weui_btn_area_inline">
+                <a href="javascript:;" class="weui_btn weui_btn_primary" style="width:150px;" v-on:click="save_info()">保存</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="admins/edit.js"></script>
+<style>
+
+.pro_p {
+        position: relative;
+        bottom: 48px;
+        background-color: #F8F8F8;
+        font-size: 15px;
+        color: #888;
+        height: 44px;
+        opacity: 0.6;
+    }</style>

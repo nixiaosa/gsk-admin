@@ -1,0 +1,38 @@
+<div class="container" id="master_privacy_edit_div">
+    <div class="weui_cells_title">隐私声明设置</div>
+    <div class="weui_cells">
+        <div class="weui_cell">
+            <div class="weui_cells_title">标题：</div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input class="weui_input" autocomplete="off" readonly onfocus="this.removeAttribute('readonly');" type="text" id="title" placeholder="请输入协议标题" style="font-size:15px;color:#888;margin-top:5px;">
+            </div>
+        </div>
+        <div class="weui_cell">
+            <div class="weui_cells_title">声明版本号：</div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input class="weui_input" autocomplete="off" readonly onfocus="this.removeAttribute('readonly');" type="text" id="version" placeholder="请输入声明版本号" style="font-size:15px;color:#888;margin-top:5px;">
+            </div>
+        </div>
+        <div class="weui_cell">
+            <div class="weui_cells_title">声明链接：</div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input class="weui_input" autocomplete="off" readonly onfocus="this.removeAttribute('readonly');" type="text" id="linkUrl" placeholder="请输入声明链接" style="font-size:15px;color:#888;margin-top:5px;">
+            </div>
+        </div>
+        <div class="weui_cell">
+            <div class="weui_cells_title">声明内容：</div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <script type="text/plain" id="myEditor" style="height:400px;width:100%"></script>
+            </div>
+        </div>
+    </div>
+    
+    <div class="weui_cells">
+        <div class="weui_cell">
+            <div class="weui_btn_area weui_btn_area_inline">
+                <a href="javascript:;" class="weui_btn weui_btn_primary" style="width:150px;" v-on:click="save_info()">保存</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="privacy/edit.js"></script>

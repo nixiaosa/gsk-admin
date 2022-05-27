@@ -1,0 +1,54 @@
+<div class="container" id="master_admin_oper_logger_list_div">
+    <div class="weui_cells_title">搜索条件</div>
+    <div class="weui_cells" style="overflow: unset!important;">
+        <div class="weui_cell">
+            <div class="weui_cells_title">日期：</div>
+            <div class="weui_cell_bd weui_cell_primary start" style="margin-left: 5px;margin-right: 5px;">
+                <input id="startTime" class="weui_input"  placeholder="开始时间" type="text" readonly>
+            </div>
+            <div class="weui_cell_bd weui_cell_primary end">
+                <input id="endTime" class="weui_input"  placeholder="结束时间" type="text" readonly>
+            </div>
+        </div>
+        <div class="weui_cell">
+            <div class="weui_cell_bd weui_cell_primary" style="margin-left: 5px;margin-right: 5px;">
+                <a href="javascript:;" class="weui_btn weui_btn_primary" v-on:click="search_datas(true)">搜索</a>
+               
+            </div>
+        </div>
+    </div>
+    <div class="weui_cells_title">日志列表</div>
+    <div class="weui_cells" >
+        <table class="weui-table weui-border-tb weui-table-2n">
+            <thead>
+                <tr>
+                    <th class="table_th">操作员名称</th>
+                    <th class="table_th">操作类型</th>
+                    <th class="table_th">操作描述</th>
+                    <th class="table_th">操作时间</th>
+                    <th class="table_th">IP地址</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr name="pro_menu_option" v-for="(item,index) in user_datas" style="background-color:#ffffff;font-size:14px;color:#888">
+                    <td>
+                        <label>{{item.adminName}}</label>
+                    </td>
+                    <td>
+                        <label>{{item.operTypeName}}</label>
+                    </td>
+                    <td>
+                        <label>{{item.msg}}</label>
+                    </td>
+                    <td>
+                        <label>{{item.createTimeStr}}</label>
+                    </td>
+                    <td>
+                        <label>{{item.ipAdress}}</label>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script type="text/javascript" src="admins/oper_logger_list.js"></script>

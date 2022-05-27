@@ -1,0 +1,75 @@
+<div class="container" id="master_user_list_div">
+    <div class="weui_cells_title">搜索条件</div>
+    <div class="weui_cells" style="overflow: unset!important;">
+        <div class="weui_cell">
+            <div class="weui_cells_title">昵称：</div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input id="mobile" readonly onfocus="this.removeAttribute('readonly');"class="weui_input" maxlength="20" placeholder="昵称" type="text">
+            </div>
+        </div>
+        <div class="weui_cell">
+            <div class="weui_cells_title">日期：</div>
+            <div class="weui_cell_bd weui_cell_primary start" style="margin-left: 5px;margin-right: 5px;">
+                <input id="startTime" class="weui_input"  placeholder="开始时间" type="text" readonly>
+            </div>
+            <div class="weui_cell_bd weui_cell_primary end">
+                <input id="endTime" class="weui_input"  placeholder="结束时间" type="text" readonly>
+            </div>
+        </div>
+        <div class="weui_cell">
+            <div class="weui_cell_bd weui_cell_primary" style="margin-left: 5px;margin-right: 5px;">
+                <a href="javascript:;" class="weui_btn weui_btn_primary" v-on:click="search_datas(true)">搜索</a>
+               
+            </div>
+            <div class="weui_cell_bd weui_cell_primary" >
+                <a href="javascript:;" class="weui_btn weui_btn_primary" v-on:click="export_datas()">导出</a>
+            </div>
+        </div>
+    </div>
+    <div class="weui_cells_title">用户列表</div>
+    <div class="weui_cells" >
+        <table class="weui-table weui-border-tb weui-table-2n">
+            <thead>
+                <tr>
+                    <th class="table_th">用户id</th>
+                    <th class="table_th">昵称</th>
+                    <th class="table_th">openid</th>
+                    <th class="table_th">unionid</th>
+                    <th class="table_th">认证状态</th>
+                    <th class="table_th">积分</th>
+                    <th class="table_th">创建时间</th>
+                    <th class="table_th">操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr name="pro_menu_option" v-for="(item,index) in user_datas" style="background-color:#ffffff;font-size:14px;color:#888">
+                    <td>
+                        <label>{{item.id}}</label>
+                    </td>
+                    <td>
+                        <label>{{item.nickname}}</label>
+                    </td>
+                    <td>
+                        <label>{{item.openid}}</label>
+                    </td>
+                    <td>
+                        <label>{{item.unionid}}</label>
+                    </td>
+                    <td>
+                        <label>{{item.isVerified==0?'未认证':'已认证'}}</label>
+                    </td>
+                    <td>
+                        <label>{{item.integral}}</label>
+                    </td>
+                    <td>
+                        <label>{{item.createTimeStr}}</label>
+                    </td>
+                    <td>
+                        <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default" v-on:click="link_pro_detail(index)">用户画像</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script type="text/javascript" src="users/list.js"></script>

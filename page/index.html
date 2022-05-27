@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="viewport" content="width=device-width, maximum-scale=1.0, user-scalable=no">
+	<title>管理系统</title>
+<!--	<meta http-equiv="refresh" content="5;url=https://federation-qa.corpnet4.com/as/authorization.oauth2?client_id=9f1fdbb8665043ba815a54a7f60305cc&response_type=code&Scope=openid%20profile%20email%20group">-->
+	<script type="text/javascript" src="../resources/js/common/crypto-js.js"></script>
+	<script type="text/javascript" src="../resources/js/common/vue.js"></script>
+	<script type="text/javascript" src="../resources/js/common/vue-router.min.js"></script>
+	<script type="text/javascript" src="../resources/js/common/jquery.min.js"></script>
+	<script type="text/javascript" src="../resources/js/common/ajaxForm.js"></script>
+	<script type="text/javascript" src="../resources/js/common/ajaxfileupload.js"></script>
+	<script type="text/javascript" src="../resources//js/common/gt.js"></script>
+	<script type="text/javascript" src="../resources/js/common/common.js"></script>
+	<script type="text/javascript" src="../resources/js/common/fileupload.js"></script>
+	<script type="text/javascript" src="../resources/js/common/summernote-fileupload.js"></script>
+	<script type="text/javascript" src="../resources/js/common/func.js"></script>
+	<script type="text/javascript" src="../resources/wxui/zepto.min.js"></script>
+	<script type="text/javascript" src="../resources/wxui/picker.js"></script>
+	<script type="text/javascript" src="../resources/wxui/picker-city.js"></script>
+	<link rel="stylesheet" href="../resources/js/common/jquery.Jcrop.css">
+	<script type="text/javascript" src="../resources/js/common/jquery.Jcrop.js"></script>
+	<link rel="stylesheet" href="../resources/common.css">
+	<link rel="stylesheet" href="../resources/login.css">
+	<link rel="stylesheet" href="../resources/date.css">
+	<link rel="stylesheet" href="../resources/wxui/weuix.min.css">
+	<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+	
+	<link type="text/css" rel="stylesheet" href="../resources/js/ueditor/ueditor.css" />
+	<script type="text/javascript" charset="utf-8" src="../resources/js/ueditor/ueditor.config.js"></script>
+	<script type="text/javascript" charset="utf-8" src="../resources/js/ueditor/ueditor.all.js">
+	</script>
+	<script type="text/javascript" charset="utf-8" src="../resources/js/ueditor/kityformula-plugin/addKityFormulaDialog.js">
+	</script>
+	<script type="text/javascript" charset="utf-8" src="../resources/js/ueditor/kityformula-plugin/getKfContent.js">
+	</script>
+	<script type="text/javascript" charset="utf-8" src="../resources/js/ueditor/kityformula-plugin/defaultFilterFix.js">
+	</script>
+	<script type="text/javascript" charset="utf-8" src="../resources/js/ueditor/lang/zh-cn/zh-cn.js"></script>
+	<script type="text/javascript" charset="utf-8" src="../resources/js/common/echarts/echarts.min.js"></script>
+
+	<script type="text/javascript" charset="utf-8" src="../resources/js/common/echarts/echarts-gl.min.js"></script>
+	<script type="text/javascript" charset="utf-8" src="../resources/js/common/echarts/bmap.min.js"></script>
+	<script type="text/javascript" charset="utf-8" src="../resources/js/common/echarts/china.js"></script>
+	<script type="text/javascript" charset="utf-8" src="../resources/js/common/echarts/dataTool.min.js"></script>
+	
+	<script type="text/javascript" charset="utf-8" src="../resources/js/common/echarts/ecStat.min.js"></script>
+	<script type="text/javascript" charset="utf-8" src="../resources/js/common/echarts/world.js"></script>
+	<script type="text/javascript" charset="utf-8" src="../resources/js/jquery.calendar.js"></script>
+	<script type="text/javascript" charset="utf-8" src="../resources/js/common/clipboard.min.js"></script>
+	<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+
+</head>
+
+<body class="pages">
+	<div class="container" id="master_index_div">
+
+		<div class="menu">
+
+			<div class="left" style="background: #263238">
+				<div class="page-bd">
+					<ul>
+
+						<li class="" v-for="item in func_datas" style="background: #263238;color: #fff">
+							<div class="weui-flex js-category">
+								<bi class="icon nav-icon icon-49" style="margin-right: 5px;"></bi>
+								<p class="weui-flex-item">{{item.name}}</p>
+								<i class="icon icon-74"></i>
+							</div>
+							<div class="page-category js-categoryInner">
+								<div class="weui_cells weui_cells_access" style="margin-top: 0px;background: rgba(0,0,0,.1)">
+									<router-link v-bind:to="'/'+childItem.url" v-for="childItem in item.childs" class="weui_cell" href="javascript:;">
+										<div class="weui_cell_bd weui_cell_primary">
+											<p style="font-size: 15px">{{childItem.name}}</p>
+										</div>
+										<div class="weui_cell_ft"></div>
+									</router-link>
+								</div>
+							</div>
+						</li>
+						<li class="" style="background: #263238;color: #fff">
+							<div class="weui-flex js-category">
+								<p class="weui-flex-item">管理员：{{loginName}}</p>
+								<i class="icon icon-74"></i>
+							</div>
+							<div class="page-category js-categoryInner">
+
+								<div class="weui_cells weui_cells_access" style="margin-top: 0px;background: rgba(0,0,0,.1)">
+									<a class="weui_cell" href="javascript:;" v-on:click="exit()">
+										<div class="weui_cell_bd weui_cell_primary">
+											<p>退出</p>
+										</div>
+										<div class="weui_cell_ft"></div>
+									</a>
+								</div>
+
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="right" style="margin-left: 5px;margin-right: 5px">
+				<router-view :key="$route.fullPath" ></router-view>
+				<div id="login_div" class="login_pop" style="display: none">
+					<div class="box">
+						<h1>管理系统</h1>
+						<div class="inputqy">
+							<h2 id="error_tip" style="color:#F00;"></h2>
+							<input type="text" id="loginName" maxlength="11" autocomplete="off" placeholder="请填入手机号码">
+							<!-- <div style="position:relative;">
+								<input type="text" id="verificationCode" v-model="captcha" placeholder="请填入验证码">
+								<button class="verificationcodeBtn" :disabled="btnBool" id="getCaptcha">{{yzmtext}}</button>
+							</div> -->
+							
+							<input type="password" id="loginPassword" placeholder="密码">
+							<p id="login_tip" style="color:red;font-size: 13px;text-align: center;display: none">手机号或密码或验证码错误</p>
+						</div>
+						<div class="but_con" style="margin-top:10px;margin-bottom:20px;">
+							<button class="button_yes" v-on:click="confimLogin()">登录</button>
+							<div class="clr"></div>
+							<!-- <a class="weui_cell" href="https://beian.miit.gov.cn" target="_blank">
+								中国医学论坛报社 版权所有 京ICP备15004031号-1
+							</a> -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="index.js"></script>
+	<style>
+	</style>
+</body>
+
+</html>

@@ -1,0 +1,83 @@
+.login_pop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    height: 100%;
+    width: 100%;
+    animation: poupFadIn 0.5s ease 0s 1;
+    outline: none;
+    background-image: url(../resources/img/login_backgroup.jpg);
+}
+
+.login_pop .box {
+    width: 400px;
+    border-radius: 20px;
+    background-color: #fff;
+    position: fixed;
+    z-index: 1001;
+    right: 200px;
+    top: 200px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.32), 0 -3px 0px 0px rgba(0, 0, 0, 0.15) inset;
+    -webkit-animation: f1 0.5s 0s ease 1;
+}
+
+.login_pop .box .inputqy {
+    margin: 5px 15px;
+    overflow: hidden;
+}
+
+.login_pop .button_yes {
+    width: 100%;
+    text-align: center;
+    display: inline-block;
+    box-sizing: border-box;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    border-radius: 40px;
+    padding: 10px 0;
+    border: 1px solid #04be02;
+    background-color: #04be02;
+    cursor: pointer;
+}
+
+.login_pop .box .inputqy input {
+    box-sizing: border-box;
+    padding: 10px;
+    background-color: #FCFCFC;
+    color: #666;
+    border-radius: 40px;
+    width: 100%;
+    margin: 5px auto;
+    font-size: 14px;
+    border: 1px #E9E9E9 solid;
+}
+
+.login_pop .box h1 {
+    color: #333;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 16px;
+}
+.login_pop #verificationCode{
+    position:relative;
+}
+.login_pop .verificationcodeBtn{
+    position:absolute;
+    display:block;
+    color:#fff;
+    width:100px;
+    height:38px;
+    line-height: 38px;
+    font-size:14px;
+    background:#04be02;
+    text-align: center;
+    border-radius: 40px;
+    right:0;
+    top:5px;
+    border:none;
+}

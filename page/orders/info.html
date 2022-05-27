@@ -1,0 +1,91 @@
+<div class="container" id="master_order_info_div">
+    <div class="weui_cells_title">订单信息</div>
+    <div class="weui_cells">
+        <div class="weui_cell">
+            <div class="weui_cells_title">订单编号：</div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input class="weui_input" v-bind:value="order_info.orderNumber" type="text" readonly style="font-size:15px;color:#888;margin-top:5px;">
+            </div>
+        </div>
+        <div class="weui_cell">
+            <div class="weui_cells_title">订单价格：</div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input class="weui_input" v-bind:value="order_info.totalPrice" type="text" readonly style="font-size:15px;color:#888;margin-top:5px;">
+            </div>
+            <div class="weui_cells_title">订单状态：</div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input class="weui_input" v-bind:value="order_info.statusName" type="text" readonly style="font-size:15px;color:#888;margin-top:6px;">
+            </div>
+        </div>
+        <div class="weui_cell">
+            <div class="weui_cells_title">下单时间：</div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input class="weui_input" v-bind:value="order_info.createTime" type="text" readonly style="font-size:15px;color:#888;margin-top:5px;">
+            </div>
+            <div class="weui_cells_title">发货时间：</div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input class="weui_input" v-bind:value="order_info.sendTime" type="text" readonly style="font-size:15px;color:#888;margin-top:5px;">
+            </div>
+        </div>
+    </div>
+    
+    <div class="weui_cells_title">商品信息</div>
+    <div class="weui_cells">
+        <div class="weui_cell">
+            <div class="weui_cells_title">商品图片：</div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <img id="proSmallImgUrl" v-bind:src="order_info.proData.proSmallImgUrl" data-src="" height="100">
+            </div>
+        </div>
+        <div class="weui_cell">
+            <div class="weui_cells_title">商品名称：</div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input class="weui_input" v-bind:value="order_info.proData.proName" type="text" readonly style="font-size:15px;color:#888;margin-top:5px;">
+            </div>
+            <div class="weui_cells_title">商品UUID：</div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input class="weui_input" v-bind:value="order_info.proData.proUuid" type="text" readonly style="font-size:15px;color:#888;margin-top:5px;">
+            </div>
+        </div>
+        <div class="weui_cell">
+            <div class="weui_cells_title">购买价格：</div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input class="weui_input" v-bind:value="order_info.proData.proPrice" type="text" readonly style="font-size:15px;color:#888;margin-top:5px;">
+            </div>
+            <div class="weui_cells_title">购买数量：</div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input class="weui_input" v-bind:value="order_info.proData.quantity" type="text" readonly style="font-size:15px;color:#888;margin-top:5px;">
+            </div>
+        </div>
+    </div>
+    <div class="weui_cells_title">收货信息</div>
+    <div class="weui_cells">
+        <div class="weui_cell">
+            <div class="weui_cells_title">姓名：</div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input class="weui_input" v-bind:value="order_info.orderExpressData.realName" type="text" readonly style="font-size:15px;color:#888;margin-top:5px;">
+            </div>
+            <div class="weui_cells_title">手机号：</div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input class="weui_input" v-bind:value="order_info.orderExpressData.mobile" type="text" readonly style="font-size:15px;color:#888;margin-top:5px;">
+            </div>
+        </div>
+        <div class="weui_cell">
+            <div class="weui_cells_title">地址：</div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input class="weui_input" v-bind:value="order_info.orderExpressData.address" type="text" readonly style="font-size:15px;color:#888;margin-top:5px;">
+            </div>
+            <div class="weui_cells_title">快递单号：</div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input class="weui_input" id="expressNumber" v-bind:value="order_info.orderExpressData.expressNumber" type="text" placeholder="单号"  style="font-size:15px;color:#888;margin-top:5px;">
+            </div>
+        </div>
+        <div class="weui_cell">
+            <div class="weui_btn_area weui_btn_area_inline">
+                <a href="javascript:;" class="weui_btn weui_btn_primary" style="width:150px;" v-on:click="save_expre_number()">保存单号</a>
+            </div>
+        </div>
+    </div>
+   
+</div>
+<script type="text/javascript" src="orders/info.js"></script>

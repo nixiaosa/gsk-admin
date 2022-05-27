@@ -1,0 +1,89 @@
+<div class="container" id="master_datas_eailyretain_list_div">
+    <div class="weui_cells_title dataTitle">搜索条件：根据选择的日期范围，查询该段时间内已经生成的数据报告</div>
+    <div class="weui_cells" style="overflow: unset!important;">
+        <div class="weui_cell">
+            <div class="weui_cells_title">日期：
+                <el-tooltip placement="right" effect="light">
+                    <div slot="content">
+                        <h4 style="width:200px;">说明:因统计数据来源于公众号和小程序</h4>
+                        
+                        <h4 style="margin-top:10px;">日数据</h4>
+                        <p style="width:200px;color:#888888;font-size:14px;margin-top:10px">
+                           每日10点产生前一天的统计数据（如：2022.3.1的数据，2022.3.2可查询）
+                        </p>  
+                        <h4 style="margin-top:10px;">周数据</h4> 
+                        <p style="width:200px;color:#888888;font-size:14px;margin-top:10px">
+                            每周一上午10点产生上一个自然周的统计数据（如：20220221-20220227的数据，2022.2.28可查询）
+                        </p>  
+                        <h4 style="margin-top:10px;">月数据</h4>
+                        <p style="width:200px;color:#888888;font-size:14px;margin-top:10px;">
+                            每月1日上午10点产生上一个自然月的统计数据（如：202202月份的数据，2022.3.1可查询)
+                        </p>
+                    </div>
+                    <span class="el-icon-warning-outline"></span>
+                </el-tooltip>
+            </div>
+            <div class="weui_cell_bd weui_cell_primary start" style="margin-left: 5px;margin-right: 5px;">
+                <input id="startTime" class="weui_input"  placeholder="开始时间" type="text" readonly>
+            </div>
+            <div class="weui_cell_bd weui_cell_primary end">
+                <input id="endTime" class="weui_input"  placeholder="结束时间" type="text" readonly>
+            </div>
+        </div>
+        <div class="weui_cell">
+            <div class="weui_cells_title">数据类型：</div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <select class="weui_select" id="type" name="type"  style="font-size:15px;color:rgb(204, 204, 204);padding-left:0px;" v-on:change="selcet_cate_fun($event)">
+                    <option v-bind:selected="item.select"  v-bind:value="item.type" v-for="(item,index) in cate_datas">{{item.cateName}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="weui_cell">
+            <div class="weui_cells_title">区间范围：</div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <select class="weui_select" id="dateType" name="dateType"  style="font-size:15px;color:rgb(204, 204, 204);padding-left:0px;" v-on:change="selcet_date_cate_fun($event)">
+                    <option v-bind:selected="item.select"  v-bind:value="item.type" v-for="(item,index) in cate_date_datas">{{item.cateName}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="weui_cell">
+            <div class="weui_cell_bd weui_cell_primary" style="margin-left: 5px;margin-right: 5px;">
+                <a href="javascript:;" class="weui_btn weui_btn_primary" v-on:click="search_datas(true)">搜索</a>
+               
+            </div>
+            <div class="weui_cell_bd weui_cell_primary" >
+                <a href="javascript:;" class="weui_btn weui_btn_primary" v-on:click="export_datas()">导出</a>
+            </div>
+        </div>
+    </div>
+    <div class="weui_cells_title">数据列表</div>
+    <div class="weui_cells" >
+        <table class="weui-table weui-border-tb weui-table-2n">
+            <thead>
+                <tr>
+                    <th class="table_th">数据统计日期</th>
+                    <th class="table_th">数据拉取日期</th>
+                    <th class="table_th">数据指标名称</th>
+                    <th class="table_th">用户数</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr name="pro_menu_option" v-for="(item,index) in user_datas" style="background-color:#ffffff;font-size:14px;color:#888">
+                    <td>
+                        <label>{{item.refDate}}</label>
+                    </td>
+                    <td>
+                        <label>{{item.getDate}}</label>
+                    </td>
+                    <td>
+                        <label>{{item.key}}</label>
+                    </td>
+                    <td>
+                        <label>{{item.value}}</label>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script type="text/javascript" src="dataAnalysis/eailyretain.js"></script>

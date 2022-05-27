@@ -1,0 +1,102 @@
+.pages {
+	background-color: #eee;
+}
+.weui_cells_title{
+    width:100px;
+    text-align: justify;
+}
+.dataTitle{
+    width:auto;
+}
+.menu {
+	display: flex;
+}
+
+.menu .left {
+	width: 200px;
+	height: 800px;
+	border-right: 1px solid #eee;
+}
+
+.menu .right {
+	flex: 1;
+}
+/*裁剪*/
+
+.cutpic {
+    width: 600px;
+    z-index: 1001;
+    background: #f2f4f5;
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    margin-left: -300px;
+}
+
+.cutpic img {
+    width: 600px;
+}
+
+.cutpic .btn {
+    text-align: center;
+    margin: 10px auto;
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.cutpic .cancel {
+    float: left;
+    margin-left: 30%;
+    background: #e5e9ec;
+    border: 1px solid #cdd2d5;
+    color: #777;
+}
+
+.cutpic .confirm {
+    float: right;
+    margin-right: 30%;
+    background: #9ac600;
+    border: 1px solid #9ac600;
+    color: #fff;
+}
+
+.mask{
+	width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1001;
+    background: #000;
+    opacity: 0.8;
+    filter: alpha(opacity=80);
+    display: none;
+}
+
+.table_th{
+	color: #888888;
+	font-weight:400;
+	font-size:15px;
+}
+
+.weui-textarea{
+    display:block;
+    border:0;
+    resize:none;
+    width:100%;
+    color:inherit;
+    font-size:1em;
+    line-height:inherit;
+    outline:0;
+  }
+
+  .weui-cell__bd{
+    -webkit-box-flex:1;
+    -webkit-flex:1;
+            flex:1;
+  }
+
+

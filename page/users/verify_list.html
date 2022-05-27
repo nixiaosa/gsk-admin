@@ -1,0 +1,83 @@
+<div class="container" id="master_user_verify_list_div">
+    <div class="weui_cells_title">搜索条件</div>
+    <div class="weui_cells">
+        <div class="weui_cell">
+            <div class="weui_cells_title">姓名：</div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input id="mobile" class="weui_input" autocomplete="off" readonly onfocus="this.removeAttribute('readonly');" maxlength="20" placeholder="姓名" type="text" value="">
+            </div>
+            <div class="weui_cells_title">用户id：</div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input id="content" class="weui_input" autocomplete="off" readonly onfocus="this.removeAttribute('readonly');" maxlength="20" placeholder="用户id" type="text" value="">
+            </div>
+        </div>
+        <div class="weui_cell">
+            <div class="weui_cell_bd weui_cell_primary">
+                <a href="javascript:;" class="weui_btn weui_btn_primary" v-on:click="search_datas(true)">搜索</a>
+            </div>
+        </div>
+    </div>
+    <div class="weui_cells_title">用户认证列表</div>
+    <div class="weui_cells" >
+        <table class="weui-table weui-border-tb weui-table-2n">
+            <thead>
+                <tr>
+                    <th class="table_th">用户id</th>
+                    <th class="table_th">姓名</th>
+                    <th class="table_th">途径</th>
+                    <th class="table_th">专业</th>
+                    <th class="table_th">推荐人缩写</th>
+                    <th class="table_th">城市</th>
+                    <th class="table_th">门诊名称</th>
+                    <th class="table_th">科室</th>
+                    <th class="table_th">是否审核通过</th>
+                    <th class="table_th">申请时间</th>
+                    <th class="table_th">审核时间</th>
+                    <th class="table_th">操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr name="pro_menu_option" v-for="(item,index) in verify_datas" style="background-color:#ffffff;font-size:14px;color:#888">
+                    <td>
+                        <label>{{item.wxUsersId}}</label>
+                    </td>
+                    <td>
+                        <label>{{item.contactName}}</label>
+                    </td>
+                    <td>
+                        <label>{{item.approach}}</label>
+                    </td>
+                    <td>
+                        <label>{{item.profession}}</label>
+                    </td>
+                    <td>
+                        <label>{{item.promoter}}</label>
+                    </td>
+                    <td>
+                        <label>{{item.city}}</label>
+                    </td>
+                    <td>
+                        <label>{{item.outpatient}}</label>
+                    </td>
+                    <td>
+                        <label>{{item.department}}</label>
+                    </td>
+                    <td>
+                        <label>{{item.isChecked==0?'待审核':item.isChecked==1?'审核通过':'审核失败'}}</label>
+                    </td>
+                    <td>
+                        <label>{{item.createdStr}}</label>
+                    </td>
+                    <td>
+                        <label>{{item.checkedTimeStr}}</label>
+                    </td>
+                    <td>
+                        <a href="javascript:;" v-bind:style="{'display':item.isChecked == 0?'block':'none'}" class="weui_btn weui_btn_mini weui_btn_default" v-on:click="save_verify_status(index,0)">通过</a>
+                        <a href="javascript:;" v-bind:style="{'display':item.isChecked == 0?'block':'none'}" class="weui_btn weui_btn_mini weui_btn_default" v-on:click="save_verify_status(index,1)">驳回</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script type="text/javascript" src="users/verify_list.js"></script>

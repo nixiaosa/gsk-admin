@@ -1,0 +1,126 @@
+<div class="container" id="master_fun_list_div">
+    <div class="weui_cells_title">功能列表</div>
+    <div class="weui_cells">
+        <table class="weui-table weui-border-tb weui-table-2n">
+            <thead>
+                <tr>
+                    <th class="table_th">功能名称</th>
+                    <th class="table_th">功能Url</th>
+                    <th class="table_th">功能级别</th>
+                    <th class="table_th">关联角色</th>
+                    <th class="table_th">操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr name="pro_menu_option" v-for="(item,itemIndex) in fun_datas" style="background-color:#ffffff;font-size:14px;color:#888">
+                    <td>
+                        <input v-bind:name="'fun_name'+itemIndex" class="weui_input" v-bind:value="item.name" v-bind:readonly="!item.isAdd" type="text"
+                            placeholder="功能名称" style="font-size:15px;color:#888">
+                    </td>
+                    <td>
+                        <input v-bind:name="'fun_url'+itemIndex" class="weui_input" v-bind:value="item.url" v-bind:readonly="!item.isAdd" type="text"
+                            placeholder="url" style="font-size:15px;color:#888">
+                    </td>
+                    <td>
+                        <div class="weui-form">
+                            <div class="weui-form-li iblock" v-for="(levelItem,index) in item.levels">
+                                <input v-bind:disabled="!item.isAdd" class="weui-form-checkbox" v-bind:name="'level'+itemIndex"
+                                    v-bind:id="'level'+index+itemIndex" v-bind:value="levelItem.id" type="radio"
+                                    v-bind:checked="levelItem.checked" v-bind:level-name="levelItem.name">
+                                <label v-bind:for="'level'+index+itemIndex">
+                                    <i class="weui-icon-radio"></i>
+                                    <div class="weui-form-text">
+                                        <p>{{levelItem.name}}</p>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="weui-form">
+                            <div class="weui-form-li iblock" v-for="(roleItem,index) in item.roles">
+                                <input v-bind:disabled="!item.isAdd" class="weui-form-checkbox" v-bind:name="'role'+itemIndex"
+                                    v-bind:id="'role'+index+itemIndex" v-bind:value="roleItem.id" type="checkbox"
+                                    v-bind:checked="roleItem.checked"  v-bind:role-name="roleItem.name">
+                                <label v-bind:for="'role'+index+itemIndex">
+                                    <i class="weui-icon-checkbox"></i>
+                                    <div class="weui-form-text">
+                                        <p>{{roleItem.name}}</p>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default" v-on:click="save_info_fun(itemIndex,$event)">编辑</a>
+                    </td>
+                </tr>
+                <tr name="pro_menu_option" style="background-color:#ffffff;font-size:14px;color:#888">
+                    <td>
+                        <input class="weui_input" value="" name="fun_name" type="text" placeholder="功能名称" style="font-size:15px;color:#888">
+                    </td>
+                    <td>
+                        <input class="weui_input" value="" name="fun_url" type="text" placeholder="url" style="font-size:15px;color:#888">
+                    </td>
+                    <td>
+                        <div class="weui-form">
+                            <div class="weui-form-li iblock">
+                                <input class="weui-form-checkbox" name="leveGroup" id="leveTwo" value="2" type="radio" level-name='二级'>
+                                <label for="leveTwo">
+                                    <i class="weui-icon-radio"></i>
+                                    <div class="weui-form-text">
+                                        <p>二级</p>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="weui-form-li iblock">
+                                <input class="weui-form-checkbox" name="leveGroup" id="leveThird" value="3" type="radio" level-name='三级'>
+                                <label for="leveThird">
+                                    <i class="weui-icon-radio"></i>
+                                    <div class="weui-form-text">
+                                        <p>三级</p>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="weui-form">
+                            <div class="weui-form-li iblock">
+                                <input class="weui-form-checkbox" name="roleGroup" id="role1001" value="1001" type="checkbox" role-name='超级管理员'>
+                                <label for="role1001">
+                                    <i class="weui-icon-checkbox"></i>
+                                    <div class="weui-form-text">
+                                        <p>超级管理员</p>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="weui-form-li iblock">
+                                <input class="weui-form-checkbox" name="roleGroup" id="role1002" value="1002" type="checkbox" role-name='普通员工'>
+                                <label for="role1002">
+                                    <i class="weui-icon-checkbox"></i>
+                                    <div class="weui-form-text">
+                                        <p>普通员工</p>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="weui-form-li iblock">
+                                <input class="weui-form-checkbox" name="roleGroup" id="role1003" value="1005" type="checkbox" role-name='管理员'>
+                                <label for="role1003">
+                                    <i class="weui-icon-checkbox"></i>
+                                    <div class="weui-form-text">
+                                        <p>管理员</p>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default" v-on:click="add_info_fun($event)">添加</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script type="text/javascript" src="funs/list.js"></script>

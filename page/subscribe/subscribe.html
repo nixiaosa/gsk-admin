@@ -1,0 +1,25 @@
+<div id="master_subscribe_div">
+    <div v-if="subscrive_array.length==0" class="weui_msg hide" id="msg3" style="display: block; opacity: 1;">
+        <div class="weui_msg_box">
+            <p>
+                <i class="icon icon-40 f20 f-green"></i>现在还没有数据</p>
+        </div>
+    </div>
+    <div class="weui_panel weui_panel_access" style="position:inherit" v-for="info in subscrive_array">
+        <div class="weui_panel_hd">
+            起点：{{info.startCity}}
+            <a v-if="info.isOper == 0 " href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default" style='float:right;margin-top:0px'
+                v-on:click="cancelSubInfo(info.id)">取消订阅</a>
+        </div>
+        <div class="weui_panel_bd">
+            <div class="weui_media_box weui_media_text" style="padding-bottom:0px;padding-top:1px">
+                <h4 class="weui_media_title" style="color:#888;font-size: 14px">日期：{{info.outDateStr}}</h4>
+            </div>
+            <div class="weui_media_box weui_media_text" style="padding-bottom:0px;padding-top:1px">
+                <h4 class="weui_media_title" style="color:#888;font-size: 14px">终点：{{info.endCity}}</h4>
+                <label style='float:right;font-size:11px;position: absolute;right: 10px;bottom: 1px;color:#888888'>{{info.pcarType == 1?'人找车':'车找人'}}</label>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="subscribe/subscribe.js"></script>

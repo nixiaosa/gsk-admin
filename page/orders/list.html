@@ -1,0 +1,62 @@
+<div class="container" id="master_order_list_div">
+    <div class="weui_cells_title">搜索条件</div>
+    <div class="weui_cells">
+        <div class="weui_cell">
+            <div class="weui_cells_title">订单编号</div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input class="weui_input" readonly onfocus="this.removeAttribute('readonly');"maxlength="100" placeholder="订单号" id="orderNumber" type="text">
+            </div>
+        </div>
+       
+        <div class="weui_cell">
+            <div class="weui_cell_bd weui_cell_primary" style="margin-left: 5px;margin-right: 5px;">
+                <a href="javascript:;" class="weui_btn weui_btn_primary" v-on:click="search_order(true)">搜索</a>
+            </div>
+            <div class="weui_cell_bd weui_cell_primary" >
+                <a href="javascript:;" class="weui_btn weui_btn_primary" v-on:click="export_datas()">导出</a>
+            </div>
+        </div>
+    </div>
+    <div class="weui_cells_title">订单列表</div>
+    <div class="weui_cells" style="overflow: auto;height: 500px;">
+        <table class="weui-table weui-border-tb weui-table-2n">
+            <thead>
+                <tr>
+                    <th class="table_th">编号</th>
+                    <th class="table_th">订单价格</th>
+                    <th class="table_th">状态</th>
+                    <th class="table_th">下单时间</th>
+                    <th class="table_th">姓名</th>
+                    <th class="table_th">用户ID</th>
+                    <th class="table_th">操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr name="pro_menu_option" v-for="(item,index) in order_datas" style="background-color:#ffffff;font-size:14px;color:#888">
+                    <td>
+                        <label>{{item.number}}</label>
+                    </td>
+                    <td>
+                        <label>{{item.price}}</label>
+                    </td>
+                    <td>
+                        <label>{{item.statusName}}</label>
+                    </td>
+                    <td>
+                        <label>{{item.createTime}}</label>
+                    </td>
+                    <td>
+                        <label>{{item.payTypeName}}</label>
+                    </td>
+                    <td>
+                        <label>{{item.payAccountName}}</label>
+                    </td>
+                    <td>
+                        <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default" v-on:click="link_to_detail(index)">详情</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script type="text/javascript" src="orders/list.js"></script>

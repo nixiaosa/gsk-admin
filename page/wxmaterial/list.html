@@ -1,0 +1,93 @@
+<div class="container" id="master_wxmaterial_list_div">
+    <div class="weui_cells_title">搜索条件</div>
+    <div class="weui_cells">
+        <div class="weui_cell">
+            <div class="weui_cells_title">文章标题</div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input class="weui_input"readonly onfocus="this.removeAttribute('readonly');" maxlength="100" placeholder="标题" id="proName" type="text">
+            </div>
+        </div>
+        <div class="weui_cell">
+            <div class="weui_cells_title">文章类型</div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <select class="weui_select" id="cateSlug" name="cateSlug"  style="font-size:15px;color:rgb(204, 204, 204)" v-on:change="selcet_cate_fun($event)">
+                    <option v-bind:selected="item.select"  v-bind:value="item.cateSlug" v-for="(item,index) in cate_datas">{{item.cateName}}</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="weui_cell">
+            <div class="weui_cells_title">状态</div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <select class="weui_select" id="proSatus"   style="font-size:15px;color:rgb(204, 204, 204)">
+                    <option value="-1">全部</option>
+                    <option value="1">已发布</option>
+                    <option value="0">待发布</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="weui_cell">
+            <div class="weui_cells_title">文章来源</div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <select class="weui_select" id="materialType" name="materialType"  style="font-size:15px;color:rgb(204, 204, 204)" v-on:change="selcet_cate_fun($event)">
+                    <option v-bind:selected="item.select"  v-bind:value="item.materialType" v-for="(item,index) in source">{{item.name}}</option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="weui_cell">
+            <div class="weui_cell_bd weui_cell_primary" style="margin-left: 5px;margin-right: 5px;">
+                <a href="javascript:;" class="weui_btn weui_btn_primary" v-on:click="search_pro(true)">搜索</a>
+            </div>
+            <div class="weui_cell_bd weui_cell_primary" >
+                <a href="javascript:;" class="weui_btn weui_btn_primary" v-on:click="export_datas()">导出</a>
+            </div>
+        </div>
+    </div>
+    <div class="weui_cells_title">微信文章列表</div>
+    <div class="weui_cells" >
+        <table class="weui-table weui-border-tb weui-table-2n">
+            <thead>
+                <tr>
+                    <th class="table_th">标题</th>
+                    <th class="table_th">所属类型</th>
+                    <th class="table_th">作者</th>
+                    <th class="table_th">状态</th>
+                    <th class="table_th">文章来源</th>
+                    <th class="table_th">创建时间</th>
+                    <th class="table_th">操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr name="pro_menu_option" v-for="(item,index) in product_datas" style="background-color:#ffffff;font-size:14px;color:#888">
+                    <td>
+                        <label>{{item.itemTitle}}</label>
+                    </td>
+                    <td>
+                        <label>{{item.cateName}}</label>
+                    </td>
+                    <td>
+                        <label>{{item.itemAuthor}}</label>
+                    </td>
+                    <td>
+                        <label>{{item.statusName}}</label>
+                    </td>
+                    <td>
+                        <label>{{item.materialType == 'news' ? '公众号' : '小程序'}}</label>
+                    </td>
+                    <td>
+                        <label>{{item.updateTimeStr}}</label>
+                    </td>
+                    <td>
+                        <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default" v-on:click="link_pro_detail(index)">详情</a>
+                        <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default" v-on:click="save_pro_status(index,$event)">{{item.status==1?'下线':'发布'}}</a>
+                        <!-- <input v-if="item.materialType == 'gskpost'" style="display:none" v-model:value="item.itemUrl" id="copyUrl"> -->
+                        <a href="javascript:;" v-if="item.materialType == 'gskpost'" :data-clipboard-text="item.itemUrl" class="weui_btn weui_btn_mini weui_btn_default copy">复制链接</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script type="text/javascript" src="wxmaterial/list.js"></script>

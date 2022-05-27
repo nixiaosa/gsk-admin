@@ -1,0 +1,52 @@
+<div class="container" id="master_post_jx_list_div">
+    <div class="weui_cells_title">搜索条件</div>
+    <div class="weui_cells">
+        <div class="weui_cell">
+            <div class="weui_cells_title">文章名称</div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input class="weui_input" readonly onfocus="this.removeAttribute('readonly');"maxlength="100" placeholder="名称" id="proName" type="text">
+            </div>
+        </div>
+        
+        <div class="weui_cell">
+            <div class="weui_cell_bd weui_cell_primary">
+                <a href="javascript:;" class="weui_btn weui_btn_primary" v-on:click="search_pro(true)">搜索</a>
+            </div>
+        </div>
+    </div>
+    <div class="weui_cells_title">精选文章列表</div>
+    <div class="weui_cells" style="overflow: auto;height: 500px;">
+        <table class="weui-table weui-border-tb weui-table-2n">
+            <thead>
+                <tr>
+                    <th class="table_th">名称</th>
+                    <th class="table_th">简述</th>
+                    <th class="table_th">状态</th>
+                    <th class="table_th">创建时间</th>
+                    <th class="table_th">操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr name="pro_menu_option" v-for="(item,index) in product_datas" style="background-color:#ffffff;font-size:14px;color:#888">
+                    <td>
+                        <label>{{item.title}}</label>
+                    </td>
+                    <td>
+                        <label>{{item.excerpt}}</label>
+                    </td>
+                    <td>
+                        <label>{{item.statusName}}</label>
+                    </td>
+                    <td>
+                        <label>{{item.createTimeStr}}</label>
+                    </td>
+                    <td>
+                        <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default" v-on:click="link_pro_detail(index)">详情</a>
+                        <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default" v-on:click="save_pro_status(index,$event)">{{item.status==1?'下线':'发布'}}</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script type="text/javascript" src="post/jx_list.js"></script>

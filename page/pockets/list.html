@@ -1,0 +1,77 @@
+<div class="container" id="master_pocket_list_div">
+    <div name="moments" v-for="(item,index) in pocket_datas" class="weui_cells moments" style="margin-top: 2px;">
+        <!-- 普通的post -->
+        <div class="weui_cell moments__post">
+            <div class="weui_cell_hd">
+                <img v-bind:src="item.userImg">
+            </div>
+            <div class="weui_cell_bd" style="width: 100%">
+                <!-- 人名链接 -->
+                <a class="title" href="javascript:;">
+                    <span>{{item.userName}}</span>
+                    <span class="span_del span_pocket_del" v-on:click="del_pocket(index)">删除</span>
+                </a>
+                <!-- post内容 -->
+                <p name="paragraph" class="paragraph">
+                    {{item.content}}
+                </p>
+                <!-- 伸张链接 -->
+                <a name="paragraphExtender" class="paragraphExtender">显示全文</a>
+                <!-- 相册 -->
+                <div class="thumbnails">
+                    <div v-for="(imgItem,imgIndex) in item.imgs" class="thumbnail">
+                        <img v-bind:src="imgItem">
+                    </div>
+                </div>
+                <!-- 资料条 -->
+                <div class="toolbar">
+                    <p class="timestamp">兜圈</p>
+                    <div>
+                        <div v-bind:data-action-menu="index" name="actionMenu" class="actionMenu slideIn">
+                            <p v-on:click="save_liked(index)" class="actionBtn" id="btnLike"><i class="icon icon-96"></i>{{item.isCircle==0?'点赞':'取消点赞'}}</p>
+                            <p v-on:click="show_comment(index)" class="actionBtn" id="btnComment"><i class="icon icon-67"></i>评论</p>
+                        </div>
+                    </div>
+                    <span name="actionToggle" class="actionToggle">..</span>
+                </div>
+                <!-- 赞／评论区 -->
+                <p class="liketext"><i class="icon icon-96"></i>
+                    <span class="nickname" v-for="(likedItem,likedIndex) in item.linfos" style="margin-right: 5px">
+                        {{likedItem.userName}}
+                    </span>
+                </p>
+                <p v-for="(commentItem,commentIndex) in item.cinfos" class="liketext" style="margin-top: 0px;border-top-style: solid; border-top-width: 1px; border-top-color: #F0F0F0; background-color: #F0F0F0;"></i>
+                    <span class="nickname">{{commentItem.userName}}</span>：<span class="nickname">{{commentItem.content}}</span>
+                    <span class="span_del" v-on:click="del_comment(index,commentIndex)">删除</span>
+                </p>
+                <div v-bind:name="'comment'+index" class="weui_cells weui_cells_form" style="padding: 0px 0px;display: none">
+                    <div class="weui_cell weui_vcode" style="padding: 0px 0px;">
+                        <div class="weui_cell_bd weui_cell_primary">
+                            <input class="weui_input" type="text" required="" placeholder="评论内容" maxlength="20">
+                        </div>
+                        <div class="weui_cell_ft">
+                            <a v-on:click="publish_comment(index)" href="javascript:;" class="weui-vcode-btn">发布</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 结束 post -->
+        </div>
+    </div>
+
+</div>
+<script type="text/javascript" src="pockets/list.js"></script>
+<style>
+.span_del{
+    margin-left: 10px;
+    font-size: 12px;
+    color: red;
+    text-decoration: underline;
+    cursor: pointer;
+    opacity: 0.4;
+}
+.span_pocket_del{
+    position: absolute;
+    right: 12px;
+}
+</style>

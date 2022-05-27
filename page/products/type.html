@@ -1,0 +1,72 @@
+<div class="container" id="master_product_type_div">
+    <div class="weui_cells_title">商品类型列表</div>
+    <div class="weui_cells">
+        <div class="weui_cell">
+            <div class="weui_cell_bd weui_cell_primary">
+                <table class="weui-table weui-border-tb weui-table-2n" style="width:500px">
+                    <thead>
+                        <tr>
+                                <th class="table_th"></th>
+                            <th class="table_th">一级名称</th>
+                            <th class="table_th">操作</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr name="pro_menu_option" v-for="(item,index) in one_type_datas" style="background-color:#ffffff">
+                            <td>
+                                <input type="radio" class="weui-icon-radio" name="one-type-radio" v-bind:data-uuid="item.uuid"></input>
+                            </td>
+                            <td>
+                                <input class="weui_input" v-bind:value="item.name" v-bind:readonly="!item.isAdd"  type="text" v-on:click="one_type_checked(index,$event)" placeholder="名称" style="font-size:15px;color:#888">
+                            </td>
+                            <td>
+                                <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default" style="display: inline;" v-on:click="save_one_type(index,$event)" >{{item.btnName}}</a>
+                                <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default" style="display: inline;" v-on:click="del_type_fun(index,true)">删除</a>
+                            </td>
+                        </tr>
+                        <tr name="pro_menu_option" style="background-color:#ffffff">
+                            <td colspan="3">
+                                <a href="javascript:;" class="weui_btn weui_btn_disabled weui_btn_default" v-on:click="add_one_type_temple_fun($event)">添加一级类型</a>
+                            </td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <table class="weui-table weui-border-tb weui-table-2n">
+                    <thead>
+                        <tr>
+                            <th class="table_th">二级名称</th>
+                            <th class="table_th">操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr name="pro_menu_option" v-for="(item,index) in two_type_datas" style="background-color:#ffffff">
+                            <td>
+                                <input class="weui_input" v-bind:value="item.name" v-bind:readonly="!item.isAdd" type="text" placeholder="名称" style="font-size:15px;color:#888">
+                            </td>
+                            <td>
+                                <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default" style="display: inline;" v-on:click="save_two_type(index,$event)">{{item.btnName}}</a>
+                                <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default" style="display: inline;"  v-on:click="del_type_fun(index,false)">删除</a>
+                            </td>
+                        </tr>
+                        <tr name="pro_menu_option" style="background-color:#ffffff">
+                            <td colspan="2">
+                                <a href="javascript:;" class="weui_btn weui_btn_disabled weui_btn_default" v-on:click="add_two_type_temple_fun($event)">添加二级类型</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="products/type.js"></script>
+<style>
+    input:hover {
+        background-color: rgb(248, 248, 248);
+        cursor: pointer
+    }
+</style>
