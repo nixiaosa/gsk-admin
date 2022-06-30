@@ -315,6 +315,12 @@ const Datas_message_List = {
 		$('#datas_message_list_div').load('../page/dataAnalysis/message.html')
 	}
 }
+const Sign_manage_List = {
+	template:"<div id='sign_manage_list_div'></div>",
+	mounted:function(){
+		$('#sign_manage_list_div').load('../page/signManage/signmanagelist.html')
+	}
+}
 const routes = [{
 		path: '/pocket_info',
 		component: Pocket_Info
@@ -486,6 +492,10 @@ const routes = [{
 		component:Datas_message_List
 	},
 	{
+		path:'/sign_manage',
+		component:Sign_manage_List
+	},
+	{
 		path: '*',
 		redirect: ''
 	} /*默认跳转路由*/
@@ -633,6 +643,7 @@ var indexVue = new Vue({
 			if (userInfo != null) {
 				_this.loginName = userInfo.mobile;
 				_this.func_datas = userInfo.funcs;
+				// console.log('lcc2',_this.func_datas)
 				$("#login_tip").hide();
 				setTimeout(() => {
 					console.log("ssss");
@@ -700,6 +711,7 @@ var indexVue = new Vue({
 			login.hideLogin();
 			this.loginName = userInfo.mobile;
 			this.func_datas = userInfo.funcs;
+			// console.log('lcc',_this.func_datas)
 			setTimeout(() => {
 				_this.load_li_click();
 			}, 200);
