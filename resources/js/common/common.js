@@ -13,7 +13,7 @@ var storage = {
         } else {
             return null;
         }
-
+        
     },
     remove(key) {
         localStorage.removeItem(key);
@@ -86,7 +86,7 @@ var login = {
                     $("#login_tip").show();
                     $("#login_tip").text(dataResult.data.value);
                 }
-
+                
             } else {
 
                 // if(dataResult.status == 1002){
@@ -145,6 +145,19 @@ var plus_sub_btn = {//加减操作
     }
 }
 
+var getHostUrl = () =>{
+    var hostUrl;
+    const href = window.location.href
+    if (href.indexOf('localhost') >= 0 || (href.indexOf('.dev.')) >= 0) {
+        hostUrl = 'https://gsk.dev.100url.cn/yake.manage' // 本地调试走代理
+    } else if (href.indexOf('.test.') >= 0) {
+        hostUrl = 'https://gsk.test.100url.cn/yake.manage'
+    } else {
+        //hostUrl = 'https://api.cmalive.cn/'
+    }
+    return hostUrl;
+}
+
 var HttpUtils = {
     data: {
         targetHostUrl: 'https://skyyh-dev.healthy-bone.com.cn/yake.manage/',
@@ -152,15 +165,15 @@ var HttpUtils = {
         //hostUrl: 'https://gsk.dentalcmt.com/yake.manage'
         // hostUrl: 'https://skyyh.gsk.com/yake.manage',
         //hostUrl:'https://skyyh-dev.healthy-bone.com.cn/yake.manage',
-        hostUrl: 'http://localhost:8080/yake.manage'
-        // hostUrl: 'https://gsk.dev.100url.cn/yake.manage'
+        //hostUrl: 'https://localhost:8080/yake.manage'
+        //hostUrl: 'https://gsk.dev.100url.cn/yake.manage',
+        hostUrl: this.getHostUrl()
     },
     requestPost(url, jsonData, func) {
         var _this = this;
-        var targetHostUrl = this.data.targetHostUrl;
-        var hostUrl = this.data.hostUrl;
+        var targetHostUrl = _this.data.targetHostUrl;
+        var hostUrl = _this.data.hostUrl;
         // var tokenValue=storage.get("userInfo")==null?'':storage.get("userInfo").token;
-
         if (jsonData == null) {
             $.ajax({
                 url: hostUrl + url,
