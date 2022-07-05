@@ -200,7 +200,7 @@ var HttpUtils = {
 					    $('#loginName').val('');
                         storage.set("userInfo", null);
                         // window.location.href= "http://"+window.location.host+"/yake.manage/page/index.html#/";
-                        window.location.href= "http://"+window.location.host+"/gsk-admin/#/";
+                        window.location.href= "https://"+window.location.host+"/gsk-admin/#/";
 		                return;
                     } else {
 
@@ -212,7 +212,7 @@ var HttpUtils = {
 					        $('#loginName').val('');
                             storage.set("userInfo", null);
                             // window.location.href= "http://"+window.location.host+"/yake.manage/page/index.html#/";
-                            window.location.href= "http://"+window.location.host+"/gsk-admin/#/";
+                            window.location.href= "https://"+window.location.host+"/gsk-admin/#/";
 		                    return;
                         } else {
                             _this.showMessage("请求错误");
@@ -249,7 +249,7 @@ var HttpUtils = {
 					    $('#loginName').val('');
                         storage.set("userInfo", null);
                         // window.location.href= "https://"+window.location.host+"/yake.manage/page/index.html#/";
-                        window.location.href= "http://"+window.location.host+"/gsk-admin/#/";
+                        window.location.href= "https://"+window.location.host+"/gsk-admin/#/";
 		                return;
                     } else {
 
@@ -261,7 +261,7 @@ var HttpUtils = {
 					        $('#loginName').val('');
                             storage.set("userInfo", null);
                             // window.location.href= "https://"+window.location.host+"/yake.manage/page/index.html#/";
-                            window.location.href= "http://"+window.location.host+"/gsk-admin/#/";
+                            window.location.href= "https://"+window.location.host+"/gsk-admin/#/";
 		                    return;
                         } else {
                             _this.showMessage("请求错误");
