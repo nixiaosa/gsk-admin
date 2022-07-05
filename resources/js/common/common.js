@@ -199,7 +199,8 @@ var HttpUtils = {
                         login.showLogin();
 					    $('#loginName').val('');
                         storage.set("userInfo", null);
-                        window.location.href= "http://"+window.location.host+"/yake.manage/page/index.html#/";
+                        // window.location.href= "http://"+window.location.host+"/yake.manage/page/index.html#/";
+                        window.location.href= "http://"+window.location.host+"/gsk-admin/#/";
 		                return;
                     } else {
 
