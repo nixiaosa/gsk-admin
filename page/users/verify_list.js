@@ -17,7 +17,7 @@ var page = new Vue({
                 };
                 HttpUtils.requestPost("/api/user/saveVerifyStatus", JSON.stringify(jsonData), function (dataResult) {
                     if (dataResult.status == 1000) {
-                        _this.search_datas();
+                        _this.search_datas(true)
                         $.toast("操作成功!");
                     } else {
                         $.toast("操作失败!");
