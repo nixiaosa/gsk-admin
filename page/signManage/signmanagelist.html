@@ -13,8 +13,10 @@
     </iframe>
 </div>
 <script>
-console.log('12345568')
 console.log(document.cookie)
+if(!document.cookie){
+    $("#inlineFrameExample").css('display','none');
+}
 </script>
 <style>
     iframe {
