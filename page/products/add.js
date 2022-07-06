@@ -127,6 +127,7 @@ var page = new Vue({
             HttpUtils.requestPost("/api/product/saveInfo", JSON.stringify(_this.pro_info), function (dataResult) {
 
                 if (dataResult.status == 1000) {
+                    HttpUtils.showMessage("操作成功!");
                     _this.find_pro_info(dataResult.data);
                 } else {
                     HttpUtils.showMessage("请填写完整的商品信息");
