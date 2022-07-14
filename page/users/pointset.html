@@ -1,12 +1,12 @@
 <div class="container" id="master_point_set_div">
-    <div class="weui_cells_title">基本信息</div>
+    <div class="weui_cells_title">积分设置</div>
     <div class="weui_cells">
         <div class="weui_cell">
             <div class="weui_cells_title">赠送类型</div>
             <div class="weui_cell_bd weui_cell_primary">
                 <div class="weui-form">
                     <div class="weui-form-li iblock">
-                        <input class="weui-form-checkbox" name="f2" id="g1" value="manuscript" type="radio">
+                        <input class="weui-form-checkbox" name="f2" id="g1" value="manuscript" type="radio" checked>
                         <label for="g1">
                             <i class="weui-icon-radio"></i>
                             <div class="weui-form-text">
@@ -15,7 +15,7 @@
                         </label>
                     </div>
                     <div class="weui-form-li iblock">
-                        <input class="weui-form-checkbox" name="f2" id="g2" value="activity_give" type="radio" checked>
+                        <input class="weui-form-checkbox" name="f2" id="g2" value="activity_give" type="radio">
                         <label for="g2">
                             <i class="weui-icon-radio"></i>
                             <div class="weui-form-text">
@@ -24,7 +24,7 @@
                         </label>
                     </div>
                     <div class="weui-form-li iblock">
-                        <input class="weui-form-checkbox" name="f2" id="g5" value="shop_return" type="radio">
+                        <input class="weui-form-checkbox" name="f2" id="g3" value="shop_return" type="radio">
                         <label for="g5">
                             <i class="weui-icon-radio"></i>
                             <div class="weui-form-text">
@@ -33,7 +33,7 @@
                         </label>
                     </div>
                     <div class="weui-form-li iblock">
-                        <input class="weui-form-checkbox" name="f2" id="g5" value="other" type="radio">
+                        <input class="weui-form-checkbox" name="f2" id="g4" value="other" type="radio">
                         <label for="g5">
                             <i class="weui-icon-radio"></i>
                             <div class="weui-form-text">
@@ -50,12 +50,15 @@
                 <div style="font-size: 0px;" class="weui_cell_ft">
                     <a class="weui-number weui-number-sub needsclick">-</a>
                     <input pattern="[0-9]*" class="weui-number-input" style="width: 50px;"
-                        v-model:value="pro_info.newPrice" data-min="0" data-max="1000" data-step="1">
+                        v-model:value="pro_info.count" data-min="0" data-max="1000" data-step="1">
                     <a class="weui-number weui-number-plus needsclick">+</a>
                 </div>
             </div>
         </div>
+        <div class="weui_btn_area weui_btn_area_inline">
+            <a href="javascript:;" class="weui_btn weui_btn_primary" v-on:click="save_pro_info(0)">保存</a>
+        </div>
 
     </div>
 </div>
-<!-- <script type="text/javascript" src="users/action.js"></script> -->
+<script type="text/javascript" src="users/point_set.js"></script>
