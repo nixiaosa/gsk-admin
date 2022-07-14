@@ -73,7 +73,7 @@ var page = new Vue({
         },
         give_point:function(index){
             var uuid=this.user_datas[index].id;
-            console.log(uuid);
+            router.push({path:'point_set',query:{uuid:uuid}});
         },
         link_pro_detail:function(index){
             var uuid=this.user_datas[index].id;

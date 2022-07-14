@@ -321,6 +321,13 @@ const Sign_manage_List = {
 		$('#sign_manage_list_div').load('../page/signManage/signmanagelist.html')
 	}
 }
+
+const Point_Set = {
+	template: "<div id='point_set_div'></div>",
+	mounted: function () {
+		$('#point_set_div').load('../page/users/pointset.html');
+	}
+}
 const routes = [{
 		path: '/pocket_info',
 		component: Pocket_Info
@@ -494,6 +501,9 @@ const routes = [{
 	{
 		path:'/sign_manage',
 		component:Sign_manage_List
+	},{
+		path: '/point_set',
+		component: Point_Set
 	},
 	{
 		path: '*',
