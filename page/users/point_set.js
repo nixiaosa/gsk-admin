@@ -14,7 +14,7 @@ var page = new Vue({
             var jsonData = {
                 userId: router.currentRoute.query.uuid,
                 count: this.pro_info.count,
-                roleUuid: roleUuid
+                pointType: roleUuid
             };
 
             HttpUtils.requestPost("/api/user/integralSetting", JSON.stringify(jsonData), function (dataResult) {
