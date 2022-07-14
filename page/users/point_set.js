@@ -10,7 +10,8 @@ var page = new Vue({
         save_pro_info: function (proStatus) {
             var roleUuid = $(":checked").val();
             var _this = this;
-            console.log('lcc', _this.$route.query.uuid)
+            // console.log('lcc', _this.$route.query.uuid)
+            console.log('lcc', this.pro_info)
             // HttpUtils.requestPost("/api/user/integralSetting", JSON.stringify(_this.pro_info), function (dataResult) {
 
             //     if (dataResult.status == 1000) {
@@ -23,6 +24,6 @@ var page = new Vue({
         },
     },
     mounted: function () {
-        this.save_pro_info();
+        // this.save_pro_info();
     }
 });
