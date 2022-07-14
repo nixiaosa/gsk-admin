@@ -3,15 +3,15 @@ var page = new Vue({
     data: {
         pro_info: {
             count: "0.00",
-            userId: 0,
+            userId: router.currentRoute.query.uuid,
+            pointType: $(":checked").val()
         },
     },
     methods: {
         save_pro_info: function (proStatus) {
             var roleUuid = $(":checked").val();
             var _this = this;
-            console.log('lcc1', router.currentRoute.query.uuid)
-            console.log('lcc2', this.pro_info)
+            console.log('lcc3', this.pro_info)
             // HttpUtils.requestPost("/api/user/integralSetting", JSON.stringify(_this.pro_info), function (dataResult) {
 
             //     if (dataResult.status == 1000) {
