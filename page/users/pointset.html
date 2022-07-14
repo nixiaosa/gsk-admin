@@ -48,10 +48,12 @@
             <div class="weui_cells_title">赠送数量</div>
             <div class="weui_cell_bd weui_cell_primary">
                 <div style="font-size: 0px;" class="weui_cell_ft">
-                    <!-- <a class="weui-number weui-number-sub needsclick">-</a> -->
-                    <input pattern="[0-9]*" class="weui-number-input" style="width: 50px;"
+                    <!-- <a class="weui-number weui-number-sub needsclick">-</a>
+                    <input pattern="[0-9]*" class="weui-number-input" style="width: 100px;"
                         v-model:value="pro_info.count" data-min="0" data-max="1000" data-step="1" type="number">
-                    <!-- <a class="weui-number weui-number-plus needsclick">+</a> -->
+                    <a class="weui-number weui-number-plus needsclick">+</a> -->
+
+                    <el-input-number v-model="pro_info.count" :min="0" label="请输入积分"></el-input-number>
                 </div>
             </div>
         </div>
