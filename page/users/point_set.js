@@ -14,12 +14,10 @@ var page = new Vue({
             var jsonData = {
                 userId: router.currentRoute.query.uuid,
                 count: this.pro_info.count,
-                roleUuid:roleUuid
+                roleUuid: roleUuid
             };
 
-            console.log('lcc4', jsonData)
             HttpUtils.requestPost("/api/user/integralSetting", JSON.stringify(jsonData), function (dataResult) {
-
                 if (dataResult.status == 1000) {
                     $.toast("保存成功!");
                     // router.push({
