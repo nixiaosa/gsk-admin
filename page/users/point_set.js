@@ -18,15 +18,20 @@ var page = new Vue({
             };
 
             console.log('lcc4', jsonData)
-            // HttpUtils.requestPost("/api/user/integralSetting", JSON.stringify(_this.pro_info), function (dataResult) {
+            HttpUtils.requestPost("/api/user/integralSetting", JSON.stringify(jsonData), function (dataResult) {
 
-            //     if (dataResult.status == 1000) {
-            //         alert("操作成功!");
-            //         _this.find_pro_info(dataResult.data);
-            //     } else {
-            //         HttpUtils.showMessage("");
-            //     }
-            // });
+                if (dataResult.status == 1000) {
+                    $.toast("保存成功!");
+                    // router.push({
+                    //     path: 'user_list',
+                    //     query: {
+                    //         uuid: ''
+                    //     }
+                    // });
+                } else {
+                    HttpUtils.showMessage(dataResult.data);
+                }
+            });
         },
     },
     mounted: function () {
