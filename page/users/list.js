@@ -71,6 +71,10 @@ var page = new Vue({
             window.location.href=HttpUtils.data.hostUrl+"/api/user/exportInfos?key="+$("#mobile").val()+"&startTime="+$("#startTime").val()+"&endTime="+$("#endTime").val();
            
         },
+        give_point:function(index){
+            var uuid=this.user_datas[index].id;
+            console.log(uuid);
+        },
         link_pro_detail:function(index){
             var uuid=this.user_datas[index].id;
             router.push({path:'user_action',query:{uuid:uuid}});
