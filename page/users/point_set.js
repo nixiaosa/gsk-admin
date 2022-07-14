@@ -20,12 +20,12 @@ var page = new Vue({
             HttpUtils.requestPost("/api/user/integralSetting", JSON.stringify(jsonData), function (dataResult) {
                 if (dataResult.status == 1000) {
                     $.toast("保存成功!");
-                    // router.push({
-                    //     path: 'user_list',
-                    //     query: {
-                    //         uuid: ''
-                    //     }
-                    // });
+                    router.push({
+                        path: 'user_list',
+                        query: {
+                            uuid: ''
+                        }
+                    });
                 } else {
                     HttpUtils.showMessage(dataResult.data);
                 }
