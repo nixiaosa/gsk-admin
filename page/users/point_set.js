@@ -4,14 +4,20 @@ var page = new Vue({
         pro_info: {
             count: "0.00",
             userId: router.currentRoute.query.uuid,
-            pointType: $(":checked").val()
+            pointType: ''
         },
     },
     methods: {
         save_pro_info: function (proStatus) {
             var roleUuid = $(":checked").val();
             var _this = this;
-            console.log('lcc3', this.pro_info)
+            var jsonData = {
+                userId: router.currentRoute.query.uuid,
+                count: this.pro_info.count,
+                roleUuid:roleUuid
+            };
+
+            console.log('lcc4', jsonData)
             // HttpUtils.requestPost("/api/user/integralSetting", JSON.stringify(_this.pro_info), function (dataResult) {
 
             //     if (dataResult.status == 1000) {
