@@ -328,6 +328,105 @@ const Point_Set = {
 		$('#point_set_div').load('../page/users/pointset.html');
 	}
 }
+
+// const Video_Create = {
+// 	template: "<div id='video_create_div'></div>",
+// 	mounted: function () {
+// 		$('#video_create_div').load('../page/users/videocreate.html');
+// 	}
+// }
+
+// const Video_Set = {
+// 	template: "<div id='video_set_div'></div>",
+// 	mounted: function () {
+// 		$('#video_set_div').load('../page/users/videoset.html');
+// 	}
+// }
+
+// const Match_Set = {
+// 	template: "<div id='match_set_div'></div>",
+// 	mounted: function () {
+// 		$('#match_set_div').load('../page/users/matchset.html');
+// 	}
+// }
+
+// const Match_Audit = {
+// 	template: "<div id='match_audit_div'></div>",
+// 	mounted: function () {
+// 		$('#match_audit_div').load('../page/users/matchaudit.html');
+// 	}
+// }
+
+// const Nav_Manage = {
+// 	template: "<div id='nav_manage_div'></div>",
+// 	mounted: function () {
+// 		$('#nav_manage_div').load('../page/users/navmanage.html');
+// 	}
+// }
+
+// const Vote_Create = {
+// 	template: "<div id='vote_create_div'></div>",
+// 	mounted: function () {
+// 		$('#vote_create_div').load('../page/users/votecreate.html');
+// 	}
+// }
+
+// const Vote_Manage = {
+// 	template: "<div id='vote_manage_div'></div>",
+// 	mounted: function () {
+// 		$('#vote_manage_div').load('../page/users/votemanage.html');
+// 	}
+// }
+
+// const Qa_Create = {
+// 	template: "<div id='qa_create_div'></div>",
+// 	mounted: function () {
+// 		$('#Qa_Create_div').load('../page/users/qacreate.html');
+// 	}
+// }
+
+// const Qa_Manage = {
+// 	template: "<div id='qa_manage_div'></div>",
+// 	mounted: function () {
+// 		$('#Qa_Manage_div').load('../page/users/qamanage.html');
+// 	}
+// }
+
+// const Answer_Create = {
+// 	template: "<div id='answer_create_div'></div>",
+// 	mounted: function () {
+// 		$('#Answer_Create_div').load('../page/users/answercreate.html');
+// 	}
+// }
+
+// const Answer_Manage = {
+// 	template: "<div id='answer_manage_div'></div>",
+// 	mounted: function () {
+// 		$('#Answer_Manage_div').load('../page/users/answermanage.html');
+// 	}
+// }
+
+// const Team_Create = {
+// 	template: "<div id='team_create_div'></div>",
+// 	mounted: function () {
+// 		$('#Team_Create_div').load('../page/users/teamcreate.html');
+// 	}
+// }
+
+// const Team_Manage = {
+// 	template: "<div id='team_manage_div'></div>",
+// 	mounted: function () {
+// 		$('#Team_Manage_div').load('../page/users/teammanage.html');
+// 	}
+// }
+
+// const Point_Manage = {
+// 	template: "<div id='point_manage_div'></div>",
+// 	mounted: function () {
+// 		$('#Point_Manage_div').load('../page/users/pointmanage.html');
+// 	}
+// }
+
 const routes = [{
 		path: '/pocket_info',
 		component: Pocket_Info
@@ -505,6 +604,63 @@ const routes = [{
 		path: '/point_set',
 		component: Point_Set
 	},
+	// {
+	// 	path: '/video_create', // 直播管理-创建直播
+	// 	component: Video_Create
+	// },
+	// {
+	// 	path: '/video_set', // 直播管理-直播设置
+	// 	component: Video_Set
+	// },
+	// {
+	// 	path: '/match_set', // 科普大赛-大赛设置
+	// 	component: Match_Set
+	// },
+	// {
+	// 	path: '/match_audit', // 科普大赛-参赛作品审核
+	// 	component: Match_Audit
+	// },
+	// {
+	// {
+	// 	path: '/nav_manage', // 栏目管理
+	// 	component: Nav_Manage
+	// },
+	// {
+	// 	path: '/vote_create', // 投票管理-创建
+	// 	component: Vote_Create
+	// },
+	// {
+	// 	path: '/vote_manage', // 投票管理-管理
+	// 	component: Vote_Manage
+	// },
+	// {
+	// 	path: '/qa_create', // 调研问卷-创建
+	// 	component: Qa_Create
+	// },
+	// {
+	// 	path: '/qa_manage', // 调研问卷-管理
+	// 	component: Qa_Manage
+	// },
+	// {
+	// 	path: '/answer_create', // 线上答题-创建
+	// 	component: Answer_Create
+	// },
+	// {
+	// 	path: '/answer_manage', // 线上答题-管理
+	// 	component: Answer_Manage
+	// },
+	// {
+	// 	path: '/team_create', // 团队竞赛-创建
+	// 	component: Team_Create
+	// },
+	// {
+	// 	path: '/team_manage', // 团队竞赛-管理
+	// 	component: Team_Manage
+	// },
+	// {
+	// 	path: '/point_manage', // 商城管理-积分规则
+	// 	component: Point_Manage
+	// },
 	{
 		path: '*',
 		redirect: ''
