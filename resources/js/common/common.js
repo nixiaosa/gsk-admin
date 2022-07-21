@@ -168,9 +168,9 @@ const href = window.location.href
   } else if (href.indexOf('localhost') >= 0 ){
     hostUrl = ''
   } else if (href.indexOf('skyyh') >= 0 ){
-    hostUrl = 'https://skyyh.healthy-bone.com.cn/yake.manage'
+    hostUrl = 'https://skyyh.healthy-bone.com.cn/yake.manage' //gsk生产
   } else {
-    hostUrl = 'https://healthy-bone.com.cn/yake.manage'    
+    hostUrl = 'https://healthy-bone.com.cn/yake.manage'  //gsk测试
   }
   return hostUrl;
 }
