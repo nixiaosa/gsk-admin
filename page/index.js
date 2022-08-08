@@ -621,7 +621,6 @@ const routes = [{
 		component: Match_Audit
 	},
 	{
-	{
 		path: '/nav_manage', // 栏目管理
 		component: Nav_Manage
 	},
