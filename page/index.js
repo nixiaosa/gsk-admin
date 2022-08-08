@@ -395,35 +395,35 @@ const Qa_Manage = {
 const Answer_Create = {
 	template: "<div id='answer_create_div'></div>",
 	mounted: function () {
-		$('#Answer_Create_div').load('../page/users/answercreate.html');
+		$('#answer_create_div').load('../page/users/answercreate.html');
 	}
 }
 
 const Answer_Manage = {
 	template: "<div id='answer_manage_div'></div>",
 	mounted: function () {
-		$('#Answer_Manage_div').load('../page/users/answermanage.html');
+		$('#answer_manage_div').load('../page/users/answermanage.html');
 	}
 }
 
 const Team_Create = {
 	template: "<div id='team_create_div'></div>",
 	mounted: function () {
-		$('#Team_Create_div').load('../page/users/teamcreate.html');
+		$('#team_create_div').load('../page/users/teamcreate.html');
 	}
 }
 
 const Team_Manage = {
 	template: "<div id='team_manage_div'></div>",
 	mounted: function () {
-		$('#Team_Manage_div').load('../page/users/teammanage.html');
+		$('#team_manage_div').load('../page/users/teammanage.html');
 	}
 }
 
 const Point_Manage = {
 	template: "<div id='point_manage_div'></div>",
 	mounted: function () {
-		$('#Point_Manage_div').load('../page/users/pointmanage.html');
+		$('#point_manage_div').load('../page/users/pointmanage.html');
 	}
 }
 
