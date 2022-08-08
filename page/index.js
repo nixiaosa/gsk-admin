@@ -604,63 +604,63 @@ const routes = [{
 		path: '/point_set',
 		component: Point_Set
 	},
-	// {
-	// 	path: '/video_create', // 直播管理-创建直播
-	// 	component: Video_Create
-	// },
-	// {
-	// 	path: '/video_set', // 直播管理-直播设置
-	// 	component: Video_Set
-	// },
-	// {
-	// 	path: '/match_set', // 科普大赛-大赛设置
-	// 	component: Match_Set
-	// },
-	// {
-	// 	path: '/match_audit', // 科普大赛-参赛作品审核
-	// 	component: Match_Audit
-	// },
-	// {
-	// {
-	// 	path: '/nav_manage', // 栏目管理
-	// 	component: Nav_Manage
-	// },
-	// {
-	// 	path: '/vote_create', // 投票管理-创建
-	// 	component: Vote_Create
-	// },
-	// {
-	// 	path: '/vote_manage', // 投票管理-管理
-	// 	component: Vote_Manage
-	// },
-	// {
-	// 	path: '/qa_create', // 调研问卷-创建
-	// 	component: Qa_Create
-	// },
-	// {
-	// 	path: '/qa_manage', // 调研问卷-管理
-	// 	component: Qa_Manage
-	// },
-	// {
-	// 	path: '/answer_create', // 线上答题-创建
-	// 	component: Answer_Create
-	// },
-	// {
-	// 	path: '/answer_manage', // 线上答题-管理
-	// 	component: Answer_Manage
-	// },
-	// {
-	// 	path: '/team_create', // 团队竞赛-创建
-	// 	component: Team_Create
-	// },
-	// {
-	// 	path: '/team_manage', // 团队竞赛-管理
-	// 	component: Team_Manage
-	// },
-	// {
-	// 	path: '/point_manage', // 商城管理-积分规则
-	// 	component: Point_Manage
-	// },
+	{
+		path: '/video_create', // 直播管理-创建直播
+		component: Video_Create
+	},
+	{
+		path: '/video_set', // 直播管理-直播设置
+		component: Video_Set
+	},
+	{
+		path: '/match_set', // 科普大赛-大赛设置
+		component: Match_Set
+	},
+	{
+		path: '/match_audit', // 科普大赛-参赛作品审核
+		component: Match_Audit
+	},
+	{
+	{
+		path: '/nav_manage', // 栏目管理
+		component: Nav_Manage
+	},
+	{
+		path: '/vote_create', // 投票管理-创建
+		component: Vote_Create
+	},
+	{
+		path: '/vote_manage', // 投票管理-管理
+		component: Vote_Manage
+	},
+	{
+		path: '/qa_create', // 调研问卷-创建
+		component: Qa_Create
+	},
+	{
+		path: '/qa_manage', // 调研问卷-管理
+		component: Qa_Manage
+	},
+	{
+		path: '/answer_create', // 线上答题-创建
+		component: Answer_Create
+	},
+	{
+		path: '/answer_manage', // 线上答题-管理
+		component: Answer_Manage
+	},
+	{
+		path: '/team_create', // 团队竞赛-创建
+		component: Team_Create
+	},
+	{
+		path: '/team_manage', // 团队竞赛-管理
+		component: Team_Manage
+	},
+	{
+		path: '/point_manage', // 商城管理-积分规则
+		component: Point_Manage
+	},
 	{
 		path: '*',
 		redirect: ''
