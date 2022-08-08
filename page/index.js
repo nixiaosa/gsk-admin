@@ -381,14 +381,14 @@ const Vote_Manage = {
 const Qa_Create = {
 	template: "<div id='qa_create_div'></div>",
 	mounted: function () {
-		$('#Qa_Create_div').load('../page/users/qacreate.html');
+		$('#qa_create_div').load('../page/users/qacreate.html');
 	}
 }
 
 const Qa_Manage = {
 	template: "<div id='qa_manage_div'></div>",
 	mounted: function () {
-		$('#Qa_Manage_div').load('../page/users/qamanage.html');
+		$('#qa_manage_div').load('../page/users/qamanage.html');
 	}
 }
 
