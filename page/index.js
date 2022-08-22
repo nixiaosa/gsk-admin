@@ -809,7 +809,6 @@ var indexVue = new Vue({
 				_this.loginName = userInfo.mobile;
 				_this.func_datas = userInfo.funcs;
 				// console.log('lcc2',_this.func_datas)
-				console.log('lc',window.location.href)
 				$("#login_tip").hide();
 				setTimeout(() => {
 					_this.load_li_click();
@@ -825,6 +824,7 @@ var indexVue = new Vue({
 			// }
 		},
 		load_li_click: function () {
+			console.log('lc',window.location.href)
 			$('.js-category').click(function (event) {
 				event.stopImmediatePropagation();
 				$parent = $(this).parent('li');
