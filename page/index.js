@@ -858,10 +858,10 @@ var indexVue = new Vue({
 		var currentPath = router.history.current.path;
 	},
 	mounted: function () {
-		setInterval(() => {
-			console.log('lc2',window.location.href)
-			window.location.href = window.location.href + '?time=' + new Date().getTime();
-		}, 500);
+		// setInterval(() => {
+		// 	console.log('lc2',window.location.href)
+		// 	window.location.href = window.location.href + '?time=' + new Date().getTime();
+		// }, 500);
 		try{
 			top.location.hostname;
 			if (top.location.hostname != window.location.hostname) {
