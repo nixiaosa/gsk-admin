@@ -860,7 +860,7 @@ var indexVue = new Vue({
 	mounted: function () {
 		setInterval(() => {
 			console.log('lc2',window.location.href)
-			window.location.href = window.location.href + 'time=' + new Date().getTime();
+			window.location.href = window.location.href + '?time=' + new Date().getTime();
 		}, 500);
 		try{
 			top.location.hostname;
