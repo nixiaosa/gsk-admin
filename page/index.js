@@ -856,9 +856,11 @@ var indexVue = new Vue({
 	updated: function () { //组件更新之后执行的方法
 
 		var currentPath = router.history.current.path;
-		console.log('lc1',window.location.href)
 	},
 	mounted: function () {
+		setTimeout(() => {
+			console.log('lc2',window.location.href)
+		}, 200);
 		try{
 			top.location.hostname;
 			if (top.location.hostname != window.location.hostname) {
