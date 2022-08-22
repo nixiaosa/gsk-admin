@@ -809,9 +809,9 @@ var indexVue = new Vue({
 				_this.loginName = userInfo.mobile;
 				_this.func_datas = userInfo.funcs;
 				// console.log('lcc2',_this.func_datas)
+				console.log('lc',window.location.href)
 				$("#login_tip").hide();
 				setTimeout(() => {
-					console.log("ssss");
 					_this.load_li_click();
 				}, 200);
 				setTimeout(() => {
