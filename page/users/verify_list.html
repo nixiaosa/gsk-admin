@@ -45,7 +45,10 @@
                         <label>{{item.contactName}}</label>
                     </td>
                     <td>
-                        <label>{{item.approach}}</label>
+                        <label>
+                           <span v-if="item.approach == '其他'">{{item.approach(item.otherName)}}</span>
+                           <span v-else>{{item.approach}}</span>
+                        </label>
                     </td>
                     <td>
                         <label>{{item.profession}}</label>
