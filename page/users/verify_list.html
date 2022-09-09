@@ -47,7 +47,7 @@
                     <td>
                         <label>
                            <span v-if="item.approach == '其他'">{{item.approach(item.otherName)}}</span>
-                           <span v-else>{{item.approach}}</span>
+                           <span v-else>{{item.approach(item.otherName)}}</span>
                         </label>
                     </td>
                     <td>
