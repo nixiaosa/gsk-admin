@@ -34,6 +34,11 @@ var page = new Vue({
                 select:true
             },
             {
+                cateSlug:'shouyezonghe',
+                cateName:'首页-综合',
+                select:false
+            },
+            {
                 cateSlug:'yamingan',
                 cateName:'牙敏感',
                 select:false
