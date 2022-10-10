@@ -693,7 +693,8 @@ router.beforeEach((to,from,next) => {
 		next()
 	}else{
 		// next('/')
-		window.location.href= "https://"+window.location.host+"/yake.manage/page/index.html#/";
+		// window.location.href= "https://"+window.location.host+"/yake.manage/page/index.html#/";
+		window.location.href= "https://"+window.location.host+"/gsk-admin/#/";
 		return;
 	}
 });
