@@ -95,8 +95,9 @@ var login = {
                     login.showLogin();
 				    $('#loginName').val('');
 				    storage.set("userInfo", "exit");
-                    window.location.href= "https://"+window.location.host+"/yake.manage/page/index.html";
-	                return;
+                    // window.location.href= "https://"+window.location.host+"/yake.manage/page/index.html";
+                    window.location.href= "https://"+window.location.host+"/gsk-admin/#/";
+                    return;
             }
         });
     }
