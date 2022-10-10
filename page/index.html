@@ -7,14 +7,12 @@
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<meta name="viewport" content="width=device-width, maximum-scale=1.0, user-scalable=no">
 	<title>管理系统</title>
-<!--	<meta http-equiv="refresh" content="5;url=https://federation-qa.corpnet4.com/as/authorization.oauth2?client_id=9f1fdbb8665043ba815a54a7f60305cc&response_type=code&Scope=openid%20profile%20email%20group">-->
 	<script type="text/javascript" src="../resources/js/common/crypto-js.js"></script>
 	<script type="text/javascript" src="../resources/js/common/vue.js"></script>
 	<script type="text/javascript" src="../resources/js/common/vue-router.min.js"></script>
 	<script type="text/javascript" src="../resources/js/common/jquery.min.js"></script>
 	<script type="text/javascript" src="../resources/js/common/ajaxForm.js"></script>
 	<script type="text/javascript" src="../resources/js/common/ajaxfileupload.js"></script>
-	<script type="text/javascript" src="../resources//js/common/gt.js"></script>
 	<script type="text/javascript" src="../resources/js/common/common.js"></script>
 	<script type="text/javascript" src="../resources/js/common/fileupload.js"></script>
 	<script type="text/javascript" src="../resources/js/common/summernote-fileupload.js"></script>
@@ -29,7 +27,7 @@
 	<link rel="stylesheet" href="../resources/date.css">
 	<link rel="stylesheet" href="../resources/wxui/weuix.min.css">
 	<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
-	
+
 	<link type="text/css" rel="stylesheet" href="../resources/js/ueditor/ueditor.css" />
 	<script type="text/javascript" charset="utf-8" src="../resources/js/ueditor/ueditor.config.js"></script>
 	<script type="text/javascript" charset="utf-8" src="../resources/js/ueditor/ueditor.all.js">
@@ -47,7 +45,7 @@
 	<script type="text/javascript" charset="utf-8" src="../resources/js/common/echarts/bmap.min.js"></script>
 	<script type="text/javascript" charset="utf-8" src="../resources/js/common/echarts/china.js"></script>
 	<script type="text/javascript" charset="utf-8" src="../resources/js/common/echarts/dataTool.min.js"></script>
-	
+
 	<script type="text/javascript" charset="utf-8" src="../resources/js/common/echarts/ecStat.min.js"></script>
 	<script type="text/javascript" charset="utf-8" src="../resources/js/common/echarts/world.js"></script>
 	<script type="text/javascript" charset="utf-8" src="../resources/js/jquery.calendar.js"></script>
@@ -107,18 +105,18 @@
 				<router-view :key="$route.fullPath" ></router-view>
 				<div id="login_div" class="login_pop" style="display: none">
 					<div class="box">
-						<h1>管理系统</h1>
-						<div class="inputqy">
+						<h1>史克牙e汇小程序管理系统</h1>
+						<!-- <div class="inputqy">
 							<h2 id="error_tip" style="color:#F00;"></h2>
 							<input type="text" id="loginName" maxlength="11" autocomplete="off" placeholder="请填入手机号码">
-							<!-- <div style="position:relative;">
+							<div style="position:relative;">
 								<input type="text" id="verificationCode" v-model="captcha" placeholder="请填入验证码">
 								<button class="verificationcodeBtn" :disabled="btnBool" id="getCaptcha">{{yzmtext}}</button>
-							</div> -->
-							
+							</div>
+
 							<input type="password" id="loginPassword" placeholder="密码">
 							<p id="login_tip" style="color:red;font-size: 13px;text-align: center;display: none">手机号或密码或验证码错误</p>
-						</div>
+						</div> -->
 						<div class="but_con" style="margin-top:10px;margin-bottom:20px;">
 							<button class="button_yes" v-on:click="confimLogin()">登录</button>
 							<div class="clr"></div>

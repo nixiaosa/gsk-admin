@@ -681,99 +681,76 @@ const router = new VueRouter({
 	routes // (缩写) 相当于 routes: routes
 });
 
-// router.beforeEach((to,from,next) => {
-// 	console.log(storage.get("userInfo"))
-// 	if(storage.get("userInfo") != null ){//如果name为真就true,为假就false
-// 		// if(to.path == from.path){
-// 		// 	if(JSON.stringify(to.query) !== JSON.stringify(from.query)){
-// 		// 		next()
-// 		// 		window.location.reload()
-// 		// 	}
-// 		// }
-// 		next()
-// 	}else{
-// 		// next('/')
-// 		window.location.href= "https://"+window.location.host+"/yake.manage/page/index.html#/";
-// 		return;
-// 	}
-// });
+router.beforeEach((to,from,next) => {
+	console.log(storage.get("userInfo"));
+	if(storage.get("userInfo") != null && storage.get("userInfo") != 'exit' && storage.get("userInfo") != 'login'){//如果name为真就true,为假就false
+		// if(to.path == from.path){
+		// 	if(JSON.stringify(to.query) !== JSON.stringify(from.query)){
+		// 		next()
+		// 		window.location.reload()
+		// 	}
+		// }
+		next()
+	}else{
+		// next('/')
+		//window.location.href= "https://"+window.location.host+"/yake.manage/page/index.html";
+		return;
+	}
+})
 
 //极验的一些东西
-// var handler = function (captchaObj) {
-// 	captchaObj.onReady(function () {
-// 		console.log('ready');
-// 	}).onSuccess(function () {
-// 		var result = captchaObj.getValidate();
-// 		if (!result) {
-// 			return alert('请完成验证');
-// 		}
-// 		console.log('验证完成')
-// 		// $.ajax({
-// 		// 	url: 'gt/validate-slide',
-// 		// 	type: 'POST',
-// 		// 	dataType: 'json',
-// 		// 	data: {
-// 		// 		username: $('#username2').val(),
-// 		// 		password: $('#password2').val(),
-// 		// 		geetest_challenge: result.geetest_challenge,
-// 		// 		geetest_validate: result.geetest_validate,
-// 		// 		geetest_seccode: result.geetest_seccode
-// 		// 	},
-// 		// 	success: function (data) {
-//
-// 		// 	}
-// 		// });
-// 		var params = {
-// 			geetest_challenge: result.geetest_challenge,
-//             geetest_validate: result.geetest_validate,
-//             geetest_seccode: result.geetest_seccode,
-//             cellphone: $("#loginName").val().trim(),
-//             type: 1
-// 		}
-// 		$.ajax({
-// 			url:'/yake.manage/api/admin/sms/send',
-// 			type:'post',
-// 			dataType:'json',
-// 			data:params,
-// 			success:function(data){
-// 				if(data.status == 1000){
-// 					indexVue.getyzm();
-// 				}
-// 				console.log(data)
-// 			}
-// 		})
-// 	});
-// 	$('#getCaptcha').click(function () {
-// 		// 调用之前先通过前端表单校验
-//
-//
-// 		captchaObj.verify();
-// 	});
-// 	// 更多接口说明请参见：http://docs.geetest.com/install/client/web-front/
-// };
-// $.ajax({
-// 	url: "/yake.manage/api/admin/geetest/init", // 加随机数防止缓存
-// 	type: "get",
-// 	dataType: "json",
-// 	success: function (data) {
-// 		console.log(data);
-// 		// 调用 initGeetest 进行初始化
-// 		// 参数1：配置参数
-// 		// 参数2：回调，回调的第一个参数验证码对象，之后可以使用它调用相应的接口
-// 		if(data.status == 1000){
-// 			initGeetest({
-// 				// 以下 4 个配置参数为必须，不能缺少
-// 				gt: data.data.gt,
-// 				challenge: data.data.challenge,
-// 				offline: !data.data.success, // 表示用户后台检测极验服务器是否宕机
-// 				product: "bind", // 产品形式，包括：float，popup
-//
-// 				// 更多配置参数说明请参见：http://docs.geetest.com/install/client/web-front/
-// 			}, handler);
-// 		}
-//
-// 	}
-// });
+var handler = function (captchaObj) {
+	captchaObj.onReady(function () {
+		console.log('ready');
+	}).onSuccess(function () {
+		var result = captchaObj.getValidate();
+		if (!result) {
+			return alert('请完成验证');
+		}
+		console.log('验证完成');
+		// $.ajax({
+		// 	url: 'gt/validate-slide',
+		// 	type: 'POST',
+		// 	dataType: 'json',
+		// 	data: {
+		// 		username: $('#username2').val(),
+		// 		password: $('#password2').val(),
+		// 		geetest_challenge: result.geetest_challenge,
+		// 		geetest_validate: result.geetest_validate,
+		// 		geetest_seccode: result.geetest_seccode
+		// 	},
+		// 	success: function (data) {
+
+		// 	}
+		// });
+		var params = {
+			geetest_challenge: result.geetest_challenge,
+            geetest_validate: result.geetest_validate,
+            geetest_seccode: result.geetest_seccode,
+            cellphone: $("#loginName").val().trim(),
+            type: 1
+		}
+		$.ajax({
+			url:'/yake.manage/api/admin/sms/send',
+			type:'post',
+			dataType:'json',
+			data:params,
+			success:function(data){
+				if(data.status == 1000){
+					indexVue.getyzm();
+				}
+				console.log(data)
+			}
+		})
+	});
+	$('#getCaptcha').click(function () {
+		// 调用之前先通过前端表单校验
+
+
+		captchaObj.verify();
+	});
+	// 更多接口说明请参见：http://docs.geetest.com/install/client/web-front/
+};
 
 var indexVue = new Vue({
 	el: '#master_index_div',
@@ -800,39 +777,41 @@ var indexVue = new Vue({
 			}, 1000);
 		},
 		confimLogin: function () {
-			var _this = this;
-			var mobile = $("#loginName").val().trim();
-			var password = $("#loginPassword").val().trim();
-			// 之后会改回来 var captcha = $('#verificationCode').val().trim();
-			var captcha = '';
-			var reg = /^(?![a-zA-Z]+$)(?![A-Z0-9]+$)(?![A-Z\W_]+$)(?![a-z0-9]+$)(?![a-z\W_]+$)(?![0-9\W_]+$)[a-zA-Z0-9\W_]{8,20}$/;
-			if (password === '') {
-				$("#login_tip").show();
-				$("#login_tip").text('请输入密码');
-				return;
-			} else {
-				$("#login_tip").hide();
-			}
-			login.confimLog(mobile, password,captcha);
-			
-			var userInfo = storage.get("userInfo");
-			if (userInfo != null) {
-				_this.loginName = userInfo.mobile;
-				_this.func_datas = userInfo.funcs;
-				// console.log('lcc2',_this.func_datas)
-				$("#login_tip").hide();
-				setTimeout(() => {
-					_this.load_li_click();
-				}, 200);
-				setTimeout(() => {
-					$("#loginName").val("");
-					$("#loginPassword").val("");
-				}, 100);
-			} 
+			 storage.set("userInfo", "login");
+//			var _this = this;
+//			var mobile = $("#loginName").val().trim();
+//			var password = $("#loginPassword").val().trim();
+//			// 之后会改回来 var captcha = $('#verificationCode').val().trim();
+//			var captcha = '';
+//			var reg = /^(?![a-zA-Z]+$)(?![A-Z0-9]+$)(?![A-Z\W_]+$)(?![a-z0-9]+$)(?![a-z\W_]+$)(?![0-9\W_]+$)[a-zA-Z0-9\W_]{8,20}$/;
+//			if (password === '') {
+//				$("#login_tip").show();
+//				$("#login_tip").text('请输入密码');
+//				return;
+//			} else {
+//				$("#login_tip").hide();
+//			}
+//			login.confimLog(mobile, password,captcha);
+
+//			var userInfo = storage.get("userInfo");
+//			if (userInfo != null && userInfo != "exit") {
+//				_this.loginName = userInfo.givenName;
+//				_this.func_datas = userInfo.funcs;
+//				$("#login_tip").hide();
+//				setTimeout(() => {
+//					console.log("ssss");
+//					_this.load_li_click();
+//				}, 200);
+//				setTimeout(() => {
+//					$("#loginName").val("");
+//					$("#loginPassword").val("");
+//				}, 100);
+//			}
 			// else {
 			// 	$("#login_tip").show();
 			// 	$("#login_tip").text('手机号或密码或验证码错误')
 			// }
+			window.location.href= "https://"+window.location.host+"/yake.manage/api/index";
 		},
 		load_li_click: function () {
 			$('.js-category').click(function (event) {
@@ -852,8 +831,8 @@ var indexVue = new Vue({
 		exit: function () {
 			HttpUtils.requestPost("/api/admin/exit", null, function (dataResult) {
 				if (dataResult.status == 1000) {
-					storage.set("userInfo", null);
-					cookies.remove("cmtgsk")
+					storage.set("userInfo", "exit");
+					cookies.remove("mobile")
 					router.push({
 						path: 'admin_info'
 					});
@@ -861,7 +840,7 @@ var indexVue = new Vue({
 					$('#loginName').val('');
 				}
 			});
-			
+
 		}
 	},
 	updated: function () { //组件更新之后执行的方法
@@ -883,14 +862,27 @@ var indexVue = new Vue({
 		}
 		var _this = this;
 		var userInfo = storage.get("userInfo");
-		if (userInfo == null) {
+		var mobile  = cookies.get('givenName');
+		if (userInfo == null || userInfo == "login" || userInfo == "exit") {
 			login.showLogin();
-			$('#loginName').val('');
+//			$('#loginName').val('');
+//			login.hideLogin();
+			if(userInfo == "login"){
+				login.confimLog("", "","");//执行登录
+				login.hideLogin();
+				userInfo = storage.get("userInfo");
+				mobile  = cookies.get('givenName');
+				this.loginName = mobile;
+				this.func_datas = userInfo.funcs;
+				setTimeout(() => {
+					_this.load_li_click();
+				}, 200);
+			}
 		} else {
+//			login.confimLog("", "","");//执行登录
 			login.hideLogin();
-			this.loginName = userInfo.mobile;
+			this.loginName = mobile;
 			this.func_datas = userInfo.funcs;
-			// console.log('lcc',_this.func_datas)
 			setTimeout(() => {
 				_this.load_li_click();
 			}, 200);
