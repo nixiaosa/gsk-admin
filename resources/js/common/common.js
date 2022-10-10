@@ -69,7 +69,8 @@ var login = {
             // authCode:captcha,
             value: password
         };
-        HttpUtils.requestPost("/api/admin/getinfo", JSON.stringify(json), function (dataResult) {
+        HttpUtils.requestPost("/api/admin/login", JSON.stringify(json), function (dataResult) {
+        // HttpUtils.requestPost("/api/admin/getinfo", JSON.stringify(json), function (dataResult) {
             if (dataResult.status == 1000) {
                 if(dataResult.data.key != 'loginlock'){
                     storage.set("userInfo", {
