@@ -4,7 +4,7 @@
 <script type="text/javascript" src="./resources/js/common/jquery.min.js"></script>
 <script language="javascript" src="./resources/js/common/jquery-3.3.1.js"></script>
 <script type="text/javascript" src="./resources/js/common/jquery.Jcrop.js"></script>
-<script language="javascript">
+<!-- <script language="javascript">
 $(document).ready(function(e) {
 	var timing=setInterval(function(){
 		var url = location.href;
@@ -15,7 +15,7 @@ $(document).ready(function(e) {
 		}
 	},1000);
 });
-</script>
+</script> -->
 <body>
 <h2 class="msg">很抱歉，您访问的页面不存在<br /></h2>
 </body>
