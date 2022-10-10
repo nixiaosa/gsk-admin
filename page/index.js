@@ -427,6 +427,13 @@ const Point_Manage = {
 	}
 }
 
+const Task_Manage = {
+	template: "<div id='task_manage_div'></div>",
+	mounted: function () {
+		$('#task_manage_div').load('../page/users/taskmanage.html');
+	}
+}
+
 const routes = [{
 		path: '/pocket_info',
 		component: Pocket_Info
@@ -659,6 +666,10 @@ const routes = [{
 	{
 		path: '/point_manage', // 商城管理-积分规则
 		component: Point_Manage
+	},
+	{
+		path: '/task_manage', // 任务管理-营销任务管理
+		component: Task_Manage
 	},
 	{
 		path: '*',
