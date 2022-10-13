@@ -159,19 +159,7 @@ var plus_sub_btn = {//加减操作
 // }
 
 var getHostUrl = () =>{
-let hostUrl = '';
-const href = window.location.href
-  if (href.indexOf('.dev.') >= 0) {
-    hostUrl = 'https://gsk.dev.100url.cn/yake.manage' // 本地调试走代理
-  } else if (href.indexOf('.test.') >= 0) {
-    hostUrl = 'https://gsk.test.100url.cn/yake.manage'
-  } else if (href.indexOf('localhost') >= 0 ){
-    hostUrl = ''
-  } else if (href.indexOf('skyyh') >= 0 ){
-    hostUrl = 'https://skyyh.healthy-bone.com.cn/yake.manage' //gsk生产
-  } else {
-    hostUrl = 'https://healthy-bone.com.cn/yake.manage'  //gsk测试
-  }
+let hostUrl = 'gsk-k8s.100url.cn';
   return hostUrl;
 }
 
