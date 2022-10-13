@@ -159,7 +159,7 @@ var plus_sub_btn = {//加减操作
 // }
 
 var getHostUrl = () =>{
-let hostUrl = 'gsk-k8s.100url.cn';
+let hostUrl = 'https://gsk-k8s.100url.cn';
   return hostUrl;
 }
 
