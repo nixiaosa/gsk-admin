@@ -189,12 +189,20 @@ var page = new Vue({
             
 
         },
+        lcEncode: function (str){
+            // 对字符串进行编码
+            var encode = encodeURI(str);
+            // 对编码的字符串转化base64
+            var base64 = btoa(encode);   //这一行就可以字符串转base64了
+            return base64;
+        },
         save_pro_info: function (proStatus) {
             this.pro_info.itemThumbUrl = $("#showImgUrl").attr("data-img-name");
             this.pro_info.status = proStatus;
             this.pro_info.cateSlug=$("#cateSlug").val();
             this.pro_info.cateName=this.get_cateName($("#cateSlug").val());
-            this.pro_info.htmlContent = this.myEditor.getContent();
+            // this.pro_info.htmlContent = this.myEditor.getContent();
+            this.pro_info.htmlContent = this.lcEncode(this.myEditor.getContent());
             if(!this.pro_info.htmlContent) {
                 HttpUtils.showMessage("输入内容不能为空");
                 return;
