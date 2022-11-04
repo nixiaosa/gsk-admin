@@ -79,11 +79,12 @@ var page = new Vue({
                 cateSlug:'jingyingguanli',
                 cateName:'经营管理',
                 select:false
-            },{
-                cateSlug:'hangyezixun',
-                cateName:'行业资讯',
-                select:false
             }
+            // {
+            //     cateSlug:'hangyezixun',
+            //     cateName:'行业资讯',
+            //     select:false
+            // }
         ]
     },
     methods: {
