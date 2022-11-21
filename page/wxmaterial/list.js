@@ -83,10 +83,33 @@ var page = new Vue({
                 cateName:'口腔预防',
                 select:false
             },{
-                cateSlug:'huanzhejiaoyu',
-                cateName:'患者教育',
+                cateSlug:'huanzhejiaoyu-1',
+                cateName:'患者教育-牙敏感',
                 select:false
             },{
+                cateSlug:'huanzhejiaoyu-2',
+                cateName:'患者教育-口腔正畸',
+                select:false
+            },{
+                cateSlug:'huanzhejiaoyu-3',
+                cateName:'患者教育-义齿护理',
+                select:false
+            },{
+                cateSlug:'huanzhejiaoyu-4',
+                cateName:'患者教育-义齿稳固',
+                select:false
+            },
+            {
+                cateSlug:'huanzhejiaoyu-5',
+                cateName:'患者教育-常规口腔患教',
+                select:false
+            },
+            {
+                cateSlug:'huanzhejiaoyu-6',
+                cateName:'患者教育-牙基会合作专区',
+                select:false
+            },
+            {
                 cateSlug:'jingyingguanli',
                 cateName:'经营管理',
                 select:false
