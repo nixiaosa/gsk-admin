@@ -13,20 +13,20 @@ var storage = {
         } else {
             return null;
         }
-
+        
     },
     remove(key) {
         localStorage.removeItem(key);
     }
 }
 var cookies = {
-    set(key, value) {
+    set(key, value, _path = '/') {
         var expdate = new Date();
         //设置Cookie过期日期
         expdate.setDate(expdate.getDate() + 5) ;
         console.log(value);
         //添加Cookie
-        document.cookie = key + "=" + escape(value) + ";expires=" + expdate.toUTCString();
+        document.cookie = key + "=" + escape(value) + ";expires=" + expdate.toUTCString() + ';path=' + _path;
     },
     get(key) {
         //获取name在Cookie中起止位置
@@ -58,33 +58,35 @@ function decode(val){
 }
 var login = {
     showLogin() {
-        $("#login_div").show();
+       $("#login_div").show();
     },
     hideLogin() {
         $("#login_div").hide();
     },
     confimLog(mobile, password,captcha) {
+
         var json = {
             key: mobile,
             // authCode:captcha,
             value: password
         };
-        HttpUtils.requestPost("/api/admin/getinfo", JSON.stringify(json), function (dataResult) {
+        HttpUtils.requestPost("/api/admin/login", JSON.stringify(json), function (dataResult) {
             if (dataResult.status == 1000) {
                 if(dataResult.data.key != 'loginlock'){
                     storage.set("userInfo", {
-                        // mobile: dataResult.data.key,
+                        //mobile: dataResult.data.key,
                         // token: dataResult.data.value,
-                        funcs:dataResult.data.datas
+                        funcs:dataResult.data.datas,
+                        mobile: dataResult.data.key
                     });
-                    cookies.set('givenName',dataResult.data.key);
+                    cookies.set('cmtgsk',dataResult.data.value);
                     login.hideLogin();
                     window.location.reload();
                 } else {
                     $("#login_tip").show();
                     $("#login_tip").text(dataResult.data.value);
                 }
-
+                
             } else {
 
                 // if(dataResult.status == 1002){
@@ -92,12 +94,6 @@ var login = {
                     $("#login_tip").text(dataResult.data);
                 // }
                 //HttpUtils.showMessage("手机号或密码错误");
-                    login.showLogin();
-				    $('#loginName').val('');
-				    storage.set("userInfo", "exit");
-                    // window.location.href= "https://"+window.location.host+"/yake.manage/page/index.html";
-                    window.location.href= "https://"+window.location.host+"/gsk-admin/#/";
-                    return;
             }
         });
     }
@@ -162,27 +158,11 @@ var plus_sub_btn = {//加减操作
 //     return hostUrl;
 // }
 
-// var getHostUrl = () =>{
-// let hostUrl = '';
-// const href = window.location.href
-//   if (href.indexOf('.dev.') >= 0) {
-//     hostUrl = 'https://gsk.dev.100url.cn/yake.manage' // 本地调试走代理
-//   } else if (href.indexOf('.test.') >= 0) {
-//     hostUrl = 'https://gsk.test.100url.cn/yake.manage'
-//   } else if (href.indexOf('localhost') >= 0 ){
-//     hostUrl = ''
-//   } else if (href.indexOf('skyyh') >= 0 ){
-//     hostUrl = 'https://skyyh.healthy-bone.com.cn/yake.manage' //gsk生产
-//   } else {
-//     hostUrl = 'https://healthy-bone.com.cn/yake.manage'  //gsk测试
-//   }
-//   return hostUrl;
-// }
 var getHostUrl = () =>{
-    // let hostUrl = 'https://gsk-k8s.100url.cn/yake.manage';
-    let hostUrl = 'https://skyyh-yb.corpnet5.com/yake.manage';
-      return hostUrl;
-    }
+// let hostUrl = 'https://gsk-k8s.100url.cn/yake.manage';
+let hostUrl = 'https://skyyh-ybtest.corpnet5.com/yake.manage';
+  return hostUrl;
+}
 
 var HttpUtils = {
     data: {
@@ -213,7 +193,7 @@ var HttpUtils = {
                 dataType: "json",
                 success: function(XMLHttpRequest){
                     if(XMLHttpRequest.status == 1008){
-                        window.location.href= "https://"+window.location.host+"/yake.manage/page/index.html";
+                        window.location.href= "http://"+window.location.host+"/yake.manage/page/index.html#/";
                     } else {
                         func(XMLHttpRequest);
                     }
@@ -224,9 +204,10 @@ var HttpUtils = {
                         _this.showMessage("登录时间超时");
                         login.showLogin();
 					    $('#loginName').val('');
-					    storage.set("userInfo", "exit");
+                        storage.set("userInfo", null);
+                        // window.location.href= "http://"+window.location.host+"/yake.manage/page/index.html#/";
                         window.location.href= "https://"+window.location.host+"/gsk-admin/#/";
-                        return;
+		                return;
                     } else {
 
                         if (XMLHttpRequest.status == 413) {
@@ -235,7 +216,7 @@ var HttpUtils = {
                             _this.showMessage("登录时间超时");
                             login.showLogin();
 					        $('#loginName').val('');
-                            storage.set("userInfo", "exit");
+                            storage.set("userInfo", null);
                             // window.location.href= "http://"+window.location.host+"/yake.manage/page/index.html#/";
                             window.location.href= "https://"+window.location.host+"/gsk-admin/#/";
 		                    return;
@@ -261,7 +242,7 @@ var HttpUtils = {
                 contentType: "application/json;charset=UTF-8",
                 success: function(XMLHttpRequest){
                     if(XMLHttpRequest.status == 1008){
-                        window.location.href= "https://"+window.location.host+"/yake.manage/page/index.html";
+                        window.location.href= "https://"+window.location.host+"/yake.manage/page/index.html#/";
                     } else {
                         func(XMLHttpRequest);
                     }
@@ -272,7 +253,7 @@ var HttpUtils = {
                         _this.showMessage("登录时间超时");
                         login.showLogin();
 					    $('#loginName').val('');
-                        storage.set("userInfo", "exit");
+                        storage.set("userInfo", null);
                         // window.location.href= "https://"+window.location.host+"/yake.manage/page/index.html#/";
                         window.location.href= "https://"+window.location.host+"/gsk-admin/#/";
 		                return;
@@ -284,7 +265,7 @@ var HttpUtils = {
                             _this.showMessage("登录时间超时");
                             login.showLogin();
 					        $('#loginName').val('');
-                            storage.set("userInfo", "exit");
+                            storage.set("userInfo", null);
                             // window.location.href= "https://"+window.location.host+"/yake.manage/page/index.html#/";
                             window.location.href= "https://"+window.location.host+"/gsk-admin/#/";
 		                    return;
