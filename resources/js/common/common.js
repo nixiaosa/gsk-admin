@@ -180,7 +180,7 @@ var plus_sub_btn = {//加减操作
 // }
 var getHostUrl = () =>{
     // let hostUrl = 'https://gsk-k8s.100url.cn/yake.manage';
-    let hostUrl = 'https://skyyh-yb.corpnet5.com/yake.manage';
+    let hostUrl = 'https://skyyh-ybtest.corpnet5.com/yake.manage';
       return hostUrl;
     }
 
