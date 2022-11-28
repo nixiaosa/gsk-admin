@@ -1,166 +1,19 @@
-<div class="container" id="master_home_config_info_div">
-    <div class="weui_cells_title">首页轮播图配置</div>
-    <div class="weui_cells">
-        <div class="weui_cell">
-            <div class="weui_uploader_bd" style=" margin-left: 20px;">
-                <c-ul class="weui_uploader_files">
-                    <li name="lunbo_li" class="weui_uploader_file weui_uploader_input_wrp" style="width:350px;height:150px;clear:inherit" data-img-seq-number="1" data-id="0">
-                        <input class="weui_uploader_input" style="position:static" name="imgfile" w="16" h="6" type="file"
-                            data-cutImg-ParentId="master_home_config_info_div" id="headimgurl123">
-                            <input type="text" placeholder="http://" value="1"  class="weui_input lunbo_text" >
-                    </li>
-                    <li name="lunbo_li" class="weui_uploader_file weui_uploader_input_wrp" style="width:350px;height:150px;clear:inherit"  data-img-seq-number="2" data-id="0">
-                        <input class="weui_uploader_input" style="position:static" name="imgfile" w="16" h="6" type="file"
-                            data-cutImg-ParentId="master_home_config_info_div" id="headimgurl124">
-                            <input type="text" placeholder="http://" value="2"  class="weui_input lunbo_text" >
-                    </li>
-                    <li name="lunbo_li" class="weui_uploader_file weui_uploader_input_wrp" style="width:350px;height:150px;clear:inherit"  data-img-seq-number="3" data-id="0">
-                        <input class="weui_uploader_input" style="position:static" name="imgfile" w="16" h="6" type="file"
-                            data-cutImg-ParentId="master_home_config_info_div" id="headimgurl125">
-                            <input type="text" placeholder="http://" value="3"  class="weui_input lunbo_text" >
-                    </li>
-                    <li name="lunbo_li" class="weui_uploader_file weui_uploader_input_wrp" style="width:350px;height:150px;clear:inherit"  data-img-seq-number="4" data-id="0">
-                        <input class="weui_uploader_input" style="position:static" name="imgfile" w="16" h="6" type="file"
-                            data-cutImg-ParentId="master_home_config_info_div" id="headimgurl129">
-                            <input type="text" placeholder="http://" value="4" class="weui_input lunbo_text" >
-                    </li>
-                    <li name="lunbo_li" class="weui_uploader_file weui_uploader_input_wrp" style="width:350px;height:150px;clear:inherit"  data-img-seq-number="5" data-id="0">
-                        <input class="weui_uploader_input" style="position:static" name="imgfile" w="16" h="6" type="file"
-                            data-cutImg-ParentId="master_home_config_info_div" id="headimgurl130">
-                            <input type="text" placeholder="http://" value="5" class="weui_input lunbo_text" >
-                    </li>
-                </c-ul>
-            </div>
-        </div>
-    </div>
-    <div class="weui_cells_title">Banner</div>
-    <div class="weui_cells">
-        <div class="weui_cell">
-            <div class="weui_uploader_bd" style=" margin-left: 20px;">
-                <c-ul class="weui_uploader_files">
-                    <li name="banner_li" class="weui_uploader_file weui_uploader_input_wrp" style="width:350px;height:150px;clear:inherit" data-img-seq-number="1" data-id="0">
-                        <input class="weui_uploader_input" style="position:static" name="imgfile" w="16" h="6" type="file"
-                            data-cutImg-ParentId="master_home_config_info_div" id="headimgurl126">
-                            <input type="text" placeholder="大咖讲堂"  class="weui_input lunbo_text" value="大咖讲堂" readonly>
-                    </li>
-                    <li name="banner_li" class="weui_uploader_file weui_uploader_input_wrp" style="width:350px;height:150px;clear:inherit"  data-img-seq-number="2" data-id="0">
-                        <input class="weui_uploader_input" style="position:static" name="imgfile" w="16" h="6" type="file"
-                            data-cutImg-ParentId="master_home_config_info_div" id="headimgurl127">
-                            <input type="text" placeholder="每日签到"  class="weui_input lunbo_text" value="每日签到" readonly>
-                    </li>
-                    <li name="banner_li" class="weui_uploader_file weui_uploader_input_wrp" style="width:350px;height:150px;clear:inherit"  data-img-seq-number="3" data-id="0">
-                        <input class="weui_uploader_input" style="position:static" name="imgfile" w="16" h="6" type="file"
-                            data-cutImg-ParentId="master_home_config_info_div" id="headimgurl128">
-                            <input type="text" placeholder="趣味活动"  class="weui_input lunbo_text" value="趣味活动" readonly>
-                    </li>
-                </c-ul>
-            </div>
-        </div>
-    </div>
-    <div class="weui_btn_area weui_btn_area_inline">
-        <a href="javascript:;" class="weui_btn weui_btn_primary" v-on:click="save_setting_data()">保存</a>
-    </div>
-
-    <div class="pop" style="display: none">
-
-        <div class="weui_cells_title">搜索条件</div>
-        <div class="weui_cells">
-            <div class="weui_cell">
-                <div class="weui_cells_title">商品名称</div>
-                <div class="weui_cell_bd weui_cell_primary">
-                    <input id="proName" class="weui_input" maxlength="100" placeholder="名称" type="text">
-                </div>
-            </div>
-            <div class="weui_cell">
-                <div class="weui_cell_bd weui_cell_primary">
-                    <a href="javascript:;" class="weui_btn weui_btn_primary" v-on:click="search_pro(true)">搜索</a>
-                </div>
-            </div>
-        </div>
-        <div class="weui_cells_title">商品列表</div>
-        <div class="weui_cells" style="overflow: scroll">
-            <table class="weui-table weui-border-tb weui-table-2n">
-                <thead>
-                    <tr>
-                        <th class="table_th"></th>
-                        <th class="table_th">名称</th>
-                        <th class="table_th">展示价格</th>
-                        <th class="table_th">原价格</th>
-                        <th class="table_th">成本价格</th>
-                        <th class="table_th">状态</th>
-                        <th class="table_th">更新时间</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr name="pro_menu_option" v-for="(item,index) in product_datas" style="background-color:#ffffff;font-size:14px;color:#888">
-                        <td>
-                            <input type="radio" class="weui-icon-radio" name="one-type-radio" v-bind:data-pro-index="index"></input>
-                        </td>
-                        <td>
-                            <label>{{item.name}}</label>
-                        </td>
-                        <td>
-                            <label>{{item.newPrice}}</label>
-                        </td>
-                        <td>
-                            <label>{{item.oldPrice}}</label>
-                        </td>
-                        <td>
-                            <label>{{item.costPrice}}</label>
-                        </td>
-                        <td>
-                            <label>{{item.statusName}}</label>
-                        </td>
-                        <td>
-                            <label>{{item.updateTime}}</label>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="weui_cells">
-            <div class="weui_cell">
-                <div class="weui_btn_area weui_btn_area_inline" style="margin:0;">
-                    <a href="javascript:;" class="weui_btn weui_btn_primary" style="width:150px;" v-on:click="cancel_pro_select_fun()">取消</a>
-                    <a href="javascript:;" class="weui_btn weui_btn_primary"  v-on:click="config_select_pro()">确认选择</a>
-                </div>
-            </div>
-        </div>
-
-    </div>
+<div class="container" id="master_point_manage_div">
+    <iframe id="inlineFrameExample"
+        title="积分规则"
+        width="100%"
+        height="1000"
+        src="https://gsk-k8s.100url.cn/gsk-cbgm/#/basedata/gsk/indexManage">
+    </iframe>
 </div>
-<script type="text/javascript" src="homeconfig/info.js"></script>
+<!-- <script type="text/javascript" src="users/point_set.js"></script> -->
 <style>
-    .pro_p {
-        position: relative;
-        bottom: 48px;
-        background-color: #F8F8F8;
-        font-size: 15px;
-        color: #888;
-        height: 44px;
-        opacity: 0.6;
-    }
-
-    .pop {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: #F1F1F1;
-        z-index: 1000;
-        height: 100%;
+    iframe {
+        border: none;
         width: 100%;
-        animation: poupFadIn 0.5s ease 0s 1;
-        outline: none;
     }
-    .lunbo_text{
-        position: relative;
-    bottom: 48px;
-    background-color: #F8F8F8;
-    font-size: 30px;
-    color: #888;
-    height: 44px;
-    opacity: 0.9;
+    
+    .output {
+        background: #eee;
     }
 </style>
