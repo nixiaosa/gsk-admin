@@ -38,15 +38,18 @@
     </div>
     <div class="weui_cells_title">商品兑换有效期</div>
     <div class="weui_cells">
-        <div class="weui_cell_bd weui_cell_primary">
+        <div class="weui_cell_bd weui_cell_primary" style="padding: 20px 0">
             <el-date-picker
                 v-model="pro_info.startValidity"
                 type="date"
+                format="yyyy-MM-dd"
                 placeholder="选择日期">
             </el-date-picker>
+            --
             <el-date-picker
                 v-model="pro_info.endExpiry"
                 type="date"
+                format="yyyy-MM-dd"
                 placeholder="选择日期">
             </el-date-picker>
         </div>
