@@ -392,6 +392,13 @@ const Qa_Manage = {
 	}
 }
 
+const Qa_Confidence = {
+	template: "<div id='qa_confidence_div'></div>",
+	mounted: function () {
+		$('#qa_confidence_div').load('../page/users/qaconfidence.html');
+	}
+}
+
 const Answer_Create = {
 	template: "<div id='answer_create_div'></div>",
 	mounted: function () {
@@ -646,6 +653,10 @@ const routes = [{
 	{
 		path: '/qa_manage', // 调研问卷-管理
 		component: Qa_Manage
+	},
+	{
+		path: '/qa_confidence', // 调研问卷-开业信心指数
+		component: Qa_Confidence
 	},
 	{
 		path: '/answer_create', // 线上答题-创建
