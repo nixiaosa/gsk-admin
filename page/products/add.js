@@ -16,6 +16,8 @@ var page = new Vue({
             name: "",
             newPrice: "0.00",
             oldPrice: "0.00",
+            startValidity: '',
+            endExpiry:'',
             oneTypes: [{
                 isAdd: false,
                 name: "",
