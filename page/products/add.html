@@ -2,7 +2,7 @@
  * @Author: Chance Lau
  * @Date: 2022-05-27 15:58:42
  * @LastEditors: Chance Lau
- * @LastEditTime: 2022-07-06 17:48:06
+ * @LastEditTime: 2022-12-01 19:59:11
  * @Description: file content
 -->
 <div class="container" id="master_product_add_div">
@@ -41,14 +41,14 @@
         <div class="weui_cell_bd weui_cell_primary" style="padding: 20px 0">
             <el-date-picker
                 v-model="pro_info.startValidity"
-                type="date"
+                type="datetime"
                 value-format="timestamp"
                 placeholder="选择日期">
             </el-date-picker>
             --
             <el-date-picker
                 v-model="pro_info.endExpiry"
-                type="date"
+                type="datetime"
                 value-format="timestamp"
                 placeholder="选择日期">
             </el-date-picker>
