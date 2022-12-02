@@ -78,6 +78,7 @@ var imgUpload = {
 				};
 				HttpUtils.requestPost("/api/img/cutImage", JSON.stringify(jsonData), function (dataResult) {
 					callback(dataResult);
+					console.log('lc2',dataResult)
 
 					$(".cutmask,.cutpic").remove();
 				});
