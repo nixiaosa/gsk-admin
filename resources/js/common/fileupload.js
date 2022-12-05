@@ -17,7 +17,7 @@ var imgUpload = {
 					"x": 0,
 					"y": 0,
 					"x2": 600,
-					"y2": 600,
+					"y2": 900,
 					"aspectRatio": thisW / thisH,
 					"imgName": imgName,
 					"width": 1000,
