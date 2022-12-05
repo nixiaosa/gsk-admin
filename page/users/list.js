@@ -2,9 +2,16 @@ var page = new Vue({
     el: '#master_user_list_div',
     data: {
         user_datas: [],
-        pageIndex:0
+        pageIndex:0,
+
+        currentPage: 1,
+        total: 1,
     },
     methods: {
+        handleCurrentChange(val) {
+            // this.currentPage = val;
+            // this.getApplyList(val)
+        },
         save_status: function (index) {
 
             var _this = this;
