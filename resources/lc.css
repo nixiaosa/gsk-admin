@@ -1,0 +1,3 @@
+.el-pagination.is-background .el-pager li:not(.disabled).active {
+    background-color:  #04be02 !important;
+}
