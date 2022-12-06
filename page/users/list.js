@@ -9,8 +9,8 @@ var page = new Vue({
     },
     methods: {
         handleCurrentChange(val) {
-            // this.currentPage = val;
-            // this.getApplyList(val)
+            this.currentPage = val;
+            this.search_datas(val);
         },
         save_status: function (index) {
 
@@ -35,35 +35,40 @@ var page = new Vue({
                 //取消操作
             });
         },
-        search_datas: function (isSearch) {
+        search_datas: function (val) {
             var _this = this;
 
-            if(isSearch){
-                _this.pageIndex=0;
-                _this.user_datas=[];
-            }
+            // if(isSearch){
+            //     _this.pageIndex=0;
+            //     _this.user_datas=[];
+            // }
 
             var jsonData = {
                 key: $("#mobile").val(),
                 startTime:$("#startTime").val(),
                 endTime:$("#endTime").val(),
-                pageIndex:_this.pageIndex
+                // pageIndex:_this.pageIndex,
+                pageIndex: 1,
+                pageSize: 10,
             };
 
             HttpUtils.requestPost("/api/user/searchInfos", JSON.stringify(jsonData), function (dataResult) {
                 if (dataResult.status == 1000) {
 
-                    if(isSearch){
-                        _this.user_datas = dataResult.data;
-                    }else{
-                        if(dataResult.data!=null){
-                            for(var i=0;i<dataResult.data.length;i++){
-                                _this.user_datas.push(dataResult.data[i]);
-                            }
-                        }
-                    }
+                    // if(isSearch){
+                    //     // _this.user_datas = dataResult.data;
+                    // }else{
+                    //     if(dataResult.data!=null){
+                    //         for(var i=0;i<dataResult.data.length;i++){
+                    //             _this.user_datas.push(dataResult.data[i]);
+                    //         }
+                    //     }
+                    // }
 
-                    _this.pageIndex=_this.pageIndex+1;
+                    // _this.pageIndex=_this.pageIndex+1;
+
+                    _this.user_datas = dataResult.data.list;
+                    _this.total = res.data.data.total;
                     
                 }
             });
@@ -100,21 +105,21 @@ var page = new Vue({
     },
     mounted: function () {
         var _this=this;
-        this.search_datas(true);
+        this.search_datas(1);
         this.initDate();
 
-        $(window).scroll(function () {　　
-			var scrollTop = $(this).scrollTop();　　
-			var scrollHeight = $(document).height();　　
-            var windowHeight = $(this).height();　　
-            var href=location.href;
-			if (scrollTop + windowHeight >= scrollHeight) {　
+        // $(window).scroll(function () {　　
+		// 	var scrollTop = $(this).scrollTop();　　
+		// 	var scrollHeight = $(document).height();　　
+        //     var windowHeight = $(this).height();　　
+        //     var href=location.href;
+		// 	if (scrollTop + windowHeight >= scrollHeight) {　
                 
-                if(href.indexOf("user_list")>0){
-                    _this.search_datas(false);
-                }　　　 //alert("已经到最底部了！");　
+        //         if(href.indexOf("user_list")>0){
+        //             _this.search_datas(false);
+        //         }　　　 //alert("已经到最底部了！");　
 				
-			}
-		});
+		// 	}
+		// });
     }
 });
