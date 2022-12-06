@@ -68,7 +68,7 @@ var page = new Vue({
                     // _this.pageIndex=_this.pageIndex+1;
 
                     _this.user_datas = dataResult.data.list;
-                    _this.total = res.data.data.total;
+                    _this.total = dataResult.data.total;
                     
                 }
             });
