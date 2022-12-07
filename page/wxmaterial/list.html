@@ -89,5 +89,13 @@
             </tbody>
         </table>
     </div>
+    <div style="margin: 20px"></div>
+    <el-pagination
+      background
+      layout="total, prev, pager, next"
+      :current-page.sync="currentPage"
+      @current-change="handleCurrentChange"
+      :total="total"
+    ></el-pagination>
 </div>
 <script type="text/javascript" src="wxmaterial/list.js"></script>
