@@ -1,7 +1,11 @@
 var page = new Vue({
     el: '#master_admin_list_div',
     data: {
-        admin_datas: []
+        admin_datas: [],
+        pageIndex:0,
+
+        currentPage: 1,
+        total: 1,
     },
     methods: {
         link_to_detail: function (index) {
@@ -26,7 +30,7 @@ var page = new Vue({
                 };
                 HttpUtils.requestPost("/api/admin/saveStatus", JSON.stringify(jsonData), function (dataResult) {
                     if (dataResult.status == 1000) {
-                        _this.search_datas();
+                        _this.search_datas(1);
                         $.toast("操作成功!");
                     } else {
                         $.toast("操作失败!");
@@ -36,20 +40,27 @@ var page = new Vue({
                 //取消操作
             });
         },
-        search_datas: function () {
+        handleCurrentChange(val) {
+            this.currentPage = val;
+            this.search_datas(val);
+        },
+        search_datas: function (val) {
             var _this = this;
             var jsonData = {
-                key: $("#mobile").val()
+                key: $("#mobile").val(),
+                pageIndex: this.currentPage,
+                pageSize: 10,
             };
 
             HttpUtils.requestPost("/api/admin/searchInfos", JSON.stringify(jsonData), function (dataResult) {
                 if (dataResult.status == 1000) {
-                    _this.admin_datas = dataResult.data;
+                    _this.admin_datas = dataResult.data.list;
+                    _this.total = dataResult.data.total;
                 }
             });
         }
     },
     mounted: function () {
-        this.search_datas();
+        this.search_datas(1);
     }
 });
