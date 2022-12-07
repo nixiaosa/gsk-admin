@@ -7,33 +7,37 @@ var page = new Vue({
             statusName: '待上架',
             createTimeStr:'2018-09-03 12:23:12'
         }],
-        pageIndex:0
+        pageIndex:0,
+        currentPage: 1,
+        total: 1,
     },
     methods:{
         search_pro:function(isSearch){
             var _this=this;
-            if(isSearch){
-                _this.pageIndex=0;
-                _this.product_datas=[];
-            }
+            // if(isSearch){
+            //     _this.pageIndex=0;
+            //     _this.product_datas=[];
+            // }
 
             var name=$("#proName").val();
             var status=[];
 
-            var jsonData={name:name,status:status,pageIndex:_this.pageIndex};
+            var jsonData={name:name,status:status,pageIndex:_this.currentPage};
             HttpUtils.requestPost("/api/activity/list",JSON.stringify(jsonData),function(dataResult){
                 if(dataResult.status==1000){
-                    if(isSearch){
-                        _this.product_datas=dataResult.data;
-                    }else{
-                        if(dataResult.data!=null){
-                            for(var i=0;i<dataResult.data.length;i++){
-                                _this.product_datas.push(dataResult.data[i]);
-                            }
-                        }
-                    }
+                    // if(isSearch){
+                    //     _this.product_datas=dataResult.data;
+                    // }else{
+                    //     if(dataResult.data!=null){
+                    //         for(var i=0;i<dataResult.data.length;i++){
+                    //             _this.product_datas.push(dataResult.data[i]);
+                    //         }
+                    //     }
+                    // }
 
-                    _this.pageIndex=_this.pageIndex+1;
+                    // _this.pageIndex=_this.pageIndex+1;
+                    _this.product_datas = dataResult.data.list;
+                    _this.total = dataResult.data.total;
                 }
             });
         },
@@ -60,6 +64,6 @@ var page = new Vue({
     },
     mounted: function () {
         var _this=this;
-        this.search_pro(true);
+        this.search_pro(1);
     }
 });
