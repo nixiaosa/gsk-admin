@@ -154,7 +154,7 @@ var page = new Vue({
             var materialType = $("#materialType").val();
             var status=[];
 
-            var jsonData={name:name,slug:cateSlug,status:status,materialType:materialType,pageIndex:_this.currentPage,value:proSatus};
+            var jsonData={name:name,slug:cateSlug,status:status,materialType:materialType,pageIndex:_this.currentPage,value:proSatus,pageSize:10};
             HttpUtils.requestPost("/api/wxmaterial/list",JSON.stringify(jsonData),function(dataResult){
                 if(dataResult.status==1000){
                     // if(isSearch){
