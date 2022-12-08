@@ -34,7 +34,11 @@ var page = new Vue({
                 'select':false
             }
         ],
-        selectedType:1
+        selectedType:1,
+        pageIndex:0,
+
+        currentPage: 1,
+        total: 1,
     },
     methods: {
         selcet_cate_fun:function(event){
@@ -52,12 +56,16 @@ var page = new Vue({
                 }
             }
         },
-        search_datas: function (isSearch) {
+        handleCurrentChange(val) {
+            this.currentPage = val;
+            this.search_datas(val);
+        },
+        search_datas: function (val) {
             var _this = this;
 
-            if(isSearch){
-                _this.user_datas=[];
-            }
+            // if(isSearch){
+            //     _this.user_datas=[];
+            // }
             if($("#startTime").val() == ""){
                 HttpUtils.showMessage("请选择查询开始时间");
 				return false;
@@ -71,18 +79,22 @@ var page = new Vue({
             var jsonData = {
                 beginDate:$("#startTime").val(),
                 endDate:$("#endTime").val(),
-                dataType:$('#type').val()
+                dataType:$('#type').val(),
+                pageIndex: val,
+                pageSize: 10,
             };
 
             HttpUtils.requestPost("/api/analysis/wechat/getarticlesummary", JSON.stringify(jsonData), function (dataResult) {
                 if (dataResult.status == 1000) {
-                    if(isSearch){
-                        _this.user_datas = dataResult.data;
-                        _this.user_datas.map((item,index) => {
-                            item.getDate = timestampToTime(item.getDate);
-                        })
-                        console.log(_this.user_datas)
-                    }
+                    // if(isSearch){
+                    //     _this.user_datas = dataResult.data;
+                    //     _this.user_datas.map((item,index) => {
+                    //         item.getDate = timestampToTime(item.getDate);
+                    //     })
+                    //     console.log(_this.user_datas)
+                    // }
+                    _this.user_datas = dataResult.data.list;
+                    _this.total = dataResult.data.total;
                 }
             });
         },
@@ -114,7 +126,7 @@ var page = new Vue({
     },
     mounted: function () {
         var _this=this;
-        // this.search_datas(true);
+        // this.search_datas(1);
         this.initDate();
     }
 });

@@ -31,8 +31,16 @@ var page = new Vue({
                 'select':false
             }
         ],
+        pageIndex:0,
+
+        currentPage: 1,
+        total: 1,
     },
     methods: {
+        handleCurrentChange(val) {
+            this.currentPage = val;
+            this.search_datas(val);
+        },
         selcet_cate_fun:function(event){
             var obj = event.currentTarget;
             var currValue=$(obj).val();
@@ -59,12 +67,12 @@ var page = new Vue({
                 }
             }
         },
-        search_datas: function (isSearch) {
+        search_datas: function (val) {
             var _this = this;
 
-            if(isSearch){
-                _this.user_datas=[];
-            }
+            // if(isSearch){
+            //     _this.user_datas=[];
+            // }
             if($("#startTime").val() == ""){
                 HttpUtils.showMessage("请选择查询开始时间");
 				return false;
@@ -80,22 +88,26 @@ var page = new Vue({
                 endDate:$("#endTime").val(),
                 dataType:$('#type').val(),
                 dateType:$('#dateType').val(),
+                pageIndex: val,
+                pageSize: 10,
             };
 
             HttpUtils.requestPost("/api/analysis/applet/getdailyretain", JSON.stringify(jsonData), function (dataResult) {
                 if (dataResult.status == 1000) {
-                    if(isSearch){
-                        _this.user_datas = dataResult.data;
-                        _this.user_datas.map((item,index) => {
-                            item.getDate = timestampToTime(item.getDate);
-                        })
-                        if(_this.user_datas.length == 0 && ($('#dateType').val() == 2 || $('#dateType').val() == 3)){
-                            var text = $('#dateType').val() == '2' ? '周' : '月'
-                            HttpUtils.showMessage("查询起始日期必须包含上一个自然"+text);
-				            return false;
-                        }
-                        console.log(_this.user_datas)
-                    }
+                    // if(isSearch){
+                    //     _this.user_datas = dataResult.data;
+                    //     _this.user_datas.map((item,index) => {
+                    //         item.getDate = timestampToTime(item.getDate);
+                    //     })
+                    //     if(_this.user_datas.length == 0 && ($('#dateType').val() == 2 || $('#dateType').val() == 3)){
+                    //         var text = $('#dateType').val() == '2' ? '周' : '月'
+                    //         HttpUtils.showMessage("查询起始日期必须包含上一个自然"+text);
+				    //         return false;
+                    //     }
+                    //     console.log(_this.user_datas)
+                    // }
+                    _this.user_datas = dataResult.data.list;
+                    _this.total = dataResult.data.total;
                 }
             });
         },
@@ -127,7 +139,7 @@ var page = new Vue({
     },
     mounted: function () {
         var _this=this;
-        // this.search_datas(true);
+        // this.search_datas(1);
         this.initDate();
     }
 });
