@@ -12,7 +12,7 @@ var page = new Vue({
             this.currentPage = val;
             this.search_datas(val);
         },
-        search_datas: function (isSearch) {
+        search_datas: function (val) {
             var _this = this;
 
             // if(isSearch){
@@ -24,7 +24,7 @@ var page = new Vue({
                 startTime:$("#startTime").val(),
                 endTime:$("#endTime").val(),
                 // pageIndex:_this.pageIndex,
-                pageIndex: this.currentPage,
+                pageIndex: val,
                 pageSize: 10,
             };
 

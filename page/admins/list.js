@@ -48,7 +48,7 @@ var page = new Vue({
             var _this = this;
             var jsonData = {
                 key: $("#mobile").val(),
-                pageIndex: this.currentPage,
+                pageIndex: val,
                 pageSize: 10,
             };
 

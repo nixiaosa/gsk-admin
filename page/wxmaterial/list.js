@@ -141,7 +141,7 @@ var page = new Vue({
                 }
             }
         },
-        search_pro:function(isSearch){
+        search_pro:function(val){
             var _this=this;
             // if(isSearch){
             //     _this.pageIndex=0;
@@ -154,7 +154,7 @@ var page = new Vue({
             var materialType = $("#materialType").val();
             var status=[];
 
-            var jsonData={name:name,slug:cateSlug,status:status,materialType:materialType,pageIndex:_this.currentPage,value:proSatus,pageSize:10};
+            var jsonData={name:name,slug:cateSlug,status:status,materialType:materialType,pageIndex:val,value:proSatus,pageSize:10};
             HttpUtils.requestPost("/api/wxmaterial/list",JSON.stringify(jsonData),function(dataResult){
                 if(dataResult.status==1000){
                     // if(isSearch){

@@ -31,7 +31,7 @@ var page = new Vue({
                 status.push($(this).val());
             });
 
-            var jsonData={name:name,status:status,pageIndex:_this.currentPage,pageSize:10};
+            var jsonData={name:name,status:status,pageIndex:val,pageSize:10};
             HttpUtils.requestPost("/api/product/findPros",JSON.stringify(jsonData),function(dataResult){
                 if(dataResult.status==1000){
                     // if(isSearch){

@@ -12,7 +12,11 @@ var page = new Vue({
         total: 1,
     },
     methods:{
-        search_pro:function(isSearch){
+        handleCurrentChange(val) {
+            this.currentPage = val;
+            this.search_pro(val);
+        },
+        search_pro:function(val){
             var _this=this;
             // if(isSearch){
             //     _this.pageIndex=0;
@@ -22,7 +26,7 @@ var page = new Vue({
             var name=$("#proName").val();
             var status=[];
 
-            var jsonData={name:name,status:status,pageIndex:_this.currentPage};
+            var jsonData={name:name,status:status,pageIndex:val};
             HttpUtils.requestPost("/api/activity/list",JSON.stringify(jsonData),function(dataResult){
                 if(dataResult.status==1000){
                     // if(isSearch){

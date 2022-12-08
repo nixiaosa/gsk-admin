@@ -26,7 +26,7 @@ var page = new Vue({
             var name=$("#proName").val();
             var status=[];
 
-            var jsonData={name:name,status:status,pageIndex:_this.currentPage,pageSize:10};
+            var jsonData={name:name,status:status,pageIndex:val,pageSize:10};
             HttpUtils.requestPost("/api/live/post_list",JSON.stringify(jsonData),function(dataResult){
                 if(dataResult.status==1000){
                     // if(isSearch){
