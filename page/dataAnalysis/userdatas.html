@@ -32,7 +32,7 @@
         </div>
         <div class="weui_cell">
             <div class="weui_cell_bd weui_cell_primary" style="margin-left: 5px;margin-right: 5px;">
-                <a href="javascript:;" class="weui_btn weui_btn_primary" v-on:click="search_datas(1)">搜索</a>
+                <a href="javascript:;" class="weui_btn weui_btn_primary" v-on:click="search_datas(true)">搜索</a>
                
             </div>
             <div class="weui_cell_bd weui_cell_primary" >
@@ -77,13 +77,5 @@
             </tbody>
         </table>
     </div>
-    <div style="margin: 20px"></div>
-    <el-pagination
-      background
-      layout="total, prev, pager, next"
-      :current-page.sync="currentPage"
-      @current-change="handleCurrentChange"
-      :total="total"
-    ></el-pagination>
 </div>
 <script type="text/javascript" src="dataAnalysis/userdatas.js"></script>
