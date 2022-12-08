@@ -50,7 +50,7 @@ var page = new Vue({
                 if(this.cate_datas[i].type == currValue){
                     this.cate_datas[i].select = true;
                     this.selectedType = this.cate_datas[i].type;
-                    this.search_datas(true);
+                    this.search_datas(1);
                 }else{
                     this.cate_datas[i].select = false;
                 }
