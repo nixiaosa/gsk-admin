@@ -48,7 +48,7 @@ var page = new Vue({
                 startTime:$("#startTime").val(),
                 endTime:$("#endTime").val(),
                 // pageIndex:_this.pageIndex,
-                pageIndex: this.currentPage,
+                pageIndex: val,
                 pageSize: 10,
             };
 
