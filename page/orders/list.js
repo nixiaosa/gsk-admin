@@ -30,37 +30,46 @@ var page = new Vue({
             payType: '微信支付',
             payAccountName: 'wx0978'
         }],
-        pageIndex:0
+        pageIndex:0,
+
+        currentPage: 1,
+        total: 1,
     },
     methods:{
         link_to_detail:function(index){
             var uuid=this.order_datas[index].uuid;
             router.push({path:'order_info',query:{uuid:uuid}});
         },
-        search_order:function(isSearch){
+        handleCurrentChange(val) {
+            this.currentPage = val;
+            this.search_order(val);
+        },
+        search_order:function(val){
             var _this=this;
-            if(isSearch){
-                _this.pageIndex=0;
-                _this.order_datas=[];
-            }
+            // if(isSearch){
+            //     _this.pageIndex=0;
+            //     _this.order_datas=[];
+            // }
 
             var orderNumber=$("#orderNumber").val();
             var status=[];
 
-            var jsonData={orderNumber:orderNumber,status:status,pageIndex:_this.pageIndex};
+            var jsonData={orderNumber:orderNumber,status:status,pageIndex:val,pageSize:10};
             HttpUtils.requestPost("/api/order/findOrders",JSON.stringify(jsonData),function(dataResult){
                 if(dataResult.status==1000){
-                    if(isSearch){
-                        _this.order_datas=dataResult.data;
-                    }else{
-                        if(dataResult.data!=null){
-                            for(var i=0;i<dataResult.data.length;i++){
-                                _this.order_datas.push(dataResult.data[i]);
-                            }
-                        }
-                    }
+                    // if(isSearch){
+                    //     _this.order_datas=dataResult.data;
+                    // }else{
+                    //     if(dataResult.data!=null){
+                    //         for(var i=0;i<dataResult.data.length;i++){
+                    //             _this.order_datas.push(dataResult.data[i]);
+                    //         }
+                    //     }
+                    // }
 
-                    _this.pageIndex=_this.pageIndex+1;
+                    // _this.pageIndex=_this.pageIndex+1;
+                    _this.order_datas = dataResult.data.list;
+                    _this.total = dataResult.data.total;
                 }
             });
         },
@@ -72,7 +81,7 @@ var page = new Vue({
     },
     mounted:function(){
         var _this=this;
-        _this.search_order(true);
+        _this.search_order(1);
 
        
     }
