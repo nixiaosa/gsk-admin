@@ -63,7 +63,7 @@ var page = new Vue({
                     // }
                    
                     // _this.pageIndex=_this.pageIndex+1;
-                    _this.verify_datass = dataResult.data.list;
+                    _this.verify_datas = dataResult.data.list;
                     _this.total = dataResult.data.total;
                 }
             });
