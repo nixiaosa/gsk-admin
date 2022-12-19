@@ -343,6 +343,13 @@ const Video_Set = {
 	}
 }
 
+const Sale_Manage = {
+	template: "<div id='sale_manage_div'></div>",
+	mounted: function () {
+		$('#sale_manage_div').load('../page/users/saleManage.html');
+	}
+}
+
 const Match_Set = {
 	template: "<div id='match_set_div'></div>",
 	mounted: function () {
@@ -625,6 +632,10 @@ const routes = [{
 	{
 		path: '/video_set', // 直播管理-直播设置
 		component: Video_Set
+	},
+	{
+		path: '/sale_manage', // 销售管理
+		component: Sale_Manage
 	},
 	{
 		path: '/match_set', // 科普大赛-大赛设置
