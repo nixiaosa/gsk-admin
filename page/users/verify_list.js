@@ -2,6 +2,9 @@ var page = new Vue({
     el: '#master_user_verify_list_div',
     data: {
         verify_datas: [],
+        basicInfo: {
+            config: 0
+        },
         pageIndex:0,
        
         currentPage: 1,
@@ -67,7 +70,26 @@ var page = new Vue({
                     _this.total = dataResult.data.total;
                 }
             });
+        },
+
+        hcp_switch: function (val) {
+            var _this = this;
+            var jsonData = {
+                config: basicInfo.config
+            };
+
+            HttpUtils.requestPost("https://gsk-k8s.100url.cn/api/yb-business-api/promoter/config/value", JSON.stringify(jsonData), function (dataResult) {
+                if (dataResult.status == 1000) {
+                    // _this.verify_datas = dataResult.data.list;
+                    // _this.total = dataResult.data.total;
+                }
+            });
         }
+    },
+
+
+
+
     },
     mounted: function () {
         var _this=this;
