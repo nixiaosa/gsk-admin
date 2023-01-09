@@ -57,7 +57,7 @@ var page = new Vue({
             var _this = this;
             var jsonData = _this.basicInfo.config
 
-            HttpUtils.requestPost2("https://gsk-k8s.100url.cn/api/yb-business-api/promoter/config/value", JSON.stringify(jsonData), function (dataResult) {
+            HttpUtils.requestPost2("https://gsk-k8s.100url.cn/api/yb-business-api/promoter/verify/config", JSON.stringify(jsonData), function (dataResult) {
                 if (dataResult.status == 1000) {
                     // _this.verify_datas = dataResult.data.list;
                     // _this.total = dataResult.data.total;
