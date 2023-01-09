@@ -334,7 +334,7 @@ var HttpUtils = {
         } else {
             $.ajax({
                 url: url,
-                data: jsonData,
+                // data: jsonData,
                 type: "POST",
                 timeout: 10000, // 超时时间 10 秒
                 headers: {
