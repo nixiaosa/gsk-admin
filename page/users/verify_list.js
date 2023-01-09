@@ -66,9 +66,9 @@ var page = new Vue({
         get_hcp_switch: function () {
             var _this = this;
             HttpUtils.requestGet("https://gsk-k8s.100url.cn/api/yb-business-api/promoter/config/value", function (dataResult) {
-                if (dataResult.status == 1000) {
+                if (dataResult.code == 0) {
                     _this.basicInfo.config = dataResult.data
-                    console.log('lc',_this.basicInfo.config)
+                    console.log('basicInfo.config',_this.basicInfo.config)
                 }
             });
         },
