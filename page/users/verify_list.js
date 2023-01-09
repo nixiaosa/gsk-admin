@@ -46,7 +46,7 @@ var page = new Vue({
                 pageSize: 10,
             };
 
-            HttpUtils.requestPost2("/api/user/searchVerifyInfos", JSON.stringify(jsonData), function (dataResult) {
+            HttpUtils.requestPost("/api/user/searchVerifyInfos", JSON.stringify(jsonData), function (dataResult) {
                 if (dataResult.status == 1000) {
                     _this.verify_datas = dataResult.data.list;
                     _this.total = dataResult.data.total;
@@ -59,7 +59,7 @@ var page = new Vue({
                 config: _this.basicInfo.config
             };
 
-            HttpUtils.requestPost("https://gsk-k8s.100url.cn/api/yb-business-api/promoter/config/value", JSON.stringify(jsonData), function (dataResult) {
+            HttpUtils.requestPost2("https://gsk-k8s.100url.cn/api/yb-business-api/promoter/config/value", JSON.stringify(jsonData), function (dataResult) {
                 if (dataResult.status == 1000) {
                     // _this.verify_datas = dataResult.data.list;
                     // _this.total = dataResult.data.total;
