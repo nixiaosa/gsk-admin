@@ -58,9 +58,16 @@ var page = new Vue({
             var jsonData = _this.basicInfo.config
 
             HttpUtils.requestPost2("https://gsk-k8s.100url.cn/api/yb-business-api/promoter/verify/config", JSON.stringify(jsonData), function (dataResult) {
+                if (dataResult.status == 0) {
+                    $.toast("操作成功!");
+                }
+            });
+        },
+        get_hcp_switch: function () {
+            var _this = this;
+            HttpUtils.requestGet("https://gsk-k8s.100url.cn/api/yb-business-api/promoter/config/value", function (dataResult) {
                 if (dataResult.status == 1000) {
-                    // _this.verify_datas = dataResult.data.list;
-                    // _this.total = dataResult.data.total;
+                    _this.basicInfo.config = dataResult.data
                 }
             });
         },
@@ -68,6 +75,7 @@ var page = new Vue({
     mounted: function () {
         var _this=this;
         this.search_datas(1);
+        this.get_hcp_switch();
 
         // $(window).scroll(function () {
 		// 	var scrollTop = $(this).scrollTop();

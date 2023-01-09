@@ -385,6 +385,59 @@ var HttpUtils = {
     },
 
 
+
+    requestGet(url, func) {
+        var _this = this;
+            $.ajax({
+                url: url,
+                type: "GET",
+                timeout: 10000, // 超时时间 10 秒
+                headers: {
+                    'data_url': url,
+                },
+                async: false,
+                dataType: "json",
+                contentType: "application/json;charset=UTF-8",
+                success: function(XMLHttpRequest){
+                    if(XMLHttpRequest.status == 1008){
+                        window.location.href= "https://"+window.location.host+"/yake.manage/page/index.html#/";
+                    } else {
+                        func(XMLHttpRequest);
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+                    if (XMLHttpRequest.status == 403) {
+                        _this.showMessage("登录时间超时");
+                        login.showLogin();
+					    $('#loginName').val('');
+                        storage.set("userInfo", null);
+                        // window.location.href= "https://"+window.location.host+"/yake.manage/page/index.html#/";
+                        window.location.href= "https://"+window.location.host+"/gsk-admin/#/";
+		                return;
+                    } else {
+
+                        if (XMLHttpRequest.status == 413) {
+                            _this.showMessage("无访问权限");
+                        }else if(XMLHttpRequest.status == 204){
+                            _this.showMessage("登录时间超时");
+                            login.showLogin();
+					        $('#loginName').val('');
+                            storage.set("userInfo", null);
+                            // window.location.href= "https://"+window.location.host+"/yake.manage/page/index.html#/";
+                            window.location.href= "https://"+window.location.host+"/gsk-admin/#/";
+		                    return;
+                        } else {
+                            _this.showMessage("请求错误");
+                        }
+                    }
+                }
+            });
+
+        
+    },
+
+
     showMessage(msg) {
         //$.alert(msg, "提示");
         $.toptips(msg);
