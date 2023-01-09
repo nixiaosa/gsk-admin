@@ -277,6 +277,112 @@ var HttpUtils = {
 
         }
     },
+
+
+    requestPost2(url, jsonData, func) {
+        var _this = this;
+        // var targetHostUrl = _this.data.targetHostUrl;
+        // var tokenValue=storage.get("userInfo")==null?'':storage.get("userInfo").token;
+        if (jsonData == null) {
+            $.ajax({
+                url: url,
+                type: "POST",
+                timeout: 10000, // 超时时间 10 秒
+                headers: {
+                    'data_url': url,
+                    // 'token':tokenValue
+                },
+                async: false,
+                dataType: "json",
+                success: function(XMLHttpRequest){
+                    if(XMLHttpRequest.status == 1008){
+                        window.location.href= "http://"+window.location.host+"/yake.manage/page/index.html#/";
+                    } else {
+                        func(XMLHttpRequest);
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+                    if (XMLHttpRequest.status == 403) {
+                        _this.showMessage("登录时间超时");
+                        login.showLogin();
+					    $('#loginName').val('');
+                        storage.set("userInfo", null);
+                        // window.location.href= "http://"+window.location.host+"/yake.manage/page/index.html#/";
+                        window.location.href= "https://"+window.location.host+"/gsk-admin/#/";
+		                return;
+                    } else {
+
+                        if (XMLHttpRequest.status == 413) {
+                            _this.showMessage("无访问权限");
+                        }else if(XMLHttpRequest.status == 204){
+                            _this.showMessage("登录时间超时");
+                            login.showLogin();
+					        $('#loginName').val('');
+                            storage.set("userInfo", null);
+                            // window.location.href= "http://"+window.location.host+"/yake.manage/page/index.html#/";
+                            window.location.href= "https://"+window.location.host+"/gsk-admin/#/";
+		                    return;
+                        } else {
+                            _this.showMessage("请求错误");
+                        }
+
+                    }
+                }
+            });
+        } else {
+            $.ajax({
+                url: url,
+                data: jsonData,
+                type: "POST",
+                timeout: 10000, // 超时时间 10 秒
+                headers: {
+                    'data_url': url,
+                    // 'token':tokenValue
+                },
+                async: false,
+                dataType: "json",
+                contentType: "application/json;charset=UTF-8",
+                success: function(XMLHttpRequest){
+                    if(XMLHttpRequest.status == 1008){
+                        window.location.href= "https://"+window.location.host+"/yake.manage/page/index.html#/";
+                    } else {
+                        func(XMLHttpRequest);
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+                    if (XMLHttpRequest.status == 403) {
+                        _this.showMessage("登录时间超时");
+                        login.showLogin();
+					    $('#loginName').val('');
+                        storage.set("userInfo", null);
+                        // window.location.href= "https://"+window.location.host+"/yake.manage/page/index.html#/";
+                        window.location.href= "https://"+window.location.host+"/gsk-admin/#/";
+		                return;
+                    } else {
+
+                        if (XMLHttpRequest.status == 413) {
+                            _this.showMessage("无访问权限");
+                        }else if(XMLHttpRequest.status == 204){
+                            _this.showMessage("登录时间超时");
+                            login.showLogin();
+					        $('#loginName').val('');
+                            storage.set("userInfo", null);
+                            // window.location.href= "https://"+window.location.host+"/yake.manage/page/index.html#/";
+                            window.location.href= "https://"+window.location.host+"/gsk-admin/#/";
+		                    return;
+                        } else {
+                            _this.showMessage("请求错误");
+                        }
+                    }
+                }
+            });
+
+        }
+    },
+
+
     showMessage(msg) {
         //$.alert(msg, "提示");
         $.toptips(msg);
