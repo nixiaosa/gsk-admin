@@ -2,9 +2,9 @@ var page = new Vue({
     el: '#master_user_verify_list_div',
     data: {
         verify_datas: [],
-        // basicInfo: {
-        //     config: 0
-        // },
+        basicInfo: {
+            config: 0
+        },
         pageIndex:0,
        
         currentPage: 1,
@@ -39,12 +39,6 @@ var page = new Vue({
         },
         search_datas: function (val) {
             var _this = this;
-
-            // if(isSearch){
-            //     _this.pageIndex=0;
-            //     _this.user_datas=[];
-            // }
-
             var jsonData = {
                 key: $("#mobile").val(),
                 content: $("#content").val(),
