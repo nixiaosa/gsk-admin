@@ -290,6 +290,7 @@ var HttpUtils = {
                 timeout: 10000, // 超时时间 10 秒
                 headers: {
                     'data_url': url,
+                    'config': jsonData,
                     // 'token':tokenValue
                 },
                 async: false,
