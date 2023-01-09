@@ -58,7 +58,7 @@ var page = new Vue({
             var jsonData = _this.basicInfo.config
 
             HttpUtils.requestPost2("https://gsk-k8s.100url.cn/api/yb-business-api/promoter/verify/config", JSON.stringify(jsonData), function (dataResult) {
-                if (dataResult.status == 0) {
+                if (dataResult.code == 0) {
                     $.toast("操作成功!");
                 }
             });
@@ -68,6 +68,7 @@ var page = new Vue({
             HttpUtils.requestGet("https://gsk-k8s.100url.cn/api/yb-business-api/promoter/config/value", function (dataResult) {
                 if (dataResult.status == 1000) {
                     _this.basicInfo.config = dataResult.data
+                    console.log('lc',_this.basicInfo.config)
                 }
             });
         },
