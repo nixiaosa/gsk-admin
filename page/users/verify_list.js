@@ -2,9 +2,9 @@ var page = new Vue({
     el: '#master_user_verify_list_div',
     data: {
         verify_datas: [],
-        basicInfo: {
-            config: 0
-        },
+        // basicInfo: {
+        //     config: 0
+        // },
         pageIndex:0,
        
         currentPage: 1,
