@@ -48,41 +48,24 @@ var page = new Vue({
 
             HttpUtils.requestPost("/api/user/searchVerifyInfos", JSON.stringify(jsonData), function (dataResult) {
                 if (dataResult.status == 1000) {
-
-                    // if(isSearch){
-                    //     _this.verify_datas = dataResult.data;
-                    // }else{
-                    //     if(dataResult.data!=null){
-                    //         for(var i=0;i<dataResult.data.length;i++){
-                    //             _this.verify_datas.push(dataResult.data[i]);
-                    //         }
-                    //     }
-                    // }
-                   
-                    // _this.pageIndex=_this.pageIndex+1;
                     _this.verify_datas = dataResult.data.list;
                     _this.total = dataResult.data.total;
                 }
             });
         },
+        hcp_switch: function () {
+            var _this = this;
+            var jsonData = {
+                config: basicInfo.config
+            };
 
-        // hcp_switch: function (val) {
-        //     var _this = this;
-        //     var jsonData = {
-        //         config: basicInfo.config
-        //     };
-
-        //     HttpUtils.requestPost("https://gsk-k8s.100url.cn/api/yb-business-api/promoter/config/value", JSON.stringify(jsonData), function (dataResult) {
-        //         if (dataResult.status == 1000) {
-                    
-        //         }
-        //     });
-        // }
-    // },
-
-
-
-
+            HttpUtils.requestPost("https://gsk-k8s.100url.cn/api/yb-business-api/promoter/config/value", JSON.stringify(jsonData), function (dataResult) {
+                if (dataResult.status == 1000) {
+                    // _this.verify_datas = dataResult.data.list;
+                    // _this.total = dataResult.data.total;
+                }
+            });
+        },
     },
     mounted: function () {
         var _this=this;
