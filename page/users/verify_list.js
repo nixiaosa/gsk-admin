@@ -55,9 +55,7 @@ var page = new Vue({
         },
         hcp_switch: function () {
             var _this = this;
-            var jsonData = {
-                config: _this.basicInfo.config
-            };
+            var jsonData = _this.basicInfo.config
 
             HttpUtils.requestPost2("https://gsk-k8s.100url.cn/api/yb-business-api/promoter/config/value", JSON.stringify(jsonData), function (dataResult) {
                 if (dataResult.status == 1000) {
