@@ -10,7 +10,7 @@
         <div class="weui_cell">
             <div class="weui_cells_title">文章类型</div>
             <div class="weui_cell_bd weui_cell_primary">
-                <select class="weui_select" id="cateSlug" name="cateSlug"  style="font-size:15px;color:rgb(204, 204, 204)" v-on:change="selcet_cate_fun($event)">
+                <select class="weui_select" id="cateSlug" name="cateSlug"  style="font-size:15px;color:rgb(204, 204, 204)">
                     <option v-bind:selected="item.select"  v-bind:value="item.cateSlug" v-for="(item,index) in cate_datas">{{item.cateName}}</option>
                 </select>
             </div>
@@ -30,7 +30,7 @@
         <div class="weui_cell">
             <div class="weui_cells_title">文章来源</div>
             <div class="weui_cell_bd weui_cell_primary">
-                <select class="weui_select" id="materialType" name="materialType"  style="font-size:15px;color:rgb(204, 204, 204)" v-on:change="selcet_cate_fun($event)">
+                <select class="weui_select" id="materialType" name="materialType"  style="font-size:15px;color:rgb(204, 204, 204)">
                     <option v-bind:selected="item.select"  v-bind:value="item.materialType" v-for="(item,index) in source">{{item.name}}</option>
                 </select>
             </div>
@@ -38,7 +38,7 @@
         
         <div class="weui_cell">
             <div class="weui_cell_bd weui_cell_primary" style="margin-left: 5px;margin-right: 5px;">
-                <a href="javascript:;" class="weui_btn weui_btn_primary" v-on:click="search_pro(true)">搜索</a>
+                <a href="javascript:;" class="weui_btn weui_btn_primary" v-on:click="search_pro(1)">搜索</a>
             </div>
             <div class="weui_cell_bd weui_cell_primary" >
                 <a href="javascript:;" class="weui_btn weui_btn_primary" v-on:click="export_datas()">导出</a>
@@ -89,5 +89,13 @@
             </tbody>
         </table>
     </div>
+    <div style="margin: 20px"></div>
+    <el-pagination
+      background
+      layout="total, prev, pager, next"
+      :current-page.sync="currentPage"
+      @current-change="handleCurrentChange"
+      :total="total"
+    ></el-pagination>
 </div>
 <script type="text/javascript" src="wxmaterial/list.js"></script>

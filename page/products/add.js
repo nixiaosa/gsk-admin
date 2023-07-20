@@ -6,7 +6,7 @@ var page = new Vue({
         two_type_datas: [],
         pro_info: {
             content: "",
-            costPrice: "0.00",
+            costPrice: "0",
             imgs: [{
                 id: 0,
                 proUuid: "",
@@ -14,8 +14,10 @@ var page = new Vue({
                 seqNumber: 0
             }],
             name: "",
-            newPrice: "0.00",
-            oldPrice: "0.00",
+            newPrice: "0",
+            oldPrice: "0",
+            startValidity: '',
+            endExpiry:'',
             oneTypes: [{
                 isAdd: false,
                 name: "",
@@ -25,7 +27,7 @@ var page = new Vue({
                 childs: [{
                     childName: "",
                     childUuid: "",
-                    proPrice: "0.00"
+                    proPrice: "0"
                 }],
                 parentName: "",
                 parentUuid: ""

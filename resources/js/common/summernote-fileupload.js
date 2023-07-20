@@ -78,6 +78,7 @@ var summernote_imgUpload = {
 				};
 				HttpUtils.requestPost("/api/img/cutImage", JSON.stringify(jsonData), function (dataResult) {
 					callback(dataResult);
+					console.log('lc',dataResult)
 
 					$(".cutmask,.cutpic").remove();
 				});

@@ -10,7 +10,7 @@
         
         <div class="weui_cell">
             <div class="weui_cell_bd weui_cell_primary">
-                <a href="javascript:;" class="weui_btn weui_btn_primary" v-on:click="search_pro(true)">搜索</a>
+                <a href="javascript:;" class="weui_btn weui_btn_primary" v-on:click="search_pro(1)">搜索</a>
             </div>
         </div>
     </div>
@@ -52,5 +52,13 @@
             </tbody>
         </table>
     </div>
+    <div style="margin: 20px"></div>
+    <el-pagination
+      background
+      layout="total, prev, pager, next"
+      :current-page.sync="currentPage"
+      @current-change="handleCurrentChange"
+      :total="total"
+    ></el-pagination>
 </div>
 <script type="text/javascript" src="products/list.js"></script>

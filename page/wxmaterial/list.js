@@ -83,10 +83,33 @@ var page = new Vue({
                 cateName:'口腔预防',
                 select:false
             },{
-                cateSlug:'huanzhejiaoyu',
-                cateName:'患者教育',
+                cateSlug:'huanzhejiaoyu-1',
+                cateName:'患者教育-牙敏感',
                 select:false
             },{
+                cateSlug:'huanzhejiaoyu-2',
+                cateName:'患者教育-口腔正畸',
+                select:false
+            },{
+                cateSlug:'huanzhejiaoyu-3',
+                cateName:'患者教育-义齿护理',
+                select:false
+            },{
+                cateSlug:'huanzhejiaoyu-4',
+                cateName:'患者教育-义齿稳固',
+                select:false
+            },
+            {
+                cateSlug:'huanzhejiaoyu-5',
+                cateName:'患者教育-常规口腔患教',
+                select:false
+            },
+            {
+                cateSlug:'huanzhejiaoyu-6',
+                cateName:'患者教育-牙基会合作专区',
+                select:false
+            },
+            {
                 cateSlug:'jingyingguanli',
                 cateName:'经营管理',
                 select:false
@@ -96,9 +119,15 @@ var page = new Vue({
                 select:false
             }
         ],
-        pageIndex:0
+        pageIndex:0,
+        currentPage: 1,
+        total: 1,
     },
     methods:{
+        handleCurrentChange(val) {
+            this.currentPage = val;
+            this.search_pro(val);
+        },
         selcet_cate_fun:function(event){
             var obj = event.currentTarget;
             var currValue=$(obj).val();
@@ -112,12 +141,12 @@ var page = new Vue({
                 }
             }
         },
-        search_pro:function(isSearch){
+        search_pro:function(val){
             var _this=this;
-            if(isSearch){
-                _this.pageIndex=0;
-                _this.product_datas=[];
-            }
+            // if(isSearch){
+            //     _this.pageIndex=0;
+            //     _this.product_datas=[];
+            // }
 
             var name=$("#proName").val();
             var cateSlug=$("#cateSlug").val();
@@ -125,20 +154,22 @@ var page = new Vue({
             var materialType = $("#materialType").val();
             var status=[];
 
-            var jsonData={name:name,slug:cateSlug,status:status,materialType:materialType,pageIndex:_this.pageIndex,value:proSatus};
+            var jsonData={name:name,slug:cateSlug,status:status,materialType:materialType,pageIndex:val,value:proSatus,pageSize:10};
             HttpUtils.requestPost("/api/wxmaterial/list",JSON.stringify(jsonData),function(dataResult){
                 if(dataResult.status==1000){
-                    if(isSearch){
-                        _this.product_datas=dataResult.data;
-                    }else{
-                        if(dataResult.data!=null){
-                            for(var i=0;i<dataResult.data.length;i++){
-                                _this.product_datas.push(dataResult.data[i]);
-                            }
-                        }
-                    }
+                    // if(isSearch){
+                    //     _this.product_datas=dataResult.data;
+                    // }else{
+                    //     if(dataResult.data!=null){
+                    //         for(var i=0;i<dataResult.data.length;i++){
+                    //             _this.product_datas.push(dataResult.data[i]);
+                    //         }
+                    //     }
+                    // }
                     
-                    _this.pageIndex=_this.pageIndex+1;
+                    // _this.pageIndex=_this.pageIndex+1;
+                    _this.product_datas = dataResult.data.list;
+                    _this.total = dataResult.data.total;
                 }
             });
         },
@@ -180,21 +211,21 @@ var page = new Vue({
     },
     mounted: function () {
         var _this=this;
-        this.search_pro(true);
+        this.search_pro(1);
 
-        $(window).scroll(function () {
-			var scrollTop = $(this).scrollTop();
-			var scrollHeight = $(document).height();
-            var windowHeight = $(this).height();
-            var href=location.href;
-			if (scrollTop + windowHeight >= scrollHeight) {
+        // $(window).scroll(function () {
+		// 	var scrollTop = $(this).scrollTop();
+		// 	var scrollHeight = $(document).height();
+        //     var windowHeight = $(this).height();
+        //     var href=location.href;
+		// 	if (scrollTop + windowHeight >= scrollHeight) {
                 
-                if(href.indexOf("wxmaterial_list")>0){
-                    _this.search_pro(false);
-                }//alert("已经到最底部了！");　
+        //         if(href.indexOf("wxmaterial_list")>0){
+        //             _this.search_pro(false);
+        //         }//alert("已经到最底部了！");　
 				
-			}
-		});
+		// 	}
+		// });
     }
 });
 $(document).ready(function(){

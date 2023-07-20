@@ -343,6 +343,13 @@ const Video_Set = {
 	}
 }
 
+const Sale_Manage = {
+	template: "<div id='sale_manage_div'></div>",
+	mounted: function () {
+		$('#sale_manage_div').load('../page/users/saleManage.html');
+	}
+}
+
 const Match_Set = {
 	template: "<div id='match_set_div'></div>",
 	mounted: function () {
@@ -389,6 +396,13 @@ const Qa_Manage = {
 	template: "<div id='qa_manage_div'></div>",
 	mounted: function () {
 		$('#qa_manage_div').load('../page/users/qamanage.html');
+	}
+}
+
+const Qa_Confidence = {
+	template: "<div id='qa_confidence_div'></div>",
+	mounted: function () {
+		$('#qa_confidence_div').load('../page/users/qaconfidence.html');
 	}
 }
 
@@ -620,6 +634,10 @@ const routes = [{
 		component: Video_Set
 	},
 	{
+		path: '/sale_manage', // 销售管理
+		component: Sale_Manage
+	},
+	{
 		path: '/match_set', // 科普大赛-大赛设置
 		component: Match_Set
 	},
@@ -646,6 +664,10 @@ const routes = [{
 	{
 		path: '/qa_manage', // 调研问卷-管理
 		component: Qa_Manage
+	},
+	{
+		path: '/qa_confidence', // 调研问卷-开业信心指数
+		component: Qa_Confidence
 	},
 	{
 		path: '/answer_create', // 线上答题-创建

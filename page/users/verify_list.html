@@ -10,10 +10,22 @@
             <div class="weui_cell_bd weui_cell_primary">
                 <input id="content" class="weui_input" autocomplete="off" readonly onfocus="this.removeAttribute('readonly');" maxlength="20" placeholder="用户id" type="text" value="">
             </div>
+            <div class="weui_cells_title">HCP认证：</div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <el-switch
+                    v-model="basicInfo.config"
+                    active-color="#409EFF"
+                    inactive-color="#999"
+                    :active-value="1"
+                    :inactive-value="0"
+                    @change="hcp_switch"
+                >
+                </el-switch>
+            </div> 
         </div>
         <div class="weui_cell">
             <div class="weui_cell_bd weui_cell_primary">
-                <a href="javascript:;" class="weui_btn weui_btn_primary" v-on:click="search_datas(true)">搜索</a>
+                <a href="javascript:;" class="weui_btn weui_btn_primary" v-on:click="search_datas(1)">搜索</a>
             </div>
         </div>
     </div>
@@ -84,5 +96,13 @@
             </tbody>
         </table>
     </div>
+    <div style="margin: 20px"></div>
+    <el-pagination
+      background
+      layout="total, prev, pager, next"
+      :current-page.sync="currentPage"
+      @current-change="handleCurrentChange"
+      :total="total"
+    ></el-pagination>
 </div>
 <script type="text/javascript" src="users/verify_list.js"></script>
