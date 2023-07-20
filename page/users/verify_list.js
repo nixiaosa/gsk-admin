@@ -57,7 +57,7 @@ var page = new Vue({
             var _this = this;
             var jsonData = _this.basicInfo.config
 
-            HttpUtils.requestPost2("https://gsk-k8s.100url.cn/api/yb-business-api/promoter/verify/config", JSON.stringify(jsonData), function (dataResult) {
+            HttpUtils.requestPost2("https://skyyh-ybtest.corpnet5.com/api/yb-business-api/promoter/verify/config", JSON.stringify(jsonData), function (dataResult) {
                 if (dataResult.code == 0) {
                     $.toast("操作成功!");
                 }
@@ -65,7 +65,7 @@ var page = new Vue({
         },
         get_hcp_switch: function () {
             var _this = this;
-            HttpUtils.requestGet("https://gsk-k8s.100url.cn/api/yb-business-api/promoter/config/value", function (dataResult) {
+            HttpUtils.requestGet("https://skyyh-ybtest.corpnet5.com/api/yb-business-api/promoter/config/value", function (dataResult) {
                 if (dataResult.code == 0) {
                     _this.basicInfo.config = dataResult.data
                     console.log('basicInfo.config',_this.basicInfo.config)
