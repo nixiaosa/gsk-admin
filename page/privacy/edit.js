@@ -3,6 +3,7 @@ var page = new Vue({
     data: {
         proUUId:'',
         myEditor: null,
+        editionTime: '',
     },
     methods: {
         editorInit: function () {
@@ -31,6 +32,9 @@ var page = new Vue({
             }, 700);
         },
         save_info: function () {
+            if (!this.editionTime) {
+                HttpUtils.showMessage('请选择版本时间');
+            }
             var title = $('#title').val();
             var version = $("#version").val();
             var linkUrl = $("#linkUrl").val();
@@ -40,7 +44,8 @@ var page = new Vue({
                 link:linkUrl,
                 title:title,
                 content:content,
-                id:this.proUUId
+                id:this.proUUId,
+                editionTime: this.editionTime
             };
             HttpUtils.requestPost("/api/admin/saveps", JSON.stringify(jsonData), function (dataResult) {
                 if (dataResult.status == 1000) {
@@ -58,6 +63,7 @@ var page = new Vue({
                     $("#version").val(info.version);
                     $("#linkUrl").val(info.link);
                     $('#title').val(info.title);
+                    this.editionTime = info.editionTime
                 } else {
                     HttpUtils.showMessage(dataResult.data);
                 }
@@ -70,6 +76,7 @@ var page = new Vue({
         if(href.indexOf('uuid') != -1){
             this.proUUId = router.currentRoute.query.uuid;
             $("#version").val(router.currentRoute.query.version);
+            this.editionTime = router.currentRoute.query.editionTime
             $("#linkUrl").val(router.currentRoute.query.link);
             $('#title').val(router.currentRoute.query.title);
             

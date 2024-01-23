@@ -14,6 +14,17 @@
             </div>
         </div>
         <div class="weui_cell">
+            <div class="weui_cells_title">版本时间：</div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <el-date-picker
+                    v-model="editionTime"
+                    type="datetime"
+                    value-format="timestamp"
+                    placeholder="请选择版本时间">
+                </el-date-picker>
+            </div>
+        </div>
+        <div class="weui_cell">
             <div class="weui_cells_title">声明链接：</div>
             <div class="weui_cell_bd weui_cell_primary">
                 <input class="weui_input" autocomplete="off" readonly onfocus="this.removeAttribute('readonly');" type="text" id="linkUrl" placeholder="请输入声明链接" style="font-size:15px;color:#888;margin-top:5px;">
