@@ -47,9 +47,10 @@ var page = new Vue({
             var uuid=this.privacy_datas[index].id;
             var link = this.privacy_datas[index].link;
             var version = this.privacy_datas[index].version;
+            var editionTime = this.privacy_datas[index].editionTime;
             var title = this.privacy_datas[index].title;
             var content = this.privacy_datas[index].content;
-            router.push({path:'privacy_edit',query:{uuid:uuid,link:link,version:version,title:title,content:content}});
+            router.push({path:'privacy_edit',query:{uuid:uuid,link:link,version:version,editionTime:editionTime,title:title,content:content}});
         }
     },
     mounted: function () {
