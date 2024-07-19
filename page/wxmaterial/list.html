@@ -81,6 +81,7 @@
                     </td>
                     <td>
                         <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default" v-on:click="link_pro_detail(index)">详情</a>
+                        <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default" v-on:click="go_browse_records_page(index)">浏览记录</a>
                         <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default" v-on:click="save_pro_status(index,$event)">{{item.status==1?'下线':'发布'}}</a>
                         <!-- <input v-if="item.materialType == 'gskpost'" style="display:none" v-model:value="item.itemUrl" id="copyUrl"> -->
                         <a href="javascript:;" v-if="item.materialType == 'gskpost'" :data-clipboard-text="item.itemUrl" class="weui_btn weui_btn_mini weui_btn_default copy">复制链接</a>

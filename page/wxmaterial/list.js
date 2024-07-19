@@ -207,6 +207,10 @@ var page = new Vue({
                 router.push({path:'wxmaterial_create',query:{uuid:uuid}});
             }
             
+        },
+        go_browse_records_page:function(index){
+            var uuid=this.product_datas[index].id;
+            router.push({path:'wxmaterial_records',query:{uuid:uuid}});
         }
     },
     mounted: function () {
