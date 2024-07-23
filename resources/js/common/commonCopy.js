@@ -147,11 +147,11 @@ var plus_sub_btn = {//加减操作
 
 var HttpUtils = {
     data: {
-        targetHostUrl: 'https://skyyh-dev.healthy-bone.com.cn/yake.manage/',
+        targetHostUrl: 'https://skyyh-ybtest.corpnet5.com/yake.manage/',
         //hostUrl:'https://yake.medtrib.cn/yake.manage'
         //hostUrl: 'https://gsk.dentalcmt.com/yake.manage'
         // hostUrl: 'https://skyyh.gsk.com/yake.manage',
-        //hostUrl:'https://skyyh-dev.healthy-bone.com.cn/yake.manage',
+        //hostUrl:'https://skyyh-ybtest.corpnet5.com/yake.manage',
         hostUrl: 'http://localhost:8080/yake.manage'
         // hostUrl: 'https://gsk.dev.100url.cn/yake.manage'
     },

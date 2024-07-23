@@ -186,11 +186,11 @@ var getHostUrl = () =>{
 
 var HttpUtils = {
     data: {
-        targetHostUrl: 'https://skyyh-dev.healthy-bone.com.cn/yake.manage/',
+        targetHostUrl: 'https://skyyh-ybtest.corpnet5.com/yake.manage/',
         //hostUrl:'https://yake.medtrib.cn/yake.manage'
         //hostUrl: 'https://gsk.dentalcmt.com/yake.manage'
         // hostUrl: 'https://skyyh.gsk.com/yake.manage',
-        //hostUrl:'https://skyyh-dev.healthy-bone.com.cn/yake.manage',
+        //hostUrl:'https://skyyh-ybtest.corpnet5.com/yake.manage',
         //hostUrl: 'https://localhost:8080/yake.manage'
         //hostUrl: 'https://gsk.dev.100url.cn/yake.manage',
         hostUrl: this.getHostUrl()

@@ -228,6 +228,13 @@ const WxMaterial_Info = {
 	}
 }
 
+const WxMaterial_records = {
+	template: "<div id='wxmaterial_records_div'></div>",
+	mounted: function () {
+		$('#wxmaterial_records_div').load('../page/wxmaterial/records.html');
+	}
+}
+
 const Activity_Video_Info = {
 	template: "<div id='activity_video_info_div'></div>",
 	mounted: function () {
@@ -466,6 +473,9 @@ const routes = [{
 	},{
 		path: '/wxmaterial_info',
 		component: WxMaterial_Info
+	},{
+		path: '/wxmaterial_records',
+		component: WxMaterial_records
 	},{
 		path: '/material_info',
 		component: Material_Info

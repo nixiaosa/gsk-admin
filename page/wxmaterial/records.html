@@ -1,88 +1,141 @@
-<!--
- * @Author: Freja
- * @Date: 2024-07-19 16:56:19
- * @FilePath: /gsk-admin/page/wxmaterial/records.html
- * @LastEditors: Freja
- * @LastEditTime: 2024-07-19 17:55:58
--->
-<div class="container" id="wxmaterial_records_div">
-    <div class="weui_cells_title dataTitle">搜索条件：根据选择的日期范围，查询该段时间内已经生成的数据报告</div>
-    <div class="weui_cells" style="overflow: unset!important;">
-        <div class="weui_cell">
-            <div class="weui_cells_title">日期：
-                <el-tooltip placement="right" effect="light">
-                    <div slot="content">
-                        <h4 style="width:200px;">说明:因统计数据来源于公众号和小程序，此开始时间为数据拉取时间。</h4>
-                        
-                        <h4 style="margin-top:10px;">日数据</h4>
-                        <p style="width:200px;color:#888888;font-size:14px;margin-top:10px">
-                            每日10点产生前一天的统计数据（如：2022.3.1的数据，2022.3.2可查询）
-                        </p>
-                    </div>
-                    <span class="el-icon-warning-outline"></span>
-                </el-tooltip>
-            </div>
-            <div class="weui_cell_bd weui_cell_primary start" style="margin-left: 5px;margin-right: 5px;">
-                <input id="startTime" class="weui_input"  placeholder="开始时间" type="text" readonly>
-            </div>
-            <div class="weui_cell_bd weui_cell_primary end">
-                <input id="endTime" class="weui_input"  placeholder="结束时间" type="text" readonly>
-            </div>
-        </div>
-        <div class="weui_cell">
-            <div class="weui_cells_title">用户类型：</div>
+<div class="container" id="master_wxmaterial_records_div">
+	<div class="weui_cells_title dataTitle">
+		搜索条件：根据选择的日期范围，查询该段时间内已经生成的数据报告
+	</div>
+	<div class="weui_cells" style="overflow: unset !important">
+		<div class="weui_cell">
+			<div class="weui_cells_title">
+				日期：
+				<el-tooltip placement="right" effect="light">
+					<div slot="content">
+						<h4 style="width: 200px">说明:因统计数据来源于公众号和小程序。</h4>
+
+						<h4 style="margin-top: 10px">日数据</h4>
+						<p
+							style="
+								width: 200px;
+								color: #888888;
+								font-size: 14px;
+								margin-top: 10px;
+							"
+						>
+							每日10点产生前一天的统计数据（如：2022.3.1的数据，2022.3.2可查询）
+						</p>
+					</div>
+					<span class="el-icon-warning-outline"></span>
+				</el-tooltip>
+			</div>
+			<div
+				class="weui_cell_bd weui_cell_primary start"
+				style="margin-left: 5px; margin-right: 5px"
+			>
+				<input
+					id="startTime"
+					class="weui_input"
+					placeholder="开始时间"
+					type="text"
+				/>
+			</div>
+			<div class="weui_cell_bd weui_cell_primary end">
+				<input
+					id="endTime"
+					class="weui_input"
+					placeholder="结束时间"
+					type="text"
+				/>
+			</div>
+		</div>
+		<!-- <div class="weui_cell">
+            <div class="weui_cells_title">类型：</div>
             <div class="weui_cell_bd weui_cell_primary">
                 <select class="weui_select" id="type" name="type"  style="font-size:15px;color:rgb(204, 204, 204);padding-left:0px;" v-on:change="selcet_cate_fun($event)">
                     <option v-bind:selected="item.select"  v-bind:value="item.type" v-for="(item,index) in cate_datas">{{item.cateName}}</option>
                 </select>
             </div>
-        </div>
-        <div class="weui_cell">
-            <div class="weui_cells_title">统计类型：</div>
-            <div class="weui_cell_bd weui_cell_primary">
-                <select class="weui_select" id="resultType" name="resultType"  style="font-size:15px;color:rgb(204, 204, 204);padding-left:0px;" v-on:change="selcet_date_cate_fun($event)">
-                    <option v-bind:selected="item.select"  v-bind:value="item.type" v-for="(item,index) in cate_type_datas">{{item.cateName}}</option>
-                </select>
-            </div>
-        </div>
-        <div class="weui_cell">
-            <div class="weui_cell_bd weui_cell_primary" style="margin-left: 5px;margin-right: 5px;">
-                <a href="javascript:;" class="weui_btn weui_btn_primary" v-on:click="search_datas(true)">搜索</a>
-               
-            </div>
-            <div class="weui_cell_bd weui_cell_primary" >
-                <a href="javascript:;" class="weui_btn weui_btn_primary" v-on:click="export_datas()">导出</a>
-            </div>
-        </div>
-    </div>
-    <div class="weui_cells_title">数据列表</div>
-    <div class="weui_cells" >
-        <table class="weui-table weui-border-tb weui-table-2n">
-            <thead>
-                <tr>
-                    <th class="table_th">数据统计日期</th>
-                    <th class="table_th">数据拉取日期</th>
-                    <th class="table_th">数据指标名称</th>
-                    <th class="table_th">用户数</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr name="pro_menu_option" v-for="(item,index) in user_datas" style="background-color:#ffffff;font-size:14px;color:#888">
-                    <td>
-                        <label>{{item.refDate}}</label>
-                    </td>
-                    <td>
-                        <label>{{item.getDate}}</label>
-                    </td>
-                    <td>
-                        <label>{{item.key}}</label>
-                    </td>
-                    <td>
-                        <label>{{item.value}}</label>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+        </div> -->
+		<div class="weui_cell">
+			<div
+				class="weui_cell_bd weui_cell_primary"
+				style="margin-left: 5px; margin-right: 5px"
+			>
+				<a
+					href="javascript:;"
+					class="weui_btn weui_btn_primary"
+					v-on:click="search_datas(true)"
+					>搜索</a
+				>
+			</div>
+			<div class="weui_cell_bd weui_cell_primary">
+				<a
+					href="javascript:;"
+					class="weui_btn weui_btn_primary"
+					v-on:click="export_datas()"
+					>导出</a
+				>
+			</div>
+		</div>
+	</div>
+	<div class="weui_cells_title">数据列表</div>
+	<div class="weui_cells">
+		<table class="weui-table weui-border-tb weui-table-2n">
+			<thead>
+				<tr>
+					<th class="table_th">openid</th>
+					<th class="table_th">姓名</th>
+					<th class="table_th">手机号码</th>
+					<th class="table_th">城市</th>
+					<th class="table_th">医院名称</th>
+					<th class="table_th">从业情况</th>
+					<th class="table_th">科室</th>
+					<th class="table_th">浏览时长(分)</th>
+					<th class="table_th">访问次数</th>
+					<th class="table_th">首次进入时间</th>
+					<th class="table_th">最后在线时间</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr
+					name="pro_menu_option"
+					v-for="(item,index) in user_datas"
+					style="background-color: #ffffff; font-size: 14px; color: #888"
+				>
+					<td>
+						<label>{{item.openId}}</label>
+					</td>
+					<td>
+						<label>{{item.userName}}</label>
+					</td>
+					<td>
+						<label>{{item.phone}}</label>
+					</td>
+					<td>
+						<label>{{item.city}}</label>
+					</td>
+					<td>
+						<label>{{item.hospitalName}}</label>
+					</td>
+					<td>
+						<label>{{item.profession}}</label>
+					</td>
+					<td>
+						<label>{{item.department}}</label>
+					</td>
+					<td>
+						<label>{{item.viewTime}}</label>
+					</td>
+					<td>
+						<label>{{item.viewCount}}</label>
+					</td>
+					<td>
+						<label>{{item.startTime}}</label>
+					</td>
+					<td>
+						<label>{{item.lastTime}}</label>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 </div>
-<script type="text/javascript" src="dataAnalysis/userPortrait.js"></script>
+<script type="text/javascript" src="wxmaterial/records_mockData.js"></script>
+<script type="text/javascript" src="wxmaterial/records.js"></script>
