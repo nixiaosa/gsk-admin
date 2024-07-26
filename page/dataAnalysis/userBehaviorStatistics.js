@@ -1,27 +1,36 @@
+/*
+ * @Author: Freja
+ * @Date: 2024-07-26 14:21:52
+ * @FilePath: /gsk-admin/page/dataAnalysis/userBehaviorStatistics.js
+ * @LastEditors: Freja
+ * @LastEditTime: 2024-07-26 16:28:38
+ */
 var page = new Vue({
-	el: "#master_wxmaterial_records_div",
+	el: "#master_datas_userBehaviorStatistics_list_div",
 	data: {
 		user_datas: [],
 		cate_datas: [
 			{
-				cateName: "每日访问来源",
+				cateName: "视频",
 				type: 1,
-				select: true,
+				select: false,
 			},
 			{
-				cateName: "每日访问时长",
+				cateName: "文章",
 				type: 2,
 				select: false,
 			},
-			{
-				cateName: "每日访问深度",
-				type: 3,
-				select: false,
-			},
 		],
-		selectedName: "访问来源",
+		selectedContentType: 1,
+		currentPage: 1,
+		pageSize: 10,
+		total: 1,
 	},
 	methods: {
+		handleCurrentChange(val) {
+			this.currentPage = val;
+			this.search_datas();
+		},
 		selcet_cate_fun: function (event) {
 			var obj = event.currentTarget;
 			var currValue = $(obj).val();
@@ -29,7 +38,7 @@ var page = new Vue({
 			for (var i = 0; i < this.cate_datas.length; i++) {
 				if (this.cate_datas[i].type == currValue) {
 					this.cate_datas[i].select = true;
-					this.selectedName = this.cate_datas[i].cateName;
+					this.selectedContentType = this.cate_datas[i].type;
 				} else {
 					this.cate_datas[i].select = false;
 				}
@@ -50,13 +59,13 @@ var page = new Vue({
 			}
 
 			var jsonData = {
-				pageNum: 1,
-				pageSize: 10,
+				pageNum: this.currentPage,
+				pageSize: this.pageSize,
 				params: {
 					startTime: $("#startTime").val(),
 					endTime: $("#endTime").val(),
-					contentType: router.currentRoute.query.type,
-					contentId: router.currentRoute.query.uuid,
+					contentType: this.selectedContentType,
+					contentId: null,
 				},
 			};
 			console.log("jsonData---", jsonData);
@@ -66,6 +75,7 @@ var page = new Vue({
 				const dataResult = MockData;
 				if (dataResult.code == 0) {
 					_this.user_datas = dataResult.data.list;
+					_this.total = dataResult.data.total;
 					_this.user_datas.map((item, index) => {
 						item.startTime = timestampToTime(item.startTime);
 						item.lastTime = timestampToTime(item.lastTime);
@@ -81,6 +91,7 @@ var page = new Vue({
 				function (dataResult) {
 					if (dataResult.code == 0) {
 						_this.user_datas = dataResult.data.list;
+						_this.total = dataResult.data.total;
 						_this.user_datas.map((item, index) => {
 							item.startTime = timestampToTime(item.startTime);
 							item.lastTime = timestampToTime(item.lastTime);
@@ -101,13 +112,13 @@ var page = new Vue({
 			}
 
 			var jsonData = {
-				pageNum: 1,
-				pageSize: 10,
+				pageNum: this.currentPage,
+				pageSize: this.pageSize,
 				params: {
 					startTime: $("#startTime").val(),
 					endTime: $("#endTime").val(),
-					contentType: router.currentRoute.query.type,
-					contentId: router.currentRoute.query.uuid,
+					contentType: this.selectedContentType,
+					contentId: null,
 				},
 			};
 			console.log("jsonData---", jsonData);
@@ -151,6 +162,5 @@ var page = new Vue({
 	mounted: function () {
 		this.search_datas();
 		this.initDate();
-		// this.confimLog('', '', '')
 	},
 });

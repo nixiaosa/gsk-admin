@@ -1,4 +1,4 @@
-<div class="container" id="master_wxmaterial_records_div">
+<div class="container" id="master_datas_materialStatistics_list_div">
 	<div class="weui_cells_title dataTitle">
 		搜索条件：根据选择的日期范围，查询该段时间内已经生成的数据报告
 	</div>
@@ -47,14 +47,26 @@
 				/>
 			</div>
 		</div>
-		<!-- <div class="weui_cell">
-            <div class="weui_cells_title">类型：</div>
-            <div class="weui_cell_bd weui_cell_primary">
-                <select class="weui_select" id="type" name="type"  style="font-size:15px;color:rgb(204, 204, 204);padding-left:0px;" v-on:change="selcet_cate_fun($event)">
-                    <option v-bind:selected="item.select"  v-bind:value="item.type" v-for="(item,index) in cate_datas">{{item.cateName}}</option>
-                </select>
-            </div>
-        </div> -->
+		<div class="weui_cell">
+			<div class="weui_cells_title">素材类型：</div>
+			<div class="weui_cell_bd weui_cell_primary">
+				<select
+					class="weui_select"
+					id="type"
+					name="type"
+					style="font-size: 15px; color: rgb(204, 204, 204); padding-left: 0px"
+					v-on:change="selcet_cate_fun($event)"
+				>
+					<option
+						v-bind:selected="item.select"
+						v-bind:value="item.type"
+						v-for="(item,index) in cate_datas"
+					>
+						{{item.cateName}}
+					</option>
+				</select>
+			</div>
+		</div>
 		<div class="weui_cell">
 			<div
 				class="weui_cell_bd weui_cell_primary"
@@ -77,22 +89,16 @@
 			</div>
 		</div>
 	</div>
-	<div class="weui_cells_title">数据列表</div>
+	<div v-if="user_datas.length > 0" class="weui_cells_title">数据列表</div>
 	<div class="weui_cells">
 		<table class="weui-table weui-border-tb weui-table-2n">
 			<thead>
-				<tr>
-					<th class="table_th">openId</th>
-					<th class="table_th">姓名</th>
-					<th class="table_th">手机号码</th>
-					<th class="table_th">城市</th>
-					<th class="table_th">医院名称</th>
-					<th class="table_th">从业情况</th>
-					<th class="table_th">科室</th>
-					<th class="table_th">浏览时长(秒)</th>
-					<th class="table_th">访问次数</th>
-					<th class="table_th">首次进入时间</th>
-					<th class="table_th">最后在线时间</th>
+				<tr v-for="(item,index) in user_datas" v-if="index < 1">
+					<th class="table_th">名称</th>
+					<th class="table_th">素材类型</th>
+					<th v-for="(itemChild,index) in item.list" class="table_th">
+						关联{{itemChild.categoryParentName}}
+					</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -102,42 +108,33 @@
 					style="background-color: #ffffff; font-size: 14px; color: #888"
 				>
 					<td>
-						<label>{{item.openId}}</label>
+						<label>{{item.activityName}}</label>
 					</td>
 					<td>
-						<label>{{item.userName}}</label>
+						<label>{{item.contentType == 1 ? '文章' : '视频'}}</label>
 					</td>
-					<td>
-						<label>{{item.phone}}</label>
-					</td>
-					<td>
-						<label>{{item.city}}</label>
-					</td>
-					<td>
-						<label>{{item.hospitalName}}</label>
-					</td>
-					<td>
-						<label>{{item.profession}}</label>
-					</td>
-					<td>
-						<label>{{item.department}}</label>
-					</td>
-					<td>
-						<label>{{item.viewTime}}</label>
-					</td>
-					<td>
-						<label>{{item.viewCount}}</label>
-					</td>
-					<td>
-						<label>{{item.startTime}}</label>
-					</td>
-					<td>
-						<label>{{item.lastTime}}</label>
+					<td v-for="(itemChild,index) in item.list">
+						<label>{{itemChild.categoryNameList}}</label>
 					</td>
 				</tr>
 			</tbody>
 		</table>
 	</div>
+	<div style="margin: 20px"></div>
+	<el-pagination
+		background
+		layout="total, prev, pager, next"
+		:current-page.sync="currentPage"
+		:page-size.sync="pageSize"
+		@current-change="handleCurrentChange"
+		:total="total"
+	></el-pagination>
 </div>
-<script type="text/javascript" src="wxmaterial/records_mockData.js"></script>
-<script type="text/javascript" src="wxmaterial/records.js"></script>
+<script
+	type="text/javascript"
+	src="dataAnalysis/materialStatistics_mockData.js"
+></script>
+<script
+	type="text/javascript"
+	src="dataAnalysis/materialStatistics.js"
+></script>

@@ -304,6 +304,18 @@ const Datas_userPortrait_List = {
 		$('#datas_userPortrait_list_div').load('../page/dataAnalysis/userPortrait.html')
 	}
 }
+const Datas_userBehaviorStatistics_List = {
+	template:"<div id='datas_userBehaviorStatistics_list_div'></div>",
+	mounted:function(){
+		$('#datas_userBehaviorStatistics_list_div').load('../page/dataAnalysis/userBehaviorStatistics.html')
+	}
+}
+const Datas_materialStatistics_List = {
+	template:"<div id='datas_materialStatistics_list_div'></div>",
+	mounted:function(){
+		$('#datas_materialStatistics_list_div').load('../page/dataAnalysis/materialStatistics.html')
+	}
+}
 const Datas_article_List = {
 	template:"<div id='datas_article_list_div'></div>",
 	mounted:function(){
@@ -615,6 +627,14 @@ const routes = [{
 	{
 		path:'/analysis_userPortrait',
 		component:Datas_userPortrait_List
+	},
+	{
+		path:'/analysis_user_behavior_statistics',
+		component:Datas_userBehaviorStatistics_List
+	},
+	{
+		path:'/analysis_material_statistics',
+		component:Datas_materialStatistics_List
 	},
 	{
 		path:'/analysis_article',
