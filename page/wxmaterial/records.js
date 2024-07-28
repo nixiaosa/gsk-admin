@@ -60,7 +60,6 @@ var page = new Vue({
 					contentId: router.currentRoute.query.uuid,
 				},
 			};
-			console.log("jsonData---", jsonData);
 
 			if (window.location.href.indexOf(":8080") !== -1) {
 				// 本地启动使用mock数据
@@ -71,7 +70,6 @@ var page = new Vue({
 						item.startTime = item.startTime ? timestampToTime(item.startTime) : '——';
 						item.lastTime = item.lastTime ? timestampToTime(item.lastTime) : '——';
 					});
-					// console.log(_this.user_datas);
 				}
 				return false;
 			}
@@ -86,7 +84,6 @@ var page = new Vue({
 							item.startTime = item.startTime ? timestampToTime(item.startTime) : '——';
 							item.lastTime = item.lastTime ? timestampToTime(item.lastTime) : '——';
 						});
-						// console.log(_this.user_datas);
 					}
 				}
 			);
@@ -111,7 +108,6 @@ var page = new Vue({
 					contentId: router.currentRoute.query.uuid,
 				},
 			};
-			console.log("jsonData---", jsonData);
 
 			if (window.location.href.indexOf(":8080") !== -1) {
 				// 本地启动使用mock数据
@@ -122,7 +118,6 @@ var page = new Vue({
 				};
 				if (dataResult.code == 0) {
 					window.location.href = dataResult.data;
-					// console.log(dataResult.data);
 				}
 				return false;
 			}
@@ -133,7 +128,6 @@ var page = new Vue({
 				function (dataResult) {
 					if (dataResult.code == 0) {
 						window.location.href = dataResult.data;
-						// console.log(dataResult.data);
 					}
 				}
 			);

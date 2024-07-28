@@ -1,6 +1,12 @@
 var page = new Vue({
 	el: "#master_wxmaterial_list_div",
 	data: {
+		contentRelatedMaterials: null, // 关联素材-当前内容已关联素材数据
+		relatedContentData: null, // 关联素材-当前内容数据
+		contentType: 1, // 关联素材-内容类型（1.文章，2视频）
+		relatedMaterialsVisible: false,
+		relatedMaterialLoading: false,
+		materialsList: [],
 		product_datas: [
 			{
 				itemTitle: "",
@@ -129,6 +135,216 @@ var page = new Vue({
 		total: 1,
 	},
 	methods: {
+		clearDialogData() {
+			this.contentRelatedMaterials = null;
+			this.relatedContentData = null;
+			this.materialsList.map((item) => {
+				if (item.selectedType === "Array") {
+					item.selected = [];
+				} else {
+					item.selected = "";
+				}
+			});
+		},
+		openRelatedMaterialsDialog(item) {
+			this.clearDialogData();
+			this.relatedMaterialsVisible = true;
+			this.relatedContentData = item;
+			this.categoryActivityGetInfo();
+		},
+		handleRelatedMaterials() {
+			let verifyResult = true;
+			this.materialsList.map((item) => {
+				if (item.selected.length < 1) {
+					verifyResult = false;
+				}
+			});
+			if (!verifyResult) {
+				this.$message({
+					type: "error",
+					message: "请选择关联内容",
+				});
+				return false;
+			}
+			this.categoryActivitySave();
+		},
+		/*
+		 * 关联素材-素材列表
+		 * */
+		categoryBaseList: function () {
+			var _this = this;
+			var jsonData = {
+				pageNum: 1,
+				pageSize: 10,
+				contentType: this.contentType,
+			};
+
+			if (window.location.href.indexOf(":8080") !== -1) {
+				// 本地启动使用mock数据
+				const dataResult = JSON.parse(
+					JSON.stringify(CategoryBaseList_MockData)
+				);
+				if (dataResult.code == 0) {
+					_this.materialsList = dataResult.data.map((item, index) => {
+						if (index < 3) {
+							item.selected = [];
+							item.selectedType = "Array";
+						} else {
+							item.selected = "";
+							item.selectedType = "String";
+						}
+						return item;
+					});
+				}
+				return false;
+			}
+
+			HttpUtils.requestPost(
+				"/api/yb-business-api/category/base/list",
+				JSON.stringify(jsonData),
+				function (dataResult) {
+					if (dataResult.code == 0) {
+						_this.materialsList = dataResult.data.map((item, index) => {
+							if (index < 3) {
+								item.selected = [];
+								item.selectedType = "Array";
+							} else {
+								item.selected = "";
+								item.selectedType = "String";
+							}
+							return item;
+						});
+					}
+				}
+			);
+		},
+		/*
+		 * 关联素材-获取已关联详情
+		 * */
+		categoryActivityGetInfo() {
+			var _this = this;
+			var jsonData = {
+				contentId: this.relatedContentData.id,
+				contentType: this.contentType,
+			};
+
+			if (window.location.href.indexOf(":8080") !== -1) {
+				// 本地启动
+				this.contentRelatedMaterials = JSON.parse(
+					JSON.stringify(CategoryActivityGetInfo_MockData)
+				).data.list;
+				this.materialsList.map((item) => {
+					this.contentRelatedMaterials.map((item2) => {
+						if (item.id == item2.categoryParentId) {
+							if (item.selectedType === "Array") {
+								item.selected.push(item2.categoryId.toString());
+							} else {
+								item.selected = item2.categoryId.toString();
+							}
+						}
+					});
+				});
+				this.relatedMaterialsVisible = true;
+				return false;
+			}
+
+			HttpUtils.requestPost(
+				"/api/yb-business-api/category/activity/getInfo",
+				JSON.stringify(jsonData),
+				function (dataResult) {
+					if (dataResult.code === 0) {
+						_this.contentRelatedMaterials = dataResult.data.list;
+						_this.materialsList.map((item) => {
+							_this.contentRelatedMaterials.map((item2) => {
+								if (item.id == item2.categoryParentId) {
+									if (item.selectedType === "Array") {
+										item.selected.push(item2.categoryId.toString());
+									} else {
+										item.selected = item2.categoryId.toString();
+									}
+								}
+							});
+						});
+						_this.relatedMaterialsVisible = true;
+					}
+				}
+			);
+		},
+		/*
+		 * 关联素材-保存
+		 * */
+		categoryActivitySave: function () {
+			var _this = this;
+			let relatedList = [];
+			this.materialsList.forEach((parentItem) => {
+				if (parentItem.selected.length > 0) {
+					let relatedObj = {
+						categoryParentId: parentItem.id,
+						categoryParentName: parentItem.name,
+						categoryId: "",
+						categoryName: "",
+					};
+
+					if (Array.isArray(parentItem.selected)) {
+						parentItem.selected.forEach((selectedItem) => {
+							parentItem.list.forEach((childItem) => {
+								if (childItem.id === selectedItem) {
+									relatedObj = {
+										...relatedObj,
+										categoryId: childItem.id,
+										categoryName: childItem.name,
+									};
+									relatedList.push({ ...relatedObj });
+								}
+							});
+						});
+					} else {
+						parentItem.list.forEach((childItem) => {
+							if (childItem.id === parentItem.selected) {
+								relatedObj = {
+									...relatedObj,
+									categoryId: childItem.id,
+									categoryName: childItem.name,
+								};
+								relatedList.push({ ...relatedObj });
+							}
+						});
+					}
+				}
+			});
+			var jsonData = {
+				contentId: this.relatedContentData.id,
+				contentType: this.contentType,
+				activityName: this.relatedContentData.itemTitle,
+				list: relatedList,
+			};
+
+			if (window.location.href.indexOf(":8080") !== -1) {
+				// 本地启动
+				this.$message({
+					type: "error",
+					message: "关联成功！",
+				});
+				this.relatedMaterialsVisible = false;
+				return false;
+			}
+
+			this.relatedMaterialLoading = true;
+			HttpUtils.requestPost(
+				"/api/yb-business-api/category/activity/save",
+				JSON.stringify(jsonData),
+				function (dataResult) {
+					if (dataResult.code === 0) {
+						this.$message({
+							type: "error",
+							message: "关联成功！",
+						});
+						this.relatedMaterialsVisible = false;
+						this.relatedMaterialLoading = false;
+					}
+				}
+			);
+		},
 		handleCurrentChange(val) {
 			this.currentPage = val;
 			this.search_pro(val);
@@ -169,14 +385,14 @@ var page = new Vue({
 
 			if (window.location.href.indexOf(":8080") !== -1) {
 				// 本地启动使用mock数据
-				const dataResult = JSON.parse(JSON.stringify(MockData));
+				const dataResult = JSON.parse(JSON.stringify(WxmaterialList_MockData));
 				if (dataResult.status == 1000) {
 					_this.product_datas = dataResult.data.list;
 					_this.total = dataResult.data.total;
 				}
 				return false;
 			}
-            
+
 			HttpUtils.requestPost(
 				"/api/wxmaterial/list",
 				JSON.stringify(jsonData),
@@ -252,6 +468,7 @@ var page = new Vue({
 	mounted: function () {
 		var _this = this;
 		this.search_pro(1);
+		this.categoryBaseList();
 
 		// $(window).scroll(function () {
 		// 	var scrollTop = $(this).scrollTop();

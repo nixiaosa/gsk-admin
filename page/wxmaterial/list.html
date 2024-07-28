@@ -140,6 +140,12 @@
 						<a
 							href="javascript:;"
 							class="weui_btn weui_btn_mini weui_btn_default"
+							v-on:click="openRelatedMaterialsDialog(item)"
+							>关联素材</a
+						>
+						<a
+							href="javascript:;"
+							class="weui_btn weui_btn_mini weui_btn_default"
 							v-on:click="go_browse_records_page(index)"
 							>浏览记录</a
 						>
@@ -170,6 +176,40 @@
 		@current-change="handleCurrentChange"
 		:total="total"
 	></el-pagination>
+	<!-- 关联素材弹窗 start -->
+	<el-dialog
+		class="relatedMaterialsDialog"
+		title="关联素材"
+		:visible.sync="relatedMaterialsVisible"
+		size="tiny"
+	>
+		<div class="item" v-for="(item, index) in materialsList" :key="index">
+			<div class="item-label">关联{{ item.name }}</div>
+			<el-select
+				v-model="item.selected"
+				:multiple="index < 3 ? true : false"
+				placeholder="请选择关联内容"
+			>
+				<el-option
+					v-for="itemChild in item.list"
+					:key="itemChild.id"
+					:label="itemChild.name"
+					:value="itemChild.id"
+				>
+				</el-option>
+			</el-select>
+		</div>
+		<span slot="footer" class="dialog-footer">
+			<el-button @click="relatedMaterialsVisible = false">取 消</el-button>
+			<el-button
+				type="primary"
+				:loading="relatedMaterialLoading"
+				@click="handleRelatedMaterials()"
+				>确 定</el-button
+			>
+		</span>
+	</el-dialog>
+	<!-- 关联素材弹窗 end -->
 </div>
 <script type="text/javascript" src="wxmaterial/list_mockData.js"></script>
 <script type="text/javascript" src="wxmaterial/list.js"></script>

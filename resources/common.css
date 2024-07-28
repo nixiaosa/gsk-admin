@@ -99,4 +99,21 @@
             flex:1;
   }
 
-
+  /* 关联素材-弹窗样式 */
+  .relatedMaterialsDialog {
+    .item {
+      display: flex;
+      align-items: center;
+      margin: 10px 0;
+      .item-label {
+        width: 100px;
+        margin-right: 10px;
+        text-align: right;
+        &:before {
+          content: '*';
+          color: #F56C6C;
+          margin-right: 4px;
+        }
+      }
+    }
+  }

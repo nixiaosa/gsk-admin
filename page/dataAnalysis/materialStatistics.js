@@ -3,7 +3,7 @@
  * @Date: 2024-07-26 14:21:52
  * @FilePath: /gsk-admin/page/dataAnalysis/materialStatistics.js
  * @LastEditors: Freja
- * @LastEditTime: 2024-07-28 12:35:27
+ * @LastEditTime: 2024-07-28 17:23:58
  */
 var page = new Vue({
 	el: "#master_datas_materialStatistics_list_div",
@@ -71,7 +71,6 @@ var page = new Vue({
 				startTime: $("#startTime").val(),
 				endTime: $("#endTime").val(),
 			};
-			console.log("jsonData---", jsonData);
 
 			if (window.location.href.indexOf(":8080") !== -1) {
 				// 本地启动使用mock数据
@@ -83,7 +82,6 @@ var page = new Vue({
 						item.startTime = timestampToTime(item.startTime);
 						item.lastTime = timestampToTime(item.lastTime);
 					});
-					// console.log(_this.user_datas);
 				}
 				return false;
 			}
@@ -99,7 +97,6 @@ var page = new Vue({
 							item.startTime = timestampToTime(item.startTime);
 							item.lastTime = timestampToTime(item.lastTime);
 						});
-						// console.log(_this.user_datas);
 					}
 				}
 			);
@@ -121,18 +118,16 @@ var page = new Vue({
 				startTime: $("#startTime").val(),
 				endTime: $("#endTime").val(),
 			};
-			console.log("jsonData---", jsonData);
 
 			if (window.location.href.indexOf(":8080") !== -1) {
 				// 本地启动使用mock数据
 				const dataResult = {
 					code: 0,
 					message: "success",
-					// data: "https://cn01skyyhdevtestsa01.blob.core.chinacloudapi.cn/files/yake/tmp/行为数据.xlsx",
+					data: "https://cn01skyyhdevtestsa01.blob.core.chinacloudapi.cn/files/yake/tmp/行为数据.xlsx",
 				};
 				if (dataResult.code == 0) {
 					window.location.href = dataResult.data;
-					// console.log(dataResult.data);
 				}
 				return false;
 			}
@@ -143,7 +138,6 @@ var page = new Vue({
 				function (dataResult) {
 					if (dataResult.code == 0) {
 						window.location.href = dataResult.data;
-						// console.log(dataResult.data);
 					}
 				}
 			);

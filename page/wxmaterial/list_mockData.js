@@ -1,4 +1,11 @@
-const MockData = {
+/*
+ * @Author: Freja
+ * @Date: 2024-07-26 15:15:16
+ * @FilePath: /gsk-admin/page/wxmaterial/list_mockData.js
+ * @LastEditors: Freja
+ * @LastEditTime: 2024-07-28 17:17:43
+ */
+const WxmaterialList_MockData = {
   "status": 1000,
   "data": {
       "total": 254,
@@ -270,4 +277,550 @@ const MockData = {
       "navigateFirstPage": 1,
       "navigateLastPage": 8
   }
+}
+
+const CategoryBaseList_MockData = {
+    "code": 0,
+    "message": "success",
+    "data": [
+        {
+            "id": "1",
+            "companyId": 1,
+            "type": 2,
+            "categoryType": 1,
+            "createTime": 1721292034000,
+            "updateTime": 1721292034000,
+            "name": "产品",
+            "parentId": null,
+            "isDelete": 0,
+            "pageNum": 1,
+            "pageSize": 10,
+            "list": [
+                {
+                    "id": "4",
+                    "companyId": 1,
+                    "type": 2,
+                    "categoryType": 2,
+                    "createTime": null,
+                    "updateTime": null,
+                    "name": "保丽净正畸清洁片",
+                    "parentId": 1,
+                    "isDelete": 0,
+                    "pageNum": 1,
+                    "pageSize": 10,
+                    "list": null
+                },
+                {
+                    "id": "3",
+                    "companyId": 1,
+                    "type": 2,
+                    "categoryType": 2,
+                    "createTime": null,
+                    "updateTime": null,
+                    "name": "保丽净义齿清洁片",
+                    "parentId": 1,
+                    "isDelete": 0,
+                    "pageNum": 1,
+                    "pageSize": 10,
+                    "list": null
+                },
+                {
+                    "id": "5",
+                    "companyId": 1,
+                    "type": 2,
+                    "categoryType": 2,
+                    "createTime": null,
+                    "updateTime": null,
+                    "name": "保丽净稳固剂",
+                    "parentId": 1,
+                    "isDelete": 0,
+                    "pageNum": 1,
+                    "pageSize": 10,
+                    "list": null
+                },
+                {
+                    "id": "6",
+                    "companyId": 1,
+                    "type": 2,
+                    "categoryType": 2,
+                    "createTime": null,
+                    "updateTime": null,
+                    "name": "舒适达牙膏",
+                    "parentId": 1,
+                    "isDelete": 0,
+                    "pageNum": 1,
+                    "pageSize": 10,
+                    "list": null
+                },
+                {
+                    "id": "7",
+                    "companyId": 1,
+                    "type": 2,
+                    "categoryType": 2,
+                    "createTime": null,
+                    "updateTime": null,
+                    "name": "无品牌",
+                    "parentId": 1,
+                    "isDelete": 0,
+                    "pageNum": 1,
+                    "pageSize": 10,
+                    "list": null
+                }
+            ]
+        },
+        {
+            "id": "2",
+            "companyId": 1,
+            "type": 1,
+            "categoryType": 1,
+            "createTime": null,
+            "updateTime": null,
+            "name": "品牌",
+            "parentId": null,
+            "isDelete": 0,
+            "pageNum": 1,
+            "pageSize": 10,
+            "list": [
+                {
+                    "id": "8",
+                    "companyId": 1,
+                    "type": 2,
+                    "categoryType": 2,
+                    "createTime": null,
+                    "updateTime": null,
+                    "name": "保丽净",
+                    "parentId": 2,
+                    "isDelete": 0,
+                    "pageNum": 1,
+                    "pageSize": 10,
+                    "list": null
+                },
+                {
+                    "id": "9",
+                    "companyId": 1,
+                    "type": 2,
+                    "categoryType": 2,
+                    "createTime": null,
+                    "updateTime": null,
+                    "name": "舒适达",
+                    "parentId": 2,
+                    "isDelete": 0,
+                    "pageNum": 1,
+                    "pageSize": 10,
+                    "list": null
+                },
+                {
+                    "id": "10",
+                    "companyId": 1,
+                    "type": 2,
+                    "categoryType": 2,
+                    "createTime": null,
+                    "updateTime": null,
+                    "name": "无品牌",
+                    "parentId": 2,
+                    "isDelete": 0,
+                    "pageNum": 1,
+                    "pageSize": 10,
+                    "list": null
+                }
+            ]
+        },
+        {
+            "id": "13",
+            "companyId": 1,
+            "type": 1,
+            "categoryType": 1,
+            "createTime": null,
+            "updateTime": null,
+            "name": "用途",
+            "parentId": null,
+            "isDelete": 0,
+            "pageNum": 1,
+            "pageSize": 10,
+            "list": [
+                {
+                    "id": "14",
+                    "companyId": 1,
+                    "type": 1,
+                    "categoryType": 2,
+                    "createTime": null,
+                    "updateTime": null,
+                    "name": "HT",
+                    "parentId": 13,
+                    "isDelete": 0,
+                    "pageNum": 1,
+                    "pageSize": 10,
+                    "list": null
+                },
+                {
+                    "id": "15",
+                    "companyId": 1,
+                    "type": 1,
+                    "categoryType": 2,
+                    "createTime": null,
+                    "updateTime": null,
+                    "name": "问候拜访",
+                    "parentId": 13,
+                    "isDelete": 0,
+                    "pageNum": 1,
+                    "pageSize": 10,
+                    "list": null
+                },
+                {
+                    "id": "16",
+                    "companyId": 1,
+                    "type": 1,
+                    "categoryType": 2,
+                    "createTime": null,
+                    "updateTime": null,
+                    "name": "专业拜访",
+                    "parentId": 13,
+                    "isDelete": 0,
+                    "pageNum": 1,
+                    "pageSize": 10,
+                    "list": null
+                },
+                {
+                    "id": "17",
+                    "companyId": 1,
+                    "type": 1,
+                    "categoryType": 2,
+                    "createTime": null,
+                    "updateTime": null,
+                    "name": "其他",
+                    "parentId": 13,
+                    "isDelete": 0,
+                    "pageNum": 1,
+                    "pageSize": 10,
+                    "list": null
+                }
+            ]
+        },
+        {
+            "id": "11",
+            "companyId": 1,
+            "type": 2,
+            "categoryType": 1,
+            "createTime": null,
+            "updateTime": null,
+            "name": "品类",
+            "parentId": null,
+            "isDelete": 0,
+            "pageNum": 1,
+            "pageSize": 10,
+            "list": [
+                {
+                    "id": "12",
+                    "companyId": 1,
+                    "type": 2,
+                    "categoryType": 2,
+                    "createTime": null,
+                    "updateTime": null,
+                    "name": "口腔",
+                    "parentId": 11,
+                    "isDelete": 0,
+                    "pageNum": 1,
+                    "pageSize": 10,
+                    "list": null
+                }
+            ]
+        },
+        {
+            "id": "18",
+            "companyId": 1,
+            "type": 1,
+            "categoryType": 1,
+            "createTime": null,
+            "updateTime": null,
+            "name": "分类",
+            "parentId": null,
+            "isDelete": 0,
+            "pageNum": 1,
+            "pageSize": 10,
+            "list": [
+                {
+                    "id": "19",
+                    "companyId": 1,
+                    "type": 1,
+                    "categoryType": 2,
+                    "createTime": null,
+                    "updateTime": null,
+                    "name": "广告",
+                    "parentId": 18,
+                    "isDelete": 0,
+                    "pageNum": 1,
+                    "pageSize": 10,
+                    "list": null
+                },
+                {
+                    "id": "20",
+                    "companyId": 1,
+                    "type": 1,
+                    "categoryType": 2,
+                    "createTime": null,
+                    "updateTime": null,
+                    "name": "科普",
+                    "parentId": 18,
+                    "isDelete": 0,
+                    "pageNum": 1,
+                    "pageSize": 10,
+                    "list": null
+                },
+                {
+                    "id": "21",
+                    "companyId": 1,
+                    "type": 1,
+                    "categoryType": 2,
+                    "createTime": null,
+                    "updateTime": null,
+                    "name": "医学专业内容",
+                    "parentId": 18,
+                    "isDelete": 0,
+                    "pageNum": 1,
+                    "pageSize": 10,
+                    "list": null
+                },
+                {
+                    "id": "22",
+                    "companyId": 1,
+                    "type": 1,
+                    "categoryType": 2,
+                    "createTime": null,
+                    "updateTime": null,
+                    "name": "问候拜访资料",
+                    "parentId": 18,
+                    "isDelete": 0,
+                    "pageNum": 1,
+                    "pageSize": 10,
+                    "list": null
+                }
+            ]
+        },
+        {
+            "id": "23",
+            "companyId": 1,
+            "type": 1,
+            "categoryType": 1,
+            "createTime": null,
+            "updateTime": null,
+            "name": "资料类型",
+            "parentId": null,
+            "isDelete": 0,
+            "pageNum": 1,
+            "pageSize": 10,
+            "list": [
+                {
+                    "id": "24",
+                    "companyId": 1,
+                    "type": 1,
+                    "categoryType": 2,
+                    "createTime": null,
+                    "updateTime": null,
+                    "name": "H5图文",
+                    "parentId": 23,
+                    "isDelete": 0,
+                    "pageNum": 1,
+                    "pageSize": 10,
+                    "list": null
+                },
+                {
+                    "id": "25",
+                    "companyId": 1,
+                    "type": 1,
+                    "categoryType": 2,
+                    "createTime": null,
+                    "updateTime": null,
+                    "name": "PDF",
+                    "parentId": 23,
+                    "isDelete": 0,
+                    "pageNum": 1,
+                    "pageSize": 10,
+                    "list": null
+                },
+                {
+                    "id": "26",
+                    "companyId": 1,
+                    "type": 1,
+                    "categoryType": 2,
+                    "createTime": null,
+                    "updateTime": null,
+                    "name": "视频",
+                    "parentId": 23,
+                    "isDelete": 0,
+                    "pageNum": 1,
+                    "pageSize": 10,
+                    "list": null
+                },
+                {
+                    "id": "27",
+                    "companyId": 1,
+                    "type": 1,
+                    "categoryType": 2,
+                    "createTime": null,
+                    "updateTime": null,
+                    "name": "外链",
+                    "parentId": 23,
+                    "isDelete": 0,
+                    "pageNum": 1,
+                    "pageSize": 10,
+                    "list": null
+                },
+                {
+                    "id": "28",
+                    "companyId": 1,
+                    "type": 1,
+                    "categoryType": 2,
+                    "createTime": null,
+                    "updateTime": null,
+                    "name": "PPT",
+                    "parentId": 23,
+                    "isDelete": 0,
+                    "pageNum": 1,
+                    "pageSize": 10,
+                    "list": null
+                },
+                {
+                    "id": "29",
+                    "companyId": 1,
+                    "type": 1,
+                    "categoryType": 2,
+                    "createTime": null,
+                    "updateTime": null,
+                    "name": "第三方外链",
+                    "parentId": 23,
+                    "isDelete": 0,
+                    "pageNum": 1,
+                    "pageSize": 10,
+                    "list": null
+                }
+            ]
+        }
+    ]
+}
+
+const CategoryActivityGetInfo_MockData = {
+    "code": 0,
+    "message": "success",
+    "data": {
+        "id": "8",
+        "createTime": 1722155016000,
+        "updateTime": 1722158213000,
+        "contentId": 1415,
+        "contentType": 1,
+        "activityName": "20221107测试",
+        "businessId": null,
+        "isDelete": 0,
+        "list": [
+            {
+                "id": "48",
+                "createTime": null,
+                "categoryActivityId": 8,
+                "categoryName": "保丽净正畸清洁片",
+                "categoryId": 4,
+                "categoryParentId": 1,
+                "categoryParentName": "产品",
+                "categoryNameList": null
+            },
+            {
+                "id": "49",
+                "createTime": null,
+                "categoryActivityId": 8,
+                "categoryName": "保丽净义齿清洁片",
+                "categoryId": 3,
+                "categoryParentId": 1,
+                "categoryParentName": "产品",
+                "categoryNameList": null
+            },
+            {
+                "id": "50",
+                "createTime": null,
+                "categoryActivityId": 8,
+                "categoryName": "保丽净稳固剂",
+                "categoryId": 5,
+                "categoryParentId": 1,
+                "categoryParentName": "产品",
+                "categoryNameList": null
+            },
+            {
+                "id": "51",
+                "createTime": null,
+                "categoryActivityId": 8,
+                "categoryName": "舒适达牙膏",
+                "categoryId": 6,
+                "categoryParentId": 1,
+                "categoryParentName": "产品",
+                "categoryNameList": null
+            },
+            {
+                "id": "52",
+                "createTime": null,
+                "categoryActivityId": 8,
+                "categoryName": "无品牌",
+                "categoryId": 7,
+                "categoryParentId": 1,
+                "categoryParentName": "产品",
+                "categoryNameList": null
+            },
+            {
+                "id": "53",
+                "createTime": null,
+                "categoryActivityId": 8,
+                "categoryName": "保丽净",
+                "categoryId": 8,
+                "categoryParentId": 2,
+                "categoryParentName": "品牌",
+                "categoryNameList": null
+            },
+            {
+                "id": "54",
+                "createTime": null,
+                "categoryActivityId": 8,
+                "categoryName": "无品牌",
+                "categoryId": 10,
+                "categoryParentId": 2,
+                "categoryParentName": "品牌",
+                "categoryNameList": null
+            },
+            {
+                "id": "55",
+                "createTime": null,
+                "categoryActivityId": 8,
+                "categoryName": "专业拜访",
+                "categoryId": 16,
+                "categoryParentId": 13,
+                "categoryParentName": "用途",
+                "categoryNameList": null
+            },
+            {
+                "id": "56",
+                "createTime": null,
+                "categoryActivityId": 8,
+                "categoryName": "口腔",
+                "categoryId": 12,
+                "categoryParentId": 11,
+                "categoryParentName": "品类",
+                "categoryNameList": null
+            },
+            {
+                "id": "57",
+                "createTime": null,
+                "categoryActivityId": 8,
+                "categoryName": "问候拜访资料",
+                "categoryId": 22,
+                "categoryParentId": 18,
+                "categoryParentName": "分类",
+                "categoryNameList": null
+            },
+            {
+                "id": "58",
+                "createTime": null,
+                "categoryActivityId": 8,
+                "categoryName": "外链",
+                "categoryId": 27,
+                "categoryParentId": 23,
+                "categoryParentName": "资料类型",
+                "categoryNameList": null
+            }
+        ]
+    }
 }

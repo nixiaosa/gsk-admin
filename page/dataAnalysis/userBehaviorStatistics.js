@@ -3,7 +3,7 @@
  * @Date: 2024-07-26 14:21:52
  * @FilePath: /gsk-admin/page/dataAnalysis/userBehaviorStatistics.js
  * @LastEditors: Freja
- * @LastEditTime: 2024-07-28 12:38:06
+ * @LastEditTime: 2024-07-28 17:24:43
  */
 var page = new Vue({
 	el: "#master_datas_userBehaviorStatistics_list_div",
@@ -74,7 +74,6 @@ var page = new Vue({
 					contentId: null,
 				},
 			};
-			console.log("jsonData---", jsonData);
 
 			if (window.location.href.indexOf(":8080") !== -1) {
 				// 本地启动使用mock数据
@@ -86,7 +85,6 @@ var page = new Vue({
 						item.startTime = item.startTime ? timestampToTime(item.startTime) : '——';
 						item.lastTime = item.lastTime ? timestampToTime(item.lastTime) : '——';
 					});
-					// console.log(_this.user_datas);
 				}
 				return false;
 			}
@@ -102,7 +100,6 @@ var page = new Vue({
 							item.startTime = item.startTime ? timestampToTime(item.startTime) : '——';
 							item.lastTime = item.lastTime ? timestampToTime(item.lastTime) : '——';
 						});
-						// console.log(_this.user_datas);
 					}
 				}
 			);
@@ -127,7 +124,6 @@ var page = new Vue({
 					contentId: null,
 				},
 			};
-			console.log("jsonData---", jsonData);
 
 			if (window.location.href.indexOf(":8080") !== -1) {
 				// 本地启动使用mock数据
@@ -138,7 +134,6 @@ var page = new Vue({
 				};
 				if (dataResult.code == 0) {
 					window.location.href = dataResult.data;
-					// console.log(dataResult.data);
 				}
 				return false;
 			}
@@ -149,7 +144,6 @@ var page = new Vue({
 				function (dataResult) {
 					if (dataResult.code == 0) {
 						window.location.href = dataResult.data;
-						// console.log(dataResult.data);
 					}
 				}
 			);
