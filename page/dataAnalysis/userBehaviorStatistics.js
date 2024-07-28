@@ -3,13 +3,18 @@
  * @Date: 2024-07-26 14:21:52
  * @FilePath: /gsk-admin/page/dataAnalysis/userBehaviorStatistics.js
  * @LastEditors: Freja
- * @LastEditTime: 2024-07-26 16:28:38
+ * @LastEditTime: 2024-07-28 12:38:06
  */
 var page = new Vue({
 	el: "#master_datas_userBehaviorStatistics_list_div",
 	data: {
 		user_datas: [],
 		cate_datas: [
+			{
+				cateName: "全部",
+				type: -1,
+				select: true,
+			},
 			{
 				cateName: "视频",
 				type: 1,
@@ -21,7 +26,7 @@ var page = new Vue({
 				select: false,
 			},
 		],
-		selectedContentType: 1,
+		selectedContentType: -1,
 		currentPage: 1,
 		pageSize: 10,
 		total: 1,
@@ -47,7 +52,6 @@ var page = new Vue({
 		search_datas: function (isSearch) {
 			var _this = this;
 			if (isSearch) {
-				_this.user_datas = [];
 				if ($("#startTime").val() == "") {
 					HttpUtils.showMessage("请选择查询开始时间");
 					return false;
@@ -56,6 +60,8 @@ var page = new Vue({
 					HttpUtils.showMessage("请选择查询结束时间");
 					return false;
 				}
+				this.currentPage = 1;
+				_this.user_datas = [];
 			}
 
 			var jsonData = {
@@ -64,7 +70,7 @@ var page = new Vue({
 				params: {
 					startTime: $("#startTime").val(),
 					endTime: $("#endTime").val(),
-					contentType: this.selectedContentType,
+					contentType: this.selectedContentType == -1 ? null : this.selectedContentType,
 					contentId: null,
 				},
 			};
@@ -72,13 +78,13 @@ var page = new Vue({
 
 			if (window.location.href.indexOf(":8080") !== -1) {
 				// 本地启动使用mock数据
-				const dataResult = MockData;
+				const dataResult = JSON.parse(JSON.stringify(MockData));
 				if (dataResult.code == 0) {
 					_this.user_datas = dataResult.data.list;
 					_this.total = dataResult.data.total;
 					_this.user_datas.map((item, index) => {
-						item.startTime = timestampToTime(item.startTime);
-						item.lastTime = timestampToTime(item.lastTime);
+						item.startTime = item.startTime ? timestampToTime(item.startTime) : '——';
+						item.lastTime = item.lastTime ? timestampToTime(item.lastTime) : '——';
 					});
 					// console.log(_this.user_datas);
 				}
@@ -93,8 +99,8 @@ var page = new Vue({
 						_this.user_datas = dataResult.data.list;
 						_this.total = dataResult.data.total;
 						_this.user_datas.map((item, index) => {
-							item.startTime = timestampToTime(item.startTime);
-							item.lastTime = timestampToTime(item.lastTime);
+							item.startTime = item.startTime ? timestampToTime(item.startTime) : '——';
+							item.lastTime = item.lastTime ? timestampToTime(item.lastTime) : '——';
 						});
 						// console.log(_this.user_datas);
 					}
@@ -117,7 +123,7 @@ var page = new Vue({
 				params: {
 					startTime: $("#startTime").val(),
 					endTime: $("#endTime").val(),
-					contentType: this.selectedContentType,
+					contentType: this.selectedContentType == -1 ? null : this.selectedContentType,
 					contentId: null,
 				},
 			};
@@ -160,7 +166,7 @@ var page = new Vue({
 		},
 	},
 	mounted: function () {
-		this.search_datas();
+		// this.search_datas();
 		this.initDate();
 	},
 });

@@ -3,13 +3,18 @@
  * @Date: 2024-07-26 14:21:52
  * @FilePath: /gsk-admin/page/dataAnalysis/materialStatistics.js
  * @LastEditors: Freja
- * @LastEditTime: 2024-07-26 18:44:34
+ * @LastEditTime: 2024-07-28 12:35:27
  */
 var page = new Vue({
 	el: "#master_datas_materialStatistics_list_div",
 	data: {
 		user_datas: [],
 		cate_datas: [
+			{
+				cateName: "全部",
+				type: -1,
+				select: true,
+			},
 			{
 				cateName: "视频",
 				type: 1,
@@ -21,7 +26,7 @@ var page = new Vue({
 				select: false,
 			},
 		],
-		selectedContentType: 1,
+		selectedContentType: -1,
 		currentPage: 1,
 		pageSize: 10,
 		total: 1,
@@ -47,7 +52,6 @@ var page = new Vue({
 		search_datas: function (isSearch) {
 			var _this = this;
 			if (isSearch) {
-				_this.user_datas = [];
 				if ($("#startTime").val() == "") {
 					HttpUtils.showMessage("请选择查询开始时间");
 					return false;
@@ -56,12 +60,14 @@ var page = new Vue({
 					HttpUtils.showMessage("请选择查询结束时间");
 					return false;
 				}
+				this.currentPage = 1;
+				_this.user_datas = [];
 			}
 
 			var jsonData = {
 				pageNum: this.currentPage,
 				pageSize: this.pageSize,
-				contentType: this.selectedContentType,
+				contentType: this.selectedContentType == -1 ? null : this.selectedContentType,
 				startTime: $("#startTime").val(),
 				endTime: $("#endTime").val(),
 			};
@@ -69,7 +75,7 @@ var page = new Vue({
 
 			if (window.location.href.indexOf(":8080") !== -1) {
 				// 本地启动使用mock数据
-				const dataResult = MockData;
+				const dataResult = JSON.parse(JSON.stringify(MockData));
 				if (dataResult.code == 0) {
 					_this.user_datas = dataResult.data.list;
 					_this.total = dataResult.data.total;
@@ -111,7 +117,7 @@ var page = new Vue({
 			var jsonData = {
 				pageNum: this.currentPage,
 				pageSize: this.pageSize,
-				contentType: this.selectedContentType,
+				contentType: this.selectedContentType == -1 ? null : this.selectedContentType,
 				startTime: $("#startTime").val(),
 				endTime: $("#endTime").val(),
 			};
@@ -154,7 +160,7 @@ var page = new Vue({
 		},
 	},
 	mounted: function () {
-		this.search_datas();
+		// this.search_datas();
 		this.initDate();
 	},
 });

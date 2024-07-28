@@ -108,13 +108,13 @@
 					style="background-color: #ffffff; font-size: 14px; color: #888"
 				>
 					<td>
-						<label>{{item.activityName}}</label>
+						<label>{{item.activityName || '——'}}</label>
 					</td>
 					<td>
 						<label>{{item.contentType == 1 ? '文章' : '视频'}}</label>
 					</td>
 					<td v-for="(itemChild,index) in item.list">
-						<label>{{itemChild.categoryNameList}}</label>
+						<label>{{itemChild.categoryNameList || '——'}}</label>
 					</td>
 				</tr>
 			</tbody>

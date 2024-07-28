@@ -38,7 +38,6 @@ var page = new Vue({
 		search_datas: function (isSearch) {
 			var _this = this;
 			if (isSearch) {
-				_this.user_datas = [];
 				if ($("#startTime").val() == "") {
 					HttpUtils.showMessage("请选择查询开始时间");
 					return false;
@@ -47,6 +46,8 @@ var page = new Vue({
 					HttpUtils.showMessage("请选择查询结束时间");
 					return false;
 				}
+				this.currentPage = 1;
+				_this.user_datas = [];
 			}
 
 			var jsonData = {
@@ -63,12 +64,12 @@ var page = new Vue({
 
 			if (window.location.href.indexOf(":8080") !== -1) {
 				// 本地启动使用mock数据
-				const dataResult = MockData;
+				const dataResult = JSON.parse(JSON.stringify(MockData));
 				if (dataResult.code == 0) {
 					_this.user_datas = dataResult.data.list;
 					_this.user_datas.map((item, index) => {
-						item.startTime = timestampToTime(item.startTime);
-						item.lastTime = timestampToTime(item.lastTime);
+						item.startTime = item.startTime ? timestampToTime(item.startTime) : '——';
+						item.lastTime = item.lastTime ? timestampToTime(item.lastTime) : '——';
 					});
 					// console.log(_this.user_datas);
 				}
@@ -82,8 +83,8 @@ var page = new Vue({
 					if (dataResult.code == 0) {
 						_this.user_datas = dataResult.data.list;
 						_this.user_datas.map((item, index) => {
-							item.startTime = timestampToTime(item.startTime);
-							item.lastTime = timestampToTime(item.lastTime);
+							item.startTime = item.startTime ? timestampToTime(item.startTime) : '——';
+							item.lastTime = item.lastTime ? timestampToTime(item.lastTime) : '——';
 						});
 						// console.log(_this.user_datas);
 					}
@@ -149,8 +150,7 @@ var page = new Vue({
 		},
 	},
 	mounted: function () {
-		this.search_datas();
+		// this.search_datas();
 		this.initDate();
-		// this.confimLog('', '', '')
 	},
 });

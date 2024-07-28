@@ -169,7 +169,7 @@ var page = new Vue({
 
 			if (window.location.href.indexOf(":8080") !== -1) {
 				// 本地启动使用mock数据
-				const dataResult = MockData;
+				const dataResult = JSON.parse(JSON.stringify(MockData));
 				if (dataResult.status == 1000) {
 					_this.product_datas = dataResult.data.list;
 					_this.total = dataResult.data.total;
