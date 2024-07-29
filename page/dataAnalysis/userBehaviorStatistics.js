@@ -3,7 +3,7 @@
  * @Date: 2024-07-26 14:21:52
  * @FilePath: /gsk-admin/page/dataAnalysis/userBehaviorStatistics.js
  * @LastEditors: Freja
- * @LastEditTime: 2024-07-29 11:04:56
+ * @LastEditTime: 2024-07-29 11:26:18
  */
 var page = new Vue({
 	el: "#master_datas_userBehaviorStatistics_list_div",
@@ -89,7 +89,7 @@ var page = new Vue({
 				return false;
 			}
 
-			HttpUtils.requestPost(
+			HttpUtils.requestPost2(
 				"https://skyyh-ybtest.corpnet5.com/api/yb-business-api/watch/getWatchPage",
 				JSON.stringify(jsonData),
 				function (dataResult) {
@@ -138,7 +138,7 @@ var page = new Vue({
 				return false;
 			}
 
-			HttpUtils.requestPost(
+			HttpUtils.requestPost2(
 				"https://skyyh-ybtest.corpnet5.com/api/yb-business-api/watch/exportWatchList",
 				JSON.stringify(jsonData),
 				function (dataResult) {

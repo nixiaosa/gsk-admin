@@ -3,7 +3,7 @@
  * @Date: 2024-07-26 14:21:52
  * @FilePath: /gsk-admin/page/dataAnalysis/materialStatistics.js
  * @LastEditors: Freja
- * @LastEditTime: 2024-07-29 11:05:52
+ * @LastEditTime: 2024-07-29 11:26:12
  */
 var page = new Vue({
 	el: "#master_datas_materialStatistics_list_div",
@@ -86,7 +86,7 @@ var page = new Vue({
 				return false;
 			}
 
-			HttpUtils.requestPost(
+			HttpUtils.requestPost2(
 				"https://skyyh-ybtest.corpnet5.com/api/yb-business-api/category/activity/materialPage",
 				JSON.stringify(jsonData),
 				function (dataResult) {
@@ -132,7 +132,7 @@ var page = new Vue({
 				return false;
 			}
 
-			HttpUtils.requestPost(
+			HttpUtils.requestPost2(
 				"https://skyyh-ybtest.corpnet5.com/api/yb-business-api/category/activity/export",
 				JSON.stringify(jsonData),
 				function (dataResult) {

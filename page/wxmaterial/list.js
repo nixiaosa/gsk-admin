@@ -199,7 +199,7 @@ var page = new Vue({
 				return false;
 			}
 
-			HttpUtils.requestPost(
+			HttpUtils.requestPost2(
 				"https://skyyh-ybtest.corpnet5.com/api/yb-business-api/category/base/list",
 				JSON.stringify(jsonData),
 				function (dataResult) {
@@ -248,7 +248,7 @@ var page = new Vue({
 				return false;
 			}
 
-			HttpUtils.requestPost(
+			HttpUtils.requestPost2(
 				"https://skyyh-ybtest.corpnet5.com/api/yb-business-api/category/activity/getInfo",
 				JSON.stringify(jsonData),
 				function (dataResult) {
@@ -330,7 +330,7 @@ var page = new Vue({
 			}
 
 			this.relatedMaterialLoading = true;
-			HttpUtils.requestPost(
+			HttpUtils.requestPost2(
 				"https://skyyh-ybtest.corpnet5.com/api/yb-business-api/category/activity/save",
 				JSON.stringify(jsonData),
 				function (dataResult) {
