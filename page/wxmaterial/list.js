@@ -253,18 +253,20 @@ var page = new Vue({
 				JSON.stringify(jsonData),
 				function (dataResult) {
 					if (dataResult.code === 0) {
-						_this.contentRelatedMaterials = dataResult.data.list;
-						_this.materialsList.map((item) => {
-							_this.contentRelatedMaterials.map((item2) => {
-								if (item.id == item2.categoryParentId) {
-									if (item.selectedType === "Array") {
-										item.selected.push(item2.categoryId.toString());
-									} else {
-										item.selected = item2.categoryId.toString();
+						_this.contentRelatedMaterials = dataResult?.data?.list;
+						if (_this.contentRelatedMaterials) {
+							_this.materialsList.map((item) => {
+								_this.contentRelatedMaterials.map((item2) => {
+									if (item.id == item2.categoryParentId) {
+										if (item.selectedType === "Array") {
+											item.selected.push(item2.categoryId.toString());
+										} else {
+											item.selected = item2.categoryId.toString();
+										}
 									}
-								}
+								});
 							});
-						});
+						}
 						_this.relatedMaterialsVisible = true;
 					}
 				}
@@ -335,12 +337,12 @@ var page = new Vue({
 				JSON.stringify(jsonData),
 				function (dataResult) {
 					if (dataResult.code === 0) {
-						this.$message({
+						_this.$message({
 							type: "error",
 							message: "关联成功！",
 						});
-						this.relatedMaterialsVisible = false;
-						this.relatedMaterialLoading = false;
+						_this.relatedMaterialsVisible = false;
+						_this.relatedMaterialLoading = false;
 					}
 				}
 			);
