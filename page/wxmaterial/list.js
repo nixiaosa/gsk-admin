@@ -324,7 +324,7 @@ var page = new Vue({
 			if (window.location.href.indexOf(":8080") !== -1) {
 				// 本地启动
 				this.$message({
-					type: "error",
+					type: "success",
 					message: "关联成功！",
 				});
 				this.relatedMaterialsVisible = false;
@@ -338,7 +338,7 @@ var page = new Vue({
 				function (dataResult) {
 					if (dataResult.code === 0) {
 						_this.$message({
-							type: "error",
+							type: "success",
 							message: "关联成功！",
 						});
 						_this.relatedMaterialsVisible = false;
@@ -400,7 +400,7 @@ var page = new Vue({
 				JSON.stringify(jsonData),
 				function (dataResult) {
 					if (dataResult.status == 1000) {
-						_this.product_datas = dataResult.data.list;
+						_this.product_datas = dataResult?.data?.list;
 						_this.total = dataResult.data.total;
 					}
 				}

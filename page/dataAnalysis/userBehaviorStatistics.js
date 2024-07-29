@@ -3,7 +3,7 @@
  * @Date: 2024-07-26 14:21:52
  * @FilePath: /gsk-admin/page/dataAnalysis/userBehaviorStatistics.js
  * @LastEditors: Freja
- * @LastEditTime: 2024-07-29 15:29:59
+ * @LastEditTime: 2024-07-29 15:50:06
  */
 var page = new Vue({
 	el: "#master_datas_userBehaviorStatistics_list_div",
@@ -94,12 +94,14 @@ var page = new Vue({
 				JSON.stringify(jsonData),
 				function (dataResult) {
 					if (dataResult.code == 0) {
-						_this.user_datas = dataResult.data.list;
+						_this.user_datas = dataResult?.data?.list;
 						_this.total = dataResult.data.total;
-						_this.user_datas.map((item, index) => {
-							item.startTime = item.startTime ? timestampToTime(item.startTime) : '——';
-							item.lastTime = item.lastTime ? timestampToTime(item.lastTime) : '——';
-						});
+						if (_this.user_datas) {
+							_this.user_datas.map((item, index) => {
+								item.startTime = item.startTime ? timestampToTime(item.startTime) : '——';
+								item.lastTime = item.lastTime ? timestampToTime(item.lastTime) : '——';
+							});
+						}
 					}
 				}
 			);

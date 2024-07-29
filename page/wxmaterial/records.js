@@ -79,11 +79,13 @@ var page = new Vue({
 				JSON.stringify(jsonData),
 				function (dataResult) {
 					if (dataResult.code == 0) {
-						_this.user_datas = dataResult.data.list;
-						_this.user_datas.map((item, index) => {
-							item.startTime = item.startTime ? timestampToTime(item.startTime) : '——';
-							item.lastTime = item.lastTime ? timestampToTime(item.lastTime) : '——';
-						});
+						_this.user_datas = dataResult?.data?.list;
+						if (_this.user_datas) {
+							_this.user_datas.map((item, index) => {
+								item.startTime = item.startTime ? timestampToTime(item.startTime) : '——';
+								item.lastTime = item.lastTime ? timestampToTime(item.lastTime) : '——';
+							});
+						}
 					}
 				}
 			);

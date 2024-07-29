@@ -3,7 +3,7 @@
  * @Date: 2024-07-26 14:21:52
  * @FilePath: /gsk-admin/page/dataAnalysis/materialStatistics.js
  * @LastEditors: Freja
- * @LastEditTime: 2024-07-29 15:30:22
+ * @LastEditTime: 2024-07-29 15:51:36
  */
 var page = new Vue({
 	el: "#master_datas_materialStatistics_list_div",
@@ -91,12 +91,14 @@ var page = new Vue({
 				JSON.stringify(jsonData),
 				function (dataResult) {
 					if (dataResult.code == 0) {
-						_this.user_datas = dataResult.data.list;
+						_this.user_datas = dataResult?.data?.list;
 						_this.total = dataResult.data.total;
-						_this.user_datas.map((item, index) => {
-							item.startTime = timestampToTime(item.startTime);
-							item.lastTime = timestampToTime(item.lastTime);
-						});
+						if (_this.user_datas) {
+							_this.user_datas.map((item, index) => {
+								item.startTime = timestampToTime(item.startTime);
+								item.lastTime = timestampToTime(item.lastTime);
+							});
+						}
 					}
 				}
 			);
