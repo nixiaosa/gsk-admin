@@ -75,7 +75,7 @@ var page = new Vue({
 			}
 
 			HttpUtils.requestPost(
-				"/api/yb-business-api/watch/getWatchPage",
+				"https://skyyh-ybtest.corpnet5.com/api/yb-business-api/watch/getWatchPage",
 				JSON.stringify(jsonData),
 				function (dataResult) {
 					if (dataResult.code == 0) {
@@ -123,7 +123,7 @@ var page = new Vue({
 			}
 
 			HttpUtils.requestPost(
-				"/api/yb-business-api/watch/exportWatchList",
+				"https://skyyh-ybtest.corpnet5.com/api/yb-business-api/watch/exportWatchList",
 				JSON.stringify(jsonData),
 				function (dataResult) {
 					if (dataResult.code == 0) {

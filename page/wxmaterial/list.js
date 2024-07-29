@@ -200,7 +200,7 @@ var page = new Vue({
 			}
 
 			HttpUtils.requestPost(
-				"/api/yb-business-api/category/base/list",
+				"https://skyyh-ybtest.corpnet5.com/api/yb-business-api/category/base/list",
 				JSON.stringify(jsonData),
 				function (dataResult) {
 					if (dataResult.code == 0) {
@@ -249,7 +249,7 @@ var page = new Vue({
 			}
 
 			HttpUtils.requestPost(
-				"/api/yb-business-api/category/activity/getInfo",
+				"https://skyyh-ybtest.corpnet5.com/api/yb-business-api/category/activity/getInfo",
 				JSON.stringify(jsonData),
 				function (dataResult) {
 					if (dataResult.code === 0) {
@@ -331,7 +331,7 @@ var page = new Vue({
 
 			this.relatedMaterialLoading = true;
 			HttpUtils.requestPost(
-				"/api/yb-business-api/category/activity/save",
+				"https://skyyh-ybtest.corpnet5.com/api/yb-business-api/category/activity/save",
 				JSON.stringify(jsonData),
 				function (dataResult) {
 					if (dataResult.code === 0) {
