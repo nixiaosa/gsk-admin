@@ -1,1 +1,6 @@
 https://github.com/logoove/weui
+
+### TODO List
+1、测试提交同步其他两个仓库：
+仓库1（内网访问）：https://gitlab-ce.100url.cn/saas-web/gsk/gsk-admin.git
+仓库2（公网访问）：https://gitlab-gsk.100url.cn/gsk/gsk-admin.git
