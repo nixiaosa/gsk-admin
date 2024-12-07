@@ -9,6 +9,10 @@ on:
       gitlab_token:
         description: 'The GitLab personal access token'
         required: true
+      branch:
+        description: 'The branch to sync'
+        default: 'main'
+        required: true
 
 jobs:
   sync:
@@ -17,6 +21,8 @@ jobs:
     steps:
     - name: Checkout GitHub repository
       uses: actions/checkout@v2
+      with:
+        ref: ${{ github.event.inputs.branch }}
 
     - name: Set up Git
       run: |
@@ -30,4 +36,4 @@ jobs:
       env:
         GITLAB_TOKEN: ${{ github.event.inputs.gitlab_token }}
       run: |
-        git push --force https://oauth2:${GITLAB_TOKEN}@${{ github.event.inputs.gitlab_repo_url }} HEAD:main
+        git push --force https://oauth2:${GITLAB_TOKEN}@${{ github.event.inputs.gitlab_repo_url }} HEAD:${{ github.event.inputs.branch }}
