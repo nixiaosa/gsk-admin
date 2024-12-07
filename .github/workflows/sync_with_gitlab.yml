@@ -16,6 +16,7 @@ on:
 
 permissions:
   contents: write
+  workflows: write  # 添加 workflows 权限
 
 jobs:
   sync:
