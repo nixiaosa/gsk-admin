@@ -11,7 +11,7 @@ on:
         required: true
       branch:
         description: 'The branch to sync'
-        default: 'main'
+        default: 'azure-test'
         required: true
 
 jobs:
