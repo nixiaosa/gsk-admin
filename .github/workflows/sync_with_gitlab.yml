@@ -43,6 +43,10 @@ jobs:
         cp -r gitlab-repo/. .
         rm -rf gitlab-repo
 
+    - name: Reset GitHub remote
+      run: |
+        git remote set-url origin https://github.com/${{ github.repository }}.git
+
     - name: Commit and push changes to GitHub
       run: |
         git add .
