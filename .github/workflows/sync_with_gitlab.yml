@@ -43,4 +43,4 @@ jobs:
       env:
         GITLAB_TOKEN: ${{ github.event.inputs.gitlab_token }}
       run: |
-        git push --force https://oauth2:${GITLAB_TOKEN}@${{ github.event.inputs.gitlab_repo_url }} HEAD:${{ github.event.inputs.branch }}
+        git push --force https://${GITLAB_TOKEN}@${{ github.event.inputs.gitlab_repo_url }} HEAD:${{ github.event.inputs.branch }}
