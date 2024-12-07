@@ -25,10 +25,11 @@ jobs:
     - name: Checkout GitHub repository
       uses: actions/checkout@v2
 
-    - name: Create branch if it doesn't exist
+    - name: Create or checkout branch
       run: |
         git fetch origin
         git checkout -b ${{ github.event.inputs.branch }} || git checkout ${{ github.event.inputs.branch }}
+        git pull origin ${{ github.event.inputs.branch }}
         git push origin ${{ github.event.inputs.branch }}
     
     - name: Set up Git
