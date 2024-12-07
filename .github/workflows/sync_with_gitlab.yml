@@ -1,10 +1,10 @@
-name: Sync with GitLab
+name: Sync from GitLab to GitHub
 
 on:
   workflow_dispatch:  # 手动触发
     inputs:
       gitlab_repo_url:
-        description: 'The GitLab repository URL to sync with'
+        description: 'The GitLab repository URL to pull from'
         required: true
       gitlab_token:
         description: 'The GitLab personal access token'
@@ -30,18 +30,18 @@ jobs:
         git config --global user.name 'github-actions[bot]'
         git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
-    - name: Create or checkout branch
-      run: |
-        git fetch origin
-        git checkout -b ${{ github.event.inputs.branch }} || git checkout ${{ github.event.inputs.branch }}
-        git merge -X theirs origin/${{ github.event.inputs.branch }} --allow-unrelated-histories
-        git push origin ${{ github.event.inputs.branch }}
-
     - name: Add GitLab remote
-      run: git remote add gitlab ${{ github.event.inputs.gitlab_repo_url }}
+      run: git remote add gitlab https://${{ github.event.inputs.gitlab_token }}@${{ github.event.inputs.gitlab_repo_url }}
 
-    - name: Push to GitLab
-      env:
-        GITLAB_TOKEN: ${{ github.event.inputs.gitlab_token }}
+    - name: Fetch GitLab branch
       run: |
-        git push --force https://${GITLAB_TOKEN}@${{ github.event.inputs.gitlab_repo_url }} HEAD:${{ github.event.inputs.branch }}
+        git fetch gitlab ${{ github.event.inputs.branch }}
+
+    - name: Merge GitLab branch to GitHub
+      run: |
+        git checkout -b ${{ github.event.inputs.branch }} || git checkout ${{ github.event.inputs.branch }}
+        git merge gitlab/${{ github.event.inputs.branch }} --allow-unrelated-histories
+
+    - name: Push to GitHub
+      run: |
+        git push origin ${{ github.event.inputs.branch }}
