@@ -25,17 +25,17 @@ jobs:
     - name: Checkout GitHub repository
       uses: actions/checkout@v2
 
+    - name: Set up Git
+      run: |
+        git config --global user.name 'github-actions[bot]'
+        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
     - name: Create or checkout branch
       run: |
         git fetch origin
         git checkout -b ${{ github.event.inputs.branch }} || git checkout ${{ github.event.inputs.branch }}
         git merge origin/${{ github.event.inputs.branch }} --allow-unrelated-histories
         git push origin ${{ github.event.inputs.branch }}
-    
-    - name: Set up Git
-      run: |
-        git config --global user.name 'github-actions[bot]'
-        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
     - name: Add GitLab remote
       run: git remote add gitlab ${{ github.event.inputs.gitlab_repo_url }}
