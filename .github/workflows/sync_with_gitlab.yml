@@ -47,9 +47,10 @@ jobs:
       run: |
         git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
 
-    - name: Pull from GitHub
+    - name: Pull from GitHub and merge
       run: |
-        git pull origin ${{ github.event.inputs.branch }} --rebase
+        git fetch origin
+        git merge -X theirs origin/${{ github.event.inputs.branch }}
 
     - name: Commit and push changes to GitHub
       run: |
