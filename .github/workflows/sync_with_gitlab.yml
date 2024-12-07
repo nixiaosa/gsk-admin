@@ -47,8 +47,12 @@ jobs:
       run: |
         git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
 
+    - name: Pull from GitHub
+      run: |
+        git pull origin ${{ github.event.inputs.branch }} --rebase
+
     - name: Commit and push changes to GitHub
       run: |
         git add .
         git commit -m "Sync from GitLab: ${{ github.event.inputs.branch }}" || echo "No changes to commit"
-        git push origin ${{ github.event.inputs.branch }}
+        git push origin ${{ github.event.inputs.branch }} --force
