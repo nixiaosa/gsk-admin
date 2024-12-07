@@ -29,7 +29,7 @@ jobs:
       run: |
         git fetch origin
         git checkout -b ${{ github.event.inputs.branch }} || git checkout ${{ github.event.inputs.branch }}
-        git pull origin ${{ github.event.inputs.branch }}
+        git pull --rebase origin ${{ github.event.inputs.branch }}
         git push origin ${{ github.event.inputs.branch }}
     
     - name: Set up Git
