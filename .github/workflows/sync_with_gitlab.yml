@@ -22,21 +22,29 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout GitLab repository
+    - name: Checkout GitHub repository
       uses: actions/checkout@v2
-      with:
-        repository: ${{ github.event.inputs.gitlab_repo_url }}
-        ref: ${{ github.event.inputs.branch }}
-        token: ${{ github.event.inputs.gitlab_token }}
 
     - name: Set up Git
       run: |
         git config --global user.name 'github-actions[bot]'
         git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
-    - name: Add GitHub remote
-      run: git remote add github https://github.com/${{ github.repository }}
-
-    - name: Push to GitHub
+    - name: Clone GitLab repository
+      env:
+        GITLAB_TOKEN: ${{ github.event.inputs.gitlab_token }}
       run: |
-        git push github ${{ github.event.inputs.branch }} --force
+        git clone --branch ${{ github.event.inputs.branch }} https://oauth2:${GITLAB_TOKEN}@${{ github.event.inputs.gitlab_repo_url }} gitlab-repo
+        cd gitlab-repo
+        git remote remove origin
+
+    - name: Copy files from GitLab to GitHub
+      run: |
+        cp -r gitlab-repo/. .
+        rm -rf gitlab-repo
+
+    - name: Commit and push changes to GitHub
+      run: |
+        git add .
+        git commit -m "Sync from GitLab: ${{ github.event.inputs.branch }}"
+        git push origin ${{ github.event.inputs.branch }} --force
