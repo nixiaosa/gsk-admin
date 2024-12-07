@@ -40,8 +40,7 @@ jobs:
 
     - name: Copy files from GitLab to GitHub
       run: |
-        rsync -a --delete gitlab-repo/ .
-        rm -rf gitlab-repo
+        rsync -a --delete gitlab-repo/ . || echo "Ignoring vanished files"
 
     - name: Reset GitHub remote
       run: |
