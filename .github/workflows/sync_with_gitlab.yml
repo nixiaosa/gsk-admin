@@ -14,7 +14,7 @@ on:
         default: 'azure-test'
         required: true
 
-permissions:  # 添加权限设置
+permissions:
   contents: write
 
 jobs:
@@ -40,15 +40,11 @@ jobs:
 
     - name: Copy files from GitLab to GitHub
       run: |
-        rsync -a --delete gitlab-repo/ . || echo "Ignoring vanished files"
-
-    - name: Reset GitHub remote
-      run: |
-        git remote remove origin
-        git remote add origin https://github.com/${{ github.repository }}.git
+        cp -r gitlab-repo/. .
+        rm -rf gitlab-repo
 
     - name: Commit and push changes to GitHub
       run: |
         git add .
         git commit -m "Sync from GitLab: ${{ github.event.inputs.branch }}" || echo "No changes to commit"
-        git push origin ${{ github.event.inputs.branch }} --force
+        git push origin ${{ github.event.inputs.branch }}
