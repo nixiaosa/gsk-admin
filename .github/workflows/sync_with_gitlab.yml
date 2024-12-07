@@ -14,6 +14,9 @@ on:
         default: 'azure-test'
         required: true
 
+permissions:  # 添加权限设置
+  contents: write
+
 jobs:
   sync:
     runs-on: ubuntu-latest
