@@ -21,9 +21,13 @@ jobs:
     steps:
     - name: Checkout GitHub repository
       uses: actions/checkout@v2
-      with:
-        ref: ${{ github.event.inputs.branch }}
 
+    - name: Create branch if it doesn't exist
+      run: |
+        git fetch origin
+        git checkout -b ${{ github.event.inputs.branch }} || git checkout ${{ github.event.inputs.branch }}
+        git push origin ${{ github.event.inputs.branch }}
+    
     - name: Set up Git
       run: |
         git config --global user.name 'github-actions[bot]'
