@@ -34,7 +34,7 @@ jobs:
       run: |
         git fetch origin
         git checkout -b ${{ github.event.inputs.branch }} || git checkout ${{ github.event.inputs.branch }}
-        git merge origin/${{ github.event.inputs.branch }} --allow-unrelated-histories
+        git merge -X theirs origin/${{ github.event.inputs.branch }} --allow-unrelated-histories
         git push origin ${{ github.event.inputs.branch }}
 
     - name: Add GitLab remote
