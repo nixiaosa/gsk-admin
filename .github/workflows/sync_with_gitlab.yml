@@ -31,11 +31,13 @@ jobs:
         git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
     - name: Add GitLab remote
-      run: git remote add gitlab https://${{ github.event.inputs.gitlab_token }}@${{ github.event.inputs.gitlab_repo_url }}
+      run: git remote add gitlab ${{ github.event.inputs.gitlab_repo_url }}
 
     - name: Fetch GitLab branch
+      env:
+        GITLAB_TOKEN: ${{ github.event.inputs.gitlab_token }}
       run: |
-        git fetch gitlab ${{ github.event.inputs.branch }}
+        git -c http.extraheader="Authorization: Bearer ${GITLAB_TOKEN}" fetch gitlab ${{ github.event.inputs.branch }}
 
     - name: Merge GitLab branch to GitHub
       run: |
