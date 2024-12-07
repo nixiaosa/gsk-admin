@@ -50,7 +50,7 @@ jobs:
     - name: Pull from GitHub and merge
       run: |
         git fetch origin
-        git merge -X theirs origin/${{ github.event.inputs.branch }}
+        git merge origin/${{ github.event.inputs.branch }} --allow-unrelated-histories -X theirs
 
     - name: Commit and push changes to GitHub
       run: |
